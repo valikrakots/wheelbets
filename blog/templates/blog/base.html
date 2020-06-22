@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% if title %}
+       <title>Wheelbet - {{ title }}</title>
+    {% else %}
+       <title>Wheelbet</title>
+    {% endif %}
+    <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+    <style>
+      .content-table{
+           border-collapse: collapse;
+           margin: 25px 0;
+           font-size: 0.87em;
+      }
+
+     .content-table thead tr{
+           background-color: #009879;
+           color: white;
+           text-align: left;
+           font-weight: bold;
+     }
+     .content-table th,
+     .content-table td{
+           padding: 12px 15px;
+     }
+     .content-table tbody tr{
+           border-bottom: 1px solid #f3f3f3;
+     }
+     .content-table tbody tr:nth-of-type(even){
+           background-color: #f3f3f3;
+     }
+     .content-table tbody tr:last-of-type{
+           border-bottom: 2px solid #009879;
+     }
+     .image{
+           height: 2.3em;
+           width: auto;
+     }
+     .footer{
+           background-size: cover;
+           width: 100% ;
+           background-repeat: no-repeat;
+           background-image: url('{% static "blog/images/unnamed.jpg" %}');
+           margin-top: auto;
+     }
+     .image1{
+           height: 1em;
+           width: auto;
+     }
+     body{
+           min-height: 100%;
+           display: flex;
+           flex-direction: column;
+     }
+     html{
+           height: 100%;
+     }
+     .helpi{
+           font-family: 'Quicksand', sans-serif;
+           font-size: 1.5em;
+    }
+    </style>
+</head>
+<body>
+    <header class='site-header' style="margin-bottom: 50px">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href='{% url 'blog-home' %}' ">Wheelbet</a>
+            <button class="navbar-toggler" data-toggle='collapse' data-target='#collapse_target' >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id='collapse_target'>
+               <ul class='nav navbar-nav navbar-right' style="margin-right: 30px; margin-left: auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="{% url 'blog-help' %}">Помощь</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{% url 'blog-about' %}">О проекте</a>
+                  </li>
+                  <li class="nav-item" href="#">
+                     <a class="nav-link" href="{% url 'blog-contacts' %}">Контакты</a>
+                  </li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+    </header>
+    <div  style="display: block; background-size: cover; text-align: center;background-repeat: no-repeat; background-image: url('{% static "blog/images/unnamed.jpg" %}')">
+       <h1 style="padding-top: 3vh; color: white; font-family: 'Fjalla One', sans-serif; ">WHEEL OF</h1>
+       <h1 style="padding-bottom: 3vh; color: white; font-family: 'Fjalla One', sans-serif; ">FORTUNE</h1>
+   </div>
+     <div class="container-fluid" >
+      {% block content %}
+      {% endblock %}
+     </div>
+    <section class="footer" style="color: white; text-align: center;font-family: 'Fjalla One',sans-serif;  font-size: 1em; padding-top: 0.35vh; padding-bottom: 0.35vh">
+      <div class="container" style="display: block;">
+       <p style="margin-top: 1.5vh">WHEELBET.COM COORP LIMITED</p>
+       <p style="margin-bottom: 1.5vh">@ALL RIGHTS RESERVED</p>
+      </div>
+    </section>
+    <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

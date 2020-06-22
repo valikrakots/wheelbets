@@ -1,0 +1,115 @@
+  {% extends 'blog/base.html' %}
+  {% load static %}
+  {% block content %}
+<div class="container-fluid" style="margin-top: 3.5vh">
+  {% if posts.last.recom == "red" %}
+   <p style="font-size: 1.5em; font-family: font-family: 'Fjalla One', sans-serif;text-align: right;"> Рекомендуем ставить на:   <img src="{% static "blog/images/red.png" %}" class="image1"></p>
+  {% elif posts.last.recom == "black" %}
+   <p style="font-size: 1.5em; font-family: font-family: 'Fjalla One', sans-serif;text-align: right;"> Рекомендуем ставить на:   <img src="{% static "blog/images/black.png" %}" class="image1"></p>
+  {% elif posts.last.recom == "grey" %}
+   <p style="font-size: 1.5em; font-family: font-family: 'Fjalla One', sans-serif;text-align: right;"> Рекомендуем ставить на:   <img src="{% static "blog/images/grey.png" %}" class="image1"></p>
+  {% elif posts.last.recom == "cup" %}
+   <p style="font-size: 1.5em; font-family: font-family: 'Fjalla One', sans-serif;text-align: right;"> Рекомендуем ставить на:   <img src="{% static "blog/images/cup.png"  %}" class="image" style="background-color: black"></p>
+  {% else %}
+    <p style="font-size: 1.5em; font-family: font-family: 'Fjalla One', sans-serif;text-align: right;"> Рекомендуем ставить на: ---</p>
+  {% endif %}
+</div>
+<div style="padding-top: 3vh">
+<form role="form">
+    <div class="form-group">
+      <label>Выберите количество строк в таблице:</label>
+      <select class="form-control" id="sel1" style="width: 14%">
+        <option>25</option>
+        <option>50</option>
+        <option>100</option>
+        <option>All</option>
+      </select>
+    </div>
+  </form>
+</div>
+<div>
+ <table class="content-table" style=" width: 100%;margin-bottom: 5vh" id="map">
+    <thead>
+        <tr>
+          <div>
+            <div><td style="width: 25%">Дата</td></div>
+            <div><td style="width: 25%">Иллюстрация</td></div>
+            <div><td style="width: 25%">Число</td></div>
+            <div><td style="width: 25%">Цвет</td></div>
+          </div>
+        </tr>
+    </thead>
+    <tbody>
+     {% for post in posts %}
+        {% if post.number == 'ch' %}
+          <tr><td colspan="4" style="text-align: center;">{{post.change_date|date:"F j, Y"}}</td></tr>
+        {% else %}
+        <tr>
+          <th>{{ post.date|date:"H : i"}}</th>
+          {% if post.number == '1' %}
+             <th><img src="{% static "blog/images/1.png" %} " class="image"></th>
+          {% elif post.number == '2' %}
+             <th><img src="{% static "blog/images/2.png" %} " class="image"></th>
+          {% elif post.number == '3' %}
+             <th><img src="{% static "blog/images/3.png" %} " class="image"></th>
+          {% elif post.number == '4' %}
+             <th><img src="{% static "blog/images/4.png" %} " class="image"></th>
+          {% elif post.number == '5' %}
+             <th><img src="{% static "blog/images/5.png" %} " class="image"></th>
+          {% elif post.number == '6' %}
+             <th><img src="{% static "blog/images/6.png" %} " class="image"></th>
+          {% elif post.number == '7' %}
+             <th><img src="{% static "blog/images/7.png" %} " class="image"></th>
+          {% elif post.number == '8' %}
+             <th><img src="{% static "blog/images/8.png" %} " class="image"></th>
+          {% elif post.number == '9' %}
+             <th><img src="{% static "blog/images/9.png" %} " class="image"></th>
+          {% elif post.number == '10' %}
+             <th><img src="{% static "blog/images/10.png" %} " class="image"></th>
+          {% elif post.number == '11' %}
+             <th><img src="{% static "blog/images/11.png" %} " class="image"></th>
+          {% elif post.number == '12' %}
+             <th><img src="{% static "blog/images/12.png" %} " class="image"></th>
+          {% elif post.number == '13' %}
+             <th><img src="{% static "blog/images/13.png" %} " class="image"></th>
+          {% elif post.number == '14' %}
+             <th><img src="{% static "blog/images/14.png" %} " class="image"></th>
+          {% elif post.number == '15' %}
+             <th><img src="{% static "blog/images/15.png" %} " class="image"></th>
+          {% elif post.number == '16' %}
+             <th><img src="{% static "blog/images/16.png" %} " class="image"></th>
+          {% elif post.number == '17' %}
+             <th><img src="{% static "blog/images/17.png" %} " class="image"></th>
+          {% elif post.number == '18' %}
+             <th><img src="{% static "blog/images/18.png" %} " class="image"></th>
+          {% else %}
+             <th><img src="{% static "blog/images/cup.png" %} " class="image"></th>
+          {% endif %}
+          <th> {{ post.number }} </th>
+          <th> {{ post.color }} </th>
+        </tr>
+        {% endif %}
+     {% endfor %}
+    </tbody>
+</table>
+</div>
+<script type='text/javascript'>
+    setTimeout('window.location.reload()', 120000);
+</script>
+<script type="text/javascript">
+function act() {
+  var num = $( "#sel1 option:selected" ).text();
+  $("#map tr").show();
+  $("#map tr:gt(" + num + ")").hide();
+}
+
+$(function() {
+    act();
+});
+
+$( "#sel1" ).change(function() {
+    act();
+});
+
+</script>
+  {% endblock content %}

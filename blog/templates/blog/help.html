@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="container-fluid">
+    <p class="helpi" style="padding-top: 3vh">Проект Wheelbet - ваш персональный помошник, который тщательно анализируя при помощи высокоточных алгоритмов предыдущие результаты колеса фортуны,
+     способен с высокой точностью спрогназировать следующий результат. Следует также принимать во внимание, что прогноз появляется за 30 секунд до начала соответствующего кона. Всего наш помошник предлагает четыре вида ставок: </p>
+    <p class="helpi"> <img src="{% static 'blog/images/red.png' %}" style="height: 3vh; width: auto;"> - означает, что алгоритм предполагает, что в следующем
+    вращении выпадет число красного цвета, следовательно стоит поставить на то, что выпадет число красного цвета;</p>
+    <p class="helpi"> <img src="{% static 'blog/images/black.png' %}" style="height: 3vh; width: auto;"> - означает, что алгоритм предполагает, что в следующем
+    вращении выпадет число черного цвета, следовательно стоит поставить на то, что выпадет число черного цвета;</p>
+    <p class="helpi"> <img src="{% static 'blog/images/grey.png' %}" style="height: 3vh; width: auto;"> - означает, что алгоритм предполагает, что в следующем
+    вращении выпадет число серого цвета, следовательно стоит поставить на то, что выпадет число серого цвета;</p>
+    <p class="helpi"> <img src="{% static 'blog/images/cup.png' %}" style="height: 3vh; width: auto;"> - означает, что алгоритм предполагает, что в следующем
+    вращении выпадет кубок, следовательно стоит поставить на то, что выпадет кубок.</p>
+    <p class="helpi">Список сайтов, где можно играть в колесо фортуны:</p>
+        <div style="text-align: center">
+    <p><a class="helpi" href="https://air2.parimatch.com/ru/betgames" style="color: grey">parimatch.com</a></p>
+    <p><a class="helpi" href="https://ru.kc71leogam88.com/tv-games/lucky-6" style="color: grey">leon</a></p>
+    <p><a class="helpi" href="https://www.marathonbet.com/su/live-games/livegames?uuid=a237a2e3-e836-4291-8cb6-1aaf4498301f&demo=true" style="color: grey">marathonbet</a></p>
+    <p><a class="helpi" href="https://m.favbet.com/ru/tvloto/" style="color: grey">favbet</a></p>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+{% endblock content %}
