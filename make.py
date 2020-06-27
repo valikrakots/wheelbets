@@ -3,6 +3,9 @@ import time
 import requests
 from bs4 import BeautifulSoup
 import datetime
+from apscheduler.schedulers.blocking import BlockingScheduler
+
+sched = BlockingScheduler()
 
 
 URL = 'https://betgames9.betgames.tv/ext/game_results/get_results_info/testpartner/2019-04-03/0/1/'
@@ -15,20 +18,23 @@ def get_html(url, params=None):
   return r
 
 
+red_kolvo = 0
+black_kolvo = 0
+grey_kolvo = 0
+cup_kolvo = 0
+maxi = 0
+chislo = 0
+grey = 0
+red = 0
+black = 0
+cup = 0
+kolvo = 0
+d1 = datetime.datetime.now().date()
+
+
+@sched.scheduled_job('interval', minutes=2)
 def run():
-  red_kolvo = 0
-  black_kolvo = 0
-  grey_kolvo = 0
-  cup_kolvo = 0
-  maxi = 0
-  chislo = 0
-  grey = 0
-  red = 0
-  black = 0
-  cup = 0
-  kolvo = 0
   h = 9
-  d1 = datetime.datetime.now().date()
   while(h == 9):
     d2 = datetime.datetime.now().date()
     if d1 < d2:
@@ -196,4 +202,7 @@ def run():
           table1.save()
     else:
       print('Error')
-    time.sleep(119)
+    h = 5
+
+
+sched.start()

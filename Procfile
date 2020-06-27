@@ -1,4 +1,4 @@
 
 
 web: gunicorn www.wsgi
-web: python make.py
+clock: python make.py
