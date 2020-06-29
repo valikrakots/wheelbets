@@ -1,6 +1,6 @@
 import django
 from django.conf import settings
-from myapp import myapp_defaults
+from www import www_defaults
 
 settings.configure(default_settings=myapp_defaults, DEBUG=True)
 django.setup()
