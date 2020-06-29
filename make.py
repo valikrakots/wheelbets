@@ -1,8 +1,8 @@
 import django
 from django.conf import settings
-from wheelbet import wheelbet_defaults
 
-settings.configure(default_settings=myapp_defaults, DEBUG=True)
+
+settings.configure()
 django.setup()
 
 
