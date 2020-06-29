@@ -1,5 +1,4 @@
 appdirs==1.4.4
-APScheduler==3.6.3
 arrow==0.15.6
 asgiref==3.2.7
 beautifulsoup4==4.9.1
