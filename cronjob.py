@@ -6,7 +6,7 @@ import django
 
 django.setup()
 
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 # Main cronjob function.
 from main import cronjob
