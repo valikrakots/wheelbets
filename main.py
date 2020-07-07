@@ -1,3 +1,7 @@
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "www.settings")
+
+
 from blog.models import Table
 import time
 import requests

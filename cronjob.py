@@ -1,3 +1,7 @@
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "www.settings")
+
+
 from apscheduler.schedulers.background import BackgroundScheduler
 
 # Main cronjob function.
