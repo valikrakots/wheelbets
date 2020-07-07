@@ -2,6 +2,10 @@ import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "www.settings")
 
 
+import django
+
+django.setup()
+
 from apscheduler.schedulers.background import BackgroundScheduler
 
 # Main cronjob function.
