@@ -43,7 +43,7 @@
     <tbody>
      {% for post in posts %}
         {% if post.number == 'ch' %}
-          <tr><td colspan="4" style="text-align: center;">{{post.change_date|date:"F j, Y"}}</td></tr>
+          <tr><td colspan="4" style="text-align: center;"><span style="display: inline;">{{post.change_date|date:"F j, Y"}}</span>></td></tr>
         {% else %}
         <tr>
           <th>{{ post.date|date:"H : i"}}</th>
