@@ -46,7 +46,7 @@
           <tr><td colspan="4" style="text-align: center;">{{post.change_date|date:"F j, Y"}}</td></tr>
         {% else %}
         <tr>
-          <th><span style="word-break:break-all;">{{ post.date|date:"H : i"}}</span></th>
+          <th><span style="word-break:break-all; overflow-wrap:break-word;">{{ post.date|date:"H : i"}}</span></th>
           {% if post.number == '1' %}
              <th><img src="{% static "blog/images/1.png" %} " class="image"></th>
           {% elif post.number == '2' %}
@@ -95,7 +95,7 @@
 </table>
 </div>
 <script type='text/javascript'>
-    setTimeout('window.location.reload()', 60000);
+    setTimeout('window.location.reload()', 40000);
 </script>
 <script type="text/javascript">
 function act() {
