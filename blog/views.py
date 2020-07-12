@@ -21,3 +21,7 @@ def help(request):
 
 def contacts(request):
     return render(request, 'blog/contacts.html', {'title': 'contacts'})
+
+
+def where(request):
+    return render(request, 'blog/where.html', {'title': 'where'})
