@@ -13,6 +13,6 @@ from main import cronjob
 
 # Create an instance of scheduler and add function.
 scheduler = BlockingScheduler()
-scheduler.add_job(cronjob, "interval", seconds=30)
+scheduler.add_job(cronjob, 'date', run_date='2020-13-07 10:49:17')
 
 scheduler.start()
