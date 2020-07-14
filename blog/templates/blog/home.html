@@ -16,20 +16,19 @@
   {% endif %}
 </div>
 <div style="padding-top: 3vh">
-<label style="font-size: 1.2em">Выберите количество строк в таблице:</label>
-<table class="content-table2">
-  <thead>
-        <tr>
-          <div style="text-align: center">
-            <div><td>25 </td></div>
-            <div><td>50 </td></div>
-            <div><td>100</td></div>
-            <div><td>Все</td></div>
-          </div>
-      </tr>
-  </thead>
-</table>
+<form role="form">
+    <div class="form-group">
+      <label>Выберите количество строк в таблице:</label>
+      <select class="form-control" id="sel1" style="width: auto">
+        <option>25</option>
+        <option>50</option>
+        <option>100</option>
+        <option>All</option>
+      </select>
+    </div>
+  </form>
 </div>
+
 <div>
  <table class="content-table" style=" width: 100%; margin-bottom: 5vh" id="map">
     <thead>
@@ -99,5 +98,20 @@
 <script type="text/javascript">
   setTimeout('window.location.reload()', 40000);
 </script>
+<script type="text/javascript">
+function act() {
+  var num = $( "#sel1 option:selected" ).text();
+  $("#map tr").show();
+  $("#map tr:gt(" + num + ")").hide();
+}
 
+$(function() {
+    act();
+});
+
+$( "#sel1" ).change(function() {
+    act();
+});
+
+</script>
   {% endblock content %}
