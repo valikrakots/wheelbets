@@ -95,7 +95,11 @@
 </table>
 </div>
 <script type='text/javascript'>
-    setTimeout('map.location.reload()', 40000);
+  function sayHi() {
+      $("#map").load(" #map");
+  }
+
+  setTimeout(sayHi, 40000);
 </script>
 <script type="text/javascript">
 function act() {
