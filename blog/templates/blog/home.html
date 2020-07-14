@@ -29,7 +29,7 @@
   </form>
 </div>
 <div>
- <table class="content-table" style=" width: 100%; margin-bottom: 5vh" id="map">
+ <table onload="new()" class="content-table" style=" width: 100%; margin-bottom: 5vh" id="map">
     <thead>
         <tr>
           <div>
@@ -95,10 +95,12 @@
 </table>
 </div>
 <script type='text/javascript'>
-  let timerId = setTimeout(function tick() {
-    $("#map").load(" #map");
-    timerId = setTimeout(tick, 10000);
-  }, 10000);
+  function new(){
+    let timerId = setTimeout(function tick() {
+      $("#map").load(" #map");
+      timerId = setTimeout(tick, 10000);
+    }, 10000);
+  }
 </script>
 <script type="text/javascript">
 function act() {
