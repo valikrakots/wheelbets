@@ -96,7 +96,7 @@
 </div>
 <script type='text/javascript'>
   let timerId = setTimeout(function tick() {
-    $("#map").load("{% url 'blog-home' %} #map");
+    $("#map").load({% url 'blog-home' %} ' #map');
     timerId = setTimeout(tick, 10000);
   }, 10000);
 </script>
