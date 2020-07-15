@@ -20,10 +20,10 @@
     <div class="form-group">
       <label>Выберите количество строк в таблице:</label>
       <select class="form-control" id="sel1" style="width: auto">
-        <option>25</option>
-        <option>50</option>
-        <option>100</option>
-        <option>All</option>
+        <option id="select_a" value='a'>25</option>
+        <option id="select_b" value='b'>50</option>
+        <option id="select_c" value='c'>100</option>
+        <option id="select_d" value='d'>All</option>
       </select>
     </div>
   </form>
@@ -103,6 +103,7 @@ function act() {
   var num = $( "#sel1 option:selected" ).text();
   $("#map tr").show();
   $("#map tr:gt(" + num + ")").hide();
+
 }
 
 $(function() {
@@ -113,5 +114,14 @@ $( "#sel1" ).change(function() {
     act();
 });
 
+</script>
+<script>
+document.getElementById('sel1').onchange = function() {
+        localStorage.setItem('selectedtem', document.getElementById('sel1').value);
+    };
+
+    if (localStorage.getItem('selectedtem')) {
+        document.getElementById('select_'+localStorage.getItem('selectedtem')).selected = true;
+    }
 </script>
   {% endblock content %}
