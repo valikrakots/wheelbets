@@ -197,4 +197,4 @@ def cronjob():
           table1.save()
     else:
       print('Error')
-    time.sleep(119.8)
+    time.sleep(119.75)
