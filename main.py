@@ -33,7 +33,7 @@ def cronjob():
   h = 9
   d1 = datetime.datetime.now().date()
   while(h == 9):
-    start_time = datetime.now()
+    start_time = datetime.datetime.now()
     d2 = datetime.datetime.now().date()
     if d1 < d2:
       d1 = datetime.datetime.now().date()
@@ -457,5 +457,6 @@ def cronjob():
           table1.save()
     else:
       print('Error')
-    last = datetime.now() - start_time
+    last = datetime.datetime.now() - start_time
+    print(str(last))
     time.sleep(119.7405)
