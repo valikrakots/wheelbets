@@ -72,7 +72,7 @@ def cronjob():
             pervyj = 1
             kkk = 1
             minimum = num
-            nomer =
+            nomer = 0
           else:
             if num < minimum:
               kkk = 1
@@ -129,7 +129,7 @@ def cronjob():
             pervyj = 1
             kkk = 1
             minimum = num
-            nomer =
+            nomer = 0
           else:
             if num < minimum:
               kkk = 1
@@ -186,7 +186,7 @@ def cronjob():
             pervyj = 1
             kkk = 1
             minimum = num
-            nomer =
+            nomer = 0
           else:
             if num < minimum:
               kkk = 1
@@ -234,7 +234,7 @@ def cronjob():
             pervyj = 1
             kkk = 1
             minimum = num
-            nomer =
+            nomer = 0
           else:
             if num < minimum:
               kkk = 1
@@ -291,7 +291,7 @@ def cronjob():
             pervyj = 1
             kkk = 1
             minimum = num
-            nomer =
+            nomer = 0
           else:
             if num < minimum:
               kkk = 1
@@ -348,7 +348,7 @@ def cronjob():
             pervyj = 1
             kkk = 1
             minimum = num
-            nomer =
+            nomer = 0
           else:
             if num < minimum:
               kkk = 1
@@ -405,7 +405,7 @@ def cronjob():
             pervyj = 1
             kkk = 1
             minimum = num
-            nomer =
+            nomer = 0
           else:
             if num < minimum:
               kkk = 1
