@@ -16,4 +16,4 @@ class Table(models.Model):
     date = models.DateTimeField(default=one_minute_hence)
     change_date = models.DateTimeField(default=one_day_hence)
     recom = models.CharField(max_length=10)
-    do_date = models.CharField(max_length=100, null=True)
+    do_date = models.DateTimeField(default=one_minute_hence)
