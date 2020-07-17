@@ -458,5 +458,5 @@ def cronjob():
     else:
       print('Error')
     last = datetime.datetime.now() - start_time
-    print(str(last))
+    print(str(last.microsecond)
     time.sleep(119.7405)
