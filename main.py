@@ -459,4 +459,4 @@ def cronjob():
       print('Error')
     last = time.time() - start_time
     print(str(last))
-    time.sleep(119.7405)
+    time.sleep(120 - last)
