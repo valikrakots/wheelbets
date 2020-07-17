@@ -155,6 +155,9 @@ def cronjob():
             nomer += 1
             table1 = Table(color='red', number=ch, recom=str(nomer))
             table1.save()
+          else:
+            table1 = Table(color='red', number=ch, recom='-')
+            table1.save()
         else:
           table1 = Table(color='red', number=ch, recom='-')
           table1.save()
@@ -212,6 +215,9 @@ def cronjob():
             nomer += 1
             table1 = Table(color='black', number=ch, recom=str(nomer))
             table1.save()
+          else:
+            table1 = Table(color='red', number=ch, recom='-')
+            table1.save()
         else:
           table1 = Table(color='black', number=ch, recom='-')
           table1.save()
@@ -259,6 +265,9 @@ def cronjob():
           if numbers[nomer] > 50 and kolvo / numbers_kolvo[nomer] >= 30:
             nomer += 1
             table1 = Table(color='cup', number=ch, recom=str(nomer))
+            table1.save()
+          else:
+            table1 = Table(color='red', number=ch, recom='-')
             table1.save()
         else:
           table1 = Table(color='cup', number=ch, recom='-')
@@ -317,6 +326,9 @@ def cronjob():
             nomer += 1
             table1 = Table(color='red', number=ch, recom=str(nomer))
             table1.save()
+          else:
+            table1 = Table(color='red', number=ch, recom='-')
+            table1.save()
         else:
           table1 = Table(color='red', number=ch, recom='-')
           table1.save()
@@ -374,6 +386,9 @@ def cronjob():
             nomer += 1
             table1 = Table(color='black', number=ch, recom=str(nomer))
             table1.save()
+          else:
+            table1 = Table(color='red', number=ch, recom='-')
+            table1.save()
         else:
           table1 = Table(color='black', number=ch, recom='-')
           table1.save()
@@ -430,6 +445,9 @@ def cronjob():
           if numbers[nomer] > 50 and kolvo / numbers_kolvo[nomer] >= 30:
             nomer += 1
             table1 = Table(color='grey', number=ch, recom=str(nomer))
+            table1.save()
+          else:
+            table1 = Table(color='red', number=ch, recom='-')
             table1.save()
         else:
           table1 = Table(color='grey', number=ch, recom='-')
