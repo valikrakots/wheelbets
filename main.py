@@ -98,6 +98,9 @@ def cronjob():
             nomer += 1
             table1 = Table(color='grey', number=ch, recom=str(nomer))
             table1.save()
+          else:
+            table1 = Table(color='grey', number=ch, recom='-')
+            table1.save()
         else:
           table1 = Table(color='grey', number=ch, recom='-')
           table1.save()
@@ -216,7 +219,7 @@ def cronjob():
             table1 = Table(color='black', number=ch, recom=str(nomer))
             table1.save()
           else:
-            table1 = Table(color='red', number=ch, recom='-')
+            table1 = Table(color='black', number=ch, recom='-')
             table1.save()
         else:
           table1 = Table(color='black', number=ch, recom='-')
@@ -267,7 +270,7 @@ def cronjob():
             table1 = Table(color='cup', number=ch, recom=str(nomer))
             table1.save()
           else:
-            table1 = Table(color='red', number=ch, recom='-')
+            table1 = Table(color='cup', number=ch, recom='-')
             table1.save()
         else:
           table1 = Table(color='cup', number=ch, recom='-')
@@ -387,7 +390,7 @@ def cronjob():
             table1 = Table(color='black', number=ch, recom=str(nomer))
             table1.save()
           else:
-            table1 = Table(color='red', number=ch, recom='-')
+            table1 = Table(color='black', number=ch, recom='-')
             table1.save()
         else:
           table1 = Table(color='black', number=ch, recom='-')
@@ -447,7 +450,7 @@ def cronjob():
             table1 = Table(color='grey', number=ch, recom=str(nomer))
             table1.save()
           else:
-            table1 = Table(color='red', number=ch, recom='-')
+            table1 = Table(color='grey', number=ch, recom='-')
             table1.save()
         else:
           table1 = Table(color='grey', number=ch, recom='-')
