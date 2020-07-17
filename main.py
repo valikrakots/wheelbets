@@ -437,6 +437,4 @@ def cronjob():
     else:
       print('Error')
     last = datetime.now() - start_time
-    table1 = Table(color='grey', number=ch, recom=str(nomer), do_date=last)
-    table1.save()
     time.sleep(119.7405)
