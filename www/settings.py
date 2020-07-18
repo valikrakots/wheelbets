@@ -126,6 +126,6 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 1024000000
 
 django_heroku.settings(locals())
