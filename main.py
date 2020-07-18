@@ -458,5 +458,5 @@ def cronjob():
     else:
       print('Error')
     last = time.time() - start_time
-    print(str(last))
+    print(str(120 - last))
     time.sleep(120 - last)
