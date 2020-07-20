@@ -34,7 +34,7 @@ h = 9
 flag = 1
 
 
-def run():
+def runui():
   global numbers
   global numbers_kolvo
   global red_kolvo
@@ -479,7 +479,10 @@ def run():
 
 def cronjob():
   global flag
+  global h
   while flag == 1:
-    t1 = threading.Thread(target=run)
+    h = 9
+    t1 = threading.Thread(target=runui)
     t1.start()
+    print("oooooo")
     time.sleep(120)
