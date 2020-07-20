@@ -4,6 +4,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 import datetime
+import threading
 
 
 URL = 'https://betgames9.betgames.tv/ext/game_results/get_results_info/testpartner/2019-04-03/0/1/'
@@ -16,24 +17,26 @@ def get_html(url, params=None):
   return r
 
 
-def cronjob():
-  numbers = [0] * 18
-  numbers_kolvo = [0] * 18
-  red_kolvo = 0
-  black_kolvo = 0
-  grey_kolvo = 0
-  cup_kolvo = 0
-  maxi = 0
-  chislo = 0
-  grey = 0
-  red = 0
-  black = 0
-  cup = 0
-  kolvo = 0
-  h = 9
+numbers = [0] * 18
+numbers_kolvo = [0] * 18
+red_kolvo = 0
+black_kolvo = 0
+grey_kolvo = 0
+cup_kolvo = 0
+maxi = 0
+chislo = 0
+grey = 0
+red = 0
+black = 0
+cup = 0
+kolvo = 0
+h = 9
+flag = 1
+
+
+def run():
   d1 = datetime.datetime.now().date()
   while(h == 9):
-    start_time = time.time()
     d2 = datetime.datetime.now().date()
     if d1 < d2:
       d1 = datetime.datetime.now().date()
@@ -154,7 +157,7 @@ def cronjob():
           table1 = Table(color='red', number=ch, recom='cup')
           table1.save()
         elif kkk == 1 and numbers_kolvo[nomer] != 0:
-          if numbers[nomer] > 50 and kolvo / numbers_kolvo[nomer] >= 30:
+          if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
             nomer += 1
             table1 = Table(color='red', number=ch, recom=str(nomer))
             table1.save()
@@ -214,7 +217,7 @@ def cronjob():
           table1 = Table(color='black', number=ch, recom='cup')
           table1.save()
         elif kkk == 1 and numbers_kolvo[nomer] != 0:
-          if numbers[nomer] > 50 and kolvo / numbers_kolvo[nomer] >= 30:
+          if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
             nomer += 1
             table1 = Table(color='black', number=ch, recom=str(nomer))
             table1.save()
@@ -265,7 +268,7 @@ def cronjob():
           table1 = Table(color='cup', number=ch, recom='grey')
           table1.save()
         elif kkk == 1 and numbers_kolvo[nomer] != 0:
-          if numbers[nomer] > 50 and kolvo / numbers_kolvo[nomer] >= 30:
+          if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
             nomer += 1
             table1 = Table(color='cup', number=ch, recom=str(nomer))
             table1.save()
@@ -325,7 +328,7 @@ def cronjob():
           table1 = Table(color='red', number=ch, recom='cup')
           table1.save()
         elif kkk == 1 and numbers_kolvo[nomer] != 0:
-          if numbers[nomer] > 50 and kolvo / numbers_kolvo[nomer] >= 30:
+          if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
             nomer += 1
             table1 = Table(color='red', number=ch, recom=str(nomer))
             table1.save()
@@ -385,7 +388,7 @@ def cronjob():
           table1 = Table(color='black', number=ch, recom='cup')
           table1.save()
         elif kkk == 1 and numbers_kolvo[nomer] != 0:
-          if numbers[nomer] > 50 and kolvo / numbers_kolvo[nomer] >= 30:
+          if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
             nomer += 1
             table1 = Table(color='black', number=ch, recom=str(nomer))
             table1.save()
@@ -445,7 +448,7 @@ def cronjob():
           table1 = Table(color='grey', number=ch, recom='cup')
           table1.save()
         elif kkk == 1 and numbers_kolvo[nomer] != 0:
-          if numbers[nomer] > 50 and kolvo / numbers_kolvo[nomer] >= 30:
+          if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
             nomer += 1
             table1 = Table(color='grey', number=ch, recom=str(nomer))
             table1.save()
@@ -457,6 +460,11 @@ def cronjob():
           table1.save()
     else:
       print('Error')
-    last = time.time() - start_time
-    print(str(120 - last))
-    time.sleep(120 - last)
+    h = 10
+
+
+def cronjob():
+  while flag == 1:
+    t1 = threading.Thread(target=run)
+    t1.start()
+    time.sleep(120)
