@@ -35,6 +35,20 @@ flag = 1
 
 
 def run():
+  global numbers
+  global numbers_kolvo
+  global red_kolvo
+  global black_kolvo
+  global grey_kolvo
+  global cup_kolvo
+  global maxi
+  global chislo
+  global grey
+  global red
+  global black
+  global cup
+  global kolvo
+  global h
   d1 = datetime.datetime.now().date()
   while(h == 9):
     d2 = datetime.datetime.now().date()
@@ -464,6 +478,7 @@ def run():
 
 
 def cronjob():
+  global flag
   while flag == 1:
     t1 = threading.Thread(target=run)
     t1.start()
