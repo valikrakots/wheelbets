@@ -19,7 +19,7 @@ from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import StaticViewSitemap
 
 
-sitemaps{
+sitemaps = {
     'static': StaticViewSitemap
 }
 
