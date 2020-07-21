@@ -33,6 +33,9 @@ ALLOWED_HOSTS = ['wheelbet.herokuapp.com',
                  '127.0.0.1']
 
 
+SITE_ID = 1
+
+
 # Application definition
 
 INSTALLED_APPS = [
