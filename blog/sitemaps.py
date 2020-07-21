@@ -5,7 +5,7 @@ from django.shortcuts import reverse
 class StaticViewSitemap(Sitemap):
 
     def items(self):
-        return ['about', 'help', 'where', '', 'contacts']
+        return ['blog-about', 'blog-help', 'blog-where', 'blog-home', 'blog-contacts']
 
     def location(self, item):
         return reverse(item)
