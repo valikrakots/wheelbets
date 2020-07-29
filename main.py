@@ -73,8 +73,10 @@ def runui():
         nomer = 0
         sczetczik = 0
         kkk = 0
-        for num in numbers:
-          num += 1
+        f = 0
+        while f < 18:
+          numbers[f] += 1
+          f += 1
         if ch == '2':
           numbers[1] = 0
           numbers_kolvo[1] += 1
@@ -133,8 +135,10 @@ def runui():
         nomer = 0
         sczetczik = 0
         kkk = 0
-        for num in numbers:
-          num += 1
+        f = 0
+        while f < 18:
+          numbers[f] += 1
+          f += 1
         if ch == '3':
           numbers[2] = 0
           numbers_kolvo[2] += 1
@@ -193,8 +197,10 @@ def runui():
         nomer = 0
         sczetczik = 0
         kkk = 0
-        for num in numbers:
-          num += 1
+        f = 0
+        while f < 18:
+          numbers[f] += 1
+          f += 1
         if ch == '1':
           numbers[0] = 0
           numbers_kolvo[0] += 1
@@ -253,8 +259,10 @@ def runui():
         nomer = 0
         sczetczik = 0
         kkk = 0
-        for num in numbers:
-          num += 1
+        f = 0
+        while f < 18:
+          numbers[f] += 1
+          f += 1
         for num in numbers_kolvo:
           if pervyj == 0:
             pervyj = 1
@@ -304,8 +312,10 @@ def runui():
         nomer = 0
         sczetczik = 0
         kkk = 0
-        for num in numbers:
-          num += 1
+        f = 0
+        while f < 18:
+          numbers[f] += 1
+          f += 1
         if ch == '12':
           numbers[11] = 0
           numbers_kolvo[11] += 1
@@ -364,8 +374,10 @@ def runui():
         nomer = 0
         sczetczik = 0
         kkk = 0
-        for num in numbers:
-          num += 1
+        f = 0
+        while f < 18:
+          numbers[f] += 1
+          f += 1
         if ch == '10':
           numbers[9] = 0
           numbers_kolvo[9] += 1
@@ -424,8 +436,10 @@ def runui():
         nomer = 0
         sczetczik = 0
         kkk = 0
-        for num in numbers:
-          num += 1
+        f = 0
+        while f < 18:
+          numbers[f] += 1
+          f += 1
         if ch == '11':
           numbers[10] = 0
           numbers_kolvo[10] += 1
