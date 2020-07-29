@@ -31,7 +31,7 @@ black = 0
 cup = 0
 kolvo = 0
 h = 9
-flag = 1
+d1 = datetime.datetime.now().date()
 
 
 def runui():
@@ -49,7 +49,7 @@ def runui():
   global cup
   global kolvo
   global h
-  d1 = datetime.datetime.now().date()
+  global d1
   while(h == 9):
     d2 = datetime.datetime.now().date()
     if d1 < d2:
@@ -478,11 +478,11 @@ def runui():
 
 
 def cronjob():
-  global flag
+  flag = 1
   global h
   while flag == 1:
     h = 9
     t1 = threading.Thread(target=runui)
     t1.start()
     print("oooooo")
-    time.sleep(119.90735547)
+    time.sleep(119.8564806382369)
