@@ -103,10 +103,10 @@ def runui():
         if grey_kolvo > maxi:
           maxi = grey_kolvo
         chislo = int(ch)
-        if red >= 6 and maxi - red_kolvo <= 26:
+        if red >= 7 and maxi - red_kolvo <= 26:
           table1 = Table(color='grey', number=ch, recom='red')
           table1.save()
-        elif black >= 6 and maxi - black_kolvo <= 26:
+        elif black >= 7 and maxi - black_kolvo <= 26:
           table1 = Table(color='grey', number=ch, recom='black')
           table1.save()
         elif cup > 87 and maxi - cup_kolvo <= 26:
@@ -165,10 +165,10 @@ def runui():
         if red_kolvo > maxi:
           maxi = red_kolvo
         chislo = int(ch)
-        if black >= 6 and maxi - black_kolvo <= 26:
+        if black >= 7 and maxi - black_kolvo <= 26:
           table1 = Table(color='red', number=ch, recom='black')
           table1.save()
-        elif grey >= 6 and maxi - grey_kolvo <= 26:
+        elif grey >= 7 and maxi - grey_kolvo <= 26:
           table1 = Table(color='red', number=ch, recom='grey')
           table1.save()
         elif cup > 87 and maxi - cup_kolvo <= 26:
@@ -227,10 +227,10 @@ def runui():
         if black_kolvo > maxi:
           maxi = black_kolvo
         chislo = int(ch)
-        if red >= 6 and maxi - red_kolvo <= 26:
+        if red >= 7 and maxi - red_kolvo <= 26:
           table1 = Table(color='black', number=ch, recom='red')
           table1.save()
-        elif grey >= 6 and maxi - grey_kolvo <= 26:
+        elif grey >= 7 and maxi - grey_kolvo <= 26:
           table1 = Table(color='black', number=ch, recom='grey')
           table1.save()
         elif cup > 87 and maxi - cup_kolvo <= 26:
@@ -280,10 +280,10 @@ def runui():
         if cup_kolvo > maxi:
           maxi = cup_kolvo
         chislo = int(ch)
-        if red >= 6 and maxi - red_kolvo <= 26:
+        if red >= 7 and maxi - red_kolvo <= 26:
           table1 = Table(color='cup', number=ch, recom='red')
           table1.save()
-        elif black >= 6 and maxi - black_kolvo <= 26:
+        elif black >= 7 and maxi - black_kolvo <= 26:
           table1 = Table(color='cup', number=ch, recom='black')
           table1.save()
         elif grey > 6 and maxi - grey_kolvo <= 26:
@@ -342,10 +342,10 @@ def runui():
         if red_kolvo > maxi:
           maxi = red_kolvo
         chislo = int(ch)
-        if black >= 6 and maxi - black_kolvo <= 26:
+        if black >= 7 and maxi - black_kolvo <= 26:
           table1 = Table(color='red', number=ch, recom='black')
           table1.save()
-        elif grey >= 6 and maxi - grey_kolvo <= 26:
+        elif grey >= 7 and maxi - grey_kolvo <= 26:
           table1 = Table(color='red', number=ch, recom='grey')
           table1.save()
         elif cup > 87 and maxi - cup_kolvo <= 26:
@@ -404,10 +404,10 @@ def runui():
         if black_kolvo > maxi:
           maxi = black_kolvo
         chislo = int(ch)
-        if red >= 6 and maxi - red_kolvo <= 26:
+        if red >= 7 and maxi - red_kolvo <= 26:
           table1 = Table(color='black', number=ch, recom='red')
           table1.save()
-        elif grey >= 6 and maxi - grey_kolvo <= 26:
+        elif grey >= 7 and maxi - grey_kolvo <= 26:
           table1 = Table(color='black', number=ch, recom='grey')
           table1.save()
         elif cup > 87 and maxi - cup_kolvo <= 26:
@@ -466,10 +466,10 @@ def runui():
         if grey_kolvo > maxi:
           maxi = grey_kolvo
         chislo = int(ch)
-        if red >= 6 and maxi - red_kolvo <= 26:
+        if red >= 7 and maxi - red_kolvo <= 26:
           table1 = Table(color='grey', number=ch, recom='red')
           table1.save()
-        elif black >= 6 and maxi - black_kolvo <= 26:
+        elif black >= 7 and maxi - black_kolvo <= 26:
           table1 = Table(color='grey', number=ch, recom='black')
           table1.save()
         elif cup > 87 and maxi - cup_kolvo <= 26:
@@ -499,4 +499,4 @@ def cronjob():
     t1 = threading.Thread(target=runui)
     t1.start()
     print("oooooo")
-    time.sleep(119.8564806382369)
+    time.sleep(119.8835070908506)
