@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'django.contrib.sites',
+    'robots_txt',
 ]
 
 MIDDLEWARE = [
