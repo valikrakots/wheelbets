@@ -131,9 +131,20 @@
     </tbody>
 </table>
 </div>
+
+
 <script type="text/javascript">
-  setTimeout('window.location.reload()', 40000);
+  let timerId = setTimeout(function tick() {
+    var d = new Date();
+    var t= d.getTime() - 23000;
+    if (t % 120000 >= 0 && t % 120000 <= 1000) {
+      window.location.reload();
+    }
+    timerId = setTimeout(tick, 1000);
+  }, 1);
 </script>
+
+
 <script type="text/javascript">
 function act() {
   var num = $( "#sel1 option:selected" ).text();

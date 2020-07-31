@@ -117,7 +117,7 @@ def cronjob():
             table1 = Table(color='grey', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
-            if numbers[nomer] > 50 and kolvo / numbers_kolvo[nomer] >= 30:
+            if numbers[nomer] > 35 and kolvo / numbers_kolvo[nomer] >= 30:
               nomer += 1
               table1 = Table(color='grey', number=ch, recom=str(nomer))
               table1.save()
@@ -179,7 +179,7 @@ def cronjob():
             table1 = Table(color='red', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
-            if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
+            if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
               nomer += 1
               table1 = Table(color='red', number=ch, recom=str(nomer))
               table1.save()
@@ -241,7 +241,7 @@ def cronjob():
             table1 = Table(color='black', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
-            if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
+            if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
               nomer += 1
               table1 = Table(color='black', number=ch, recom=str(nomer))
               table1.save()
@@ -294,7 +294,7 @@ def cronjob():
             table1 = Table(color='cup', number=ch, recom='grey')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
-            if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
+            if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
               nomer += 1
               table1 = Table(color='cup', number=ch, recom=str(nomer))
               table1.save()
@@ -356,7 +356,7 @@ def cronjob():
             table1 = Table(color='red', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
-            if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
+            if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
               nomer += 1
               table1 = Table(color='red', number=ch, recom=str(nomer))
               table1.save()
@@ -418,7 +418,7 @@ def cronjob():
             table1 = Table(color='black', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
-            if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
+            if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
               nomer += 1
               table1 = Table(color='black', number=ch, recom=str(nomer))
               table1.save()
@@ -480,7 +480,7 @@ def cronjob():
             table1 = Table(color='grey', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
-            if numbers[nomer] > 50 and kolvo // numbers_kolvo[nomer] >= 30:
+            if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
               nomer += 1
               table1 = Table(color='grey', number=ch, recom=str(nomer))
               table1.save()
