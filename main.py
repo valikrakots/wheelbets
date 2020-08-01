@@ -54,7 +54,7 @@ def cronjob():
   while(h == 9):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if(d3.minute % 2 == 1 and d3.second == 21 and bo == 1):
+    if(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
       bo = 2
       if d1 < d2:
         d1 = datetime.datetime.now().date()
