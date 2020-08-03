@@ -19,10 +19,10 @@ def get_html(url, params=None):
 
 numbers = [0] * 18
 numbers_kolvo = [0] * 18
-red_kolvo = 0
-black_kolvo = 0
-grey_kolvo = 0
-cup_kolvo = 0
+red_kolvo = 1
+black_kolvo = 1
+grey_kolvo = 1
+cup_kolvo = 1
 maxi = 0
 chislo = 0
 grey = 0
@@ -107,13 +107,13 @@ def cronjob():
           if grey_kolvo > maxi:
             maxi = grey_kolvo
           chislo = int(ch)
-          if red >= 7 and maxi - red_kolvo <= 26:
+          if red >= 7 and maxi - red_kolvo <= 14 and kolvo / red_kolvo <= 3.5:
             table1 = Table(color='grey', number=ch, recom='red')
             table1.save()
-          elif black >= 7 and maxi - black_kolvo <= 26:
+          elif black >= 7 and maxi - black_kolvo <= 14 and kolvo / black_kolvo <= 3.5:
             table1 = Table(color='grey', number=ch, recom='black')
             table1.save()
-          elif cup > 87 and maxi - cup_kolvo <= 26:
+          elif cup > 87 and maxi - cup_kolvo <= 14 and kolvo / cup_kolvo <= 3.5:
             table1 = Table(color='grey', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
@@ -241,13 +241,13 @@ def cronjob():
           if red_kolvo > maxi:
             maxi = red_kolvo
           chislo = int(ch)
-          if black >= 7 and maxi - black_kolvo <= 26:
+          if black >= 7 and maxi - black_kolvo <= 14 and kolvo / black_kolvo <= 3.5:
             table1 = Table(color='red', number=ch, recom='black')
             table1.save()
-          elif grey >= 7 and maxi - grey_kolvo <= 26:
+          elif grey >= 7 and maxi - grey_kolvo <= 14 and kolvo / grey_kolvo <= 3.5:
             table1 = Table(color='red', number=ch, recom='grey')
             table1.save()
-          elif cup > 87 and maxi - cup_kolvo <= 26:
+          elif cup > 87 and maxi - cup_kolvo <= 14 and kolvo / cup_kolvo <= 3.5:
             table1 = Table(color='red', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0 and numbers[nomer] > 35 and kolvo / numbers_kolvo[nomer] >= 30:
@@ -371,13 +371,13 @@ def cronjob():
           if black_kolvo > maxi:
             maxi = black_kolvo
           chislo = int(ch)
-          if red >= 7 and maxi - red_kolvo <= 26:
+          if red >= 7 and maxi - red_kolvo <= 14 and kolvo / red_kolvo <= 3.5:
             table1 = Table(color='black', number=ch, recom='red')
             table1.save()
-          elif grey >= 7 and maxi - grey_kolvo <= 26:
+          elif grey >= 7 and maxi - grey_kolvo <= 14 and kolvo / grey_kolvo <= 3.5:
             table1 = Table(color='black', number=ch, recom='grey')
             table1.save()
-          elif cup > 87 and maxi - cup_kolvo <= 26:
+          elif cup > 87 and maxi - cup_kolvo <= 14 and kolvo / cup_kolvo <= 3.5:
             table1 = Table(color='black', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0 and numbers[nomer] > 35 and kolvo / numbers_kolvo[nomer] >= 30:
@@ -492,13 +492,13 @@ def cronjob():
           if cup_kolvo > maxi:
             maxi = cup_kolvo
           chislo = int(ch)
-          if red >= 7 and maxi - red_kolvo <= 26:
+          if red >= 7 and maxi - red_kolvo <= 14 and kolvo / red_kolvo <= 3.5:
             table1 = Table(color='cup', number=ch, recom='red')
             table1.save()
-          elif black >= 7 and maxi - black_kolvo <= 26:
+          elif black >= 7 and maxi - black_kolvo <= 14 and kolvo / black_kolvo <= 3.5:
             table1 = Table(color='cup', number=ch, recom='black')
             table1.save()
-          elif grey > 6 and maxi - grey_kolvo <= 26:
+          elif grey > 6 and maxi - grey_kolvo <= 14 and kolvo / grey_kolvo <= 3.5:
             table1 = Table(color='cup', number=ch, recom='grey')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
@@ -626,13 +626,13 @@ def cronjob():
           if red_kolvo > maxi:
             maxi = red_kolvo
           chislo = int(ch)
-          if black >= 7 and maxi - black_kolvo <= 26:
+          if black >= 7 and maxi - black_kolvo <= 14 and kolvo / black_kolvo <= 3.5:
             table1 = Table(color='red', number=ch, recom='black')
             table1.save()
-          elif grey >= 7 and maxi - grey_kolvo <= 26:
+          elif grey >= 7 and maxi - grey_kolvo <= 14 and kolvo / grey_kolvo <= 3.5:
             table1 = Table(color='red', number=ch, recom='grey')
             table1.save()
-          elif cup > 87 and maxi - cup_kolvo <= 26:
+          elif cup > 87 and maxi - cup_kolvo <= 14 and kolvo / cup_kolvo <= 3.5:
             table1 = Table(color='red', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
@@ -760,13 +760,13 @@ def cronjob():
           if black_kolvo > maxi:
             maxi = black_kolvo
           chislo = int(ch)
-          if red >= 7 and maxi - red_kolvo <= 26:
+          if red >= 7 and maxi - red_kolvo <= 14 and kolvo / red_kolvo <= 3.5:
             table1 = Table(color='black', number=ch, recom='red')
             table1.save()
-          elif grey >= 7 and maxi - grey_kolvo <= 26:
+          elif grey >= 7 and maxi - grey_kolvo <= 14 and kolvo / grey_kolvo <= 3.5:
             table1 = Table(color='black', number=ch, recom='grey')
             table1.save()
-          elif cup > 87 and maxi - cup_kolvo <= 26:
+          elif cup > 87 and maxi - cup_kolvo <= 14 and kolvo / cup_kolvo <= 3.5:
             table1 = Table(color='black', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
@@ -894,13 +894,13 @@ def cronjob():
           if grey_kolvo > maxi:
             maxi = grey_kolvo
           chislo = int(ch)
-          if red >= 7 and maxi - red_kolvo <= 26:
+          if red >= 7 and maxi - red_kolvo <= 14 and kolvo / red_kolvo <= 3.5:
             table1 = Table(color='grey', number=ch, recom='red')
             table1.save()
-          elif black >= 7 and maxi - black_kolvo <= 26:
+          elif black >= 7 and maxi - black_kolvo <= 14 and kolvo / black_kolvo <= 3.5:
             table1 = Table(color='grey', number=ch, recom='black')
             table1.save()
-          elif cup > 87 and maxi - cup_kolvo <= 26:
+          elif cup > 87 and maxi - cup_kolvo <= 14 and kolvo / cup_kolvo <= 3.5:
             table1 = Table(color='grey', number=ch, recom='cup')
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
