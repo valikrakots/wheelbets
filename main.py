@@ -118,9 +118,81 @@ def cronjob():
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
             if numbers[nomer] > 35 and kolvo / numbers_kolvo[nomer] >= 30:
-              nomer += 1
-              table1 = Table(color='grey', number=ch, recom=str(nomer))
-              table1.save()
+              if nomer == 0 and black >= 5 and numbers[7] >= 7 and cup >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 1 and grey >= 5 and numbers[8] >= 7 and numbers[12] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 2 and red >= 5 and numbers[9] >= 7 and numbers[13] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 3 and black >= 5 and numbers[14] >= 7 and numbers[10] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 4 and grey >= 5 and numbers[15] >= 7 and numbers[11] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 5 and red >= 5 and numbers[12] >= 7 and numbers[16] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 6 and black >= 5 and numbers[13] >= 7 and numbers[17] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 7 and grey >= 5 and numbers[0] >= 7 and numbers[14] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 8 and red >= 5 and numbers[15] >= 7 and numbers[1] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 9 and black >= 5 and numbers[2] >= 7 and numbers[16] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 10 and grey >= 5 and numbers[3] >= 7 and numbers[17] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 11 and red >= 5 and numbers[4] >= 7 and cup >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 12 and black >= 5 and numbers[1] >= 7 and numbers[5] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 13 and grey >= 5 and numbers[2] >= 7 and numbers[6] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 14 and red >= 5 and numbers[3] >= 7 and numbers[7] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 15 and black >= 5 and numbers[4] >= 7 and numbers[8] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 16 and grey >= 5 and numbers[5] >= 7 and numbers[9] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 17 and red >= 5 and numbers[6] >= 7 and numbers[10] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              else:
+                table1 = Table(color='grey', number=ch, recom='-')
+                table1.save()
             else:
               table1 = Table(color='grey', number=ch, recom='-')
               table1.save()
@@ -178,8 +250,76 @@ def cronjob():
           elif cup > 87 and maxi - cup_kolvo <= 26:
             table1 = Table(color='red', number=ch, recom='cup')
             table1.save()
-          elif kkk == 1 and numbers_kolvo[nomer] != 0:
-            if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
+          elif kkk == 1 and numbers_kolvo[nomer] != 0 and numbers[nomer] > 35 and kolvo / numbers_kolvo[nomer] >= 30:
+            if nomer == 0 and black >= 5 and numbers[7] >= 7 and cup >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 1 and grey >= 5 and numbers[8] >= 7 and numbers[12] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 2 and red >= 5 and numbers[9] >= 7 and numbers[13] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 3 and black >= 5 and numbers[14] >= 7 and numbers[10] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 4 and grey >= 5 and numbers[15] >= 7 and numbers[11] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 5 and red >= 5 and numbers[12] >= 7 and numbers[16] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 6 and black >= 5 and numbers[13] >= 7 and numbers[17] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 7 and grey >= 5 and numbers[0] >= 7 and numbers[14] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 8 and red >= 5 and numbers[15] >= 7 and numbers[1] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 9 and black >= 5 and numbers[2] >= 7 and numbers[16] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 10 and grey >= 5 and numbers[3] >= 7 and numbers[17] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 11 and red >= 5 and numbers[4] >= 7 and cup >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 12 and black >= 5 and numbers[1] >= 7 and numbers[5] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 13 and grey >= 5 and numbers[2] >= 7 and numbers[6] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 14 and red >= 5 and numbers[3] >= 7 and numbers[7] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 15 and black >= 5 and numbers[4] >= 7 and numbers[8] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 16 and grey >= 5 and numbers[5] >= 7 and numbers[9] >= 7:
+              nomer += 1
+              table1 = Table(color='red', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 17 and red >= 5 and numbers[6] >= 7 and numbers[10] >= 7:
               nomer += 1
               table1 = Table(color='red', number=ch, recom=str(nomer))
               table1.save()
@@ -240,8 +380,76 @@ def cronjob():
           elif cup > 87 and maxi - cup_kolvo <= 26:
             table1 = Table(color='black', number=ch, recom='cup')
             table1.save()
-          elif kkk == 1 and numbers_kolvo[nomer] != 0:
-            if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
+          elif kkk == 1 and numbers_kolvo[nomer] != 0 and numbers[nomer] > 35 and kolvo / numbers_kolvo[nomer] >= 30:
+            if nomer == 0 and black >= 5 and numbers[7] >= 7 and cup >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 1 and grey >= 5 and numbers[8] >= 7 and numbers[12] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 2 and red >= 5 and numbers[9] >= 7 and numbers[13] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 3 and black >= 5 and numbers[14] >= 7 and numbers[10] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 4 and grey >= 5 and numbers[15] >= 7 and numbers[11] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 5 and red >= 5 and numbers[12] >= 7 and numbers[16] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 6 and black >= 5 and numbers[13] >= 7 and numbers[17] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 7 and grey >= 5 and numbers[0] >= 7 and numbers[14] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 8 and red >= 5 and numbers[15] >= 7 and numbers[1] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 9 and black >= 5 and numbers[2] >= 7 and numbers[16] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 10 and grey >= 5 and numbers[3] >= 7 and numbers[17] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 11 and red >= 5 and numbers[4] >= 7 and cup >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 12 and black >= 5 and numbers[1] >= 7 and numbers[5] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 13 and grey >= 5 and numbers[2] >= 7 and numbers[6] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 14 and red >= 5 and numbers[3] >= 7 and numbers[7] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 15 and black >= 5 and numbers[4] >= 7 and numbers[8] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 16 and grey >= 5 and numbers[5] >= 7 and numbers[9] >= 7:
+              nomer += 1
+              table1 = Table(color='black', number=ch, recom=str(nomer))
+              table1.save()
+            elif nomer == 17 and red >= 5 and numbers[6] >= 7 and numbers[10] >= 7:
               nomer += 1
               table1 = Table(color='black', number=ch, recom=str(nomer))
               table1.save()
@@ -295,9 +503,81 @@ def cronjob():
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
             if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
-              nomer += 1
-              table1 = Table(color='cup', number=ch, recom=str(nomer))
-              table1.save()
+              if nomer == 0 and black >= 5 and numbers[7] >= 7 and cup >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 1 and grey >= 5 and numbers[8] >= 7 and numbers[12] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 2 and red >= 5 and numbers[9] >= 7 and numbers[13] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 3 and black >= 5 and numbers[14] >= 7 and numbers[10] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 4 and grey >= 5 and numbers[15] >= 7 and numbers[11] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 5 and red >= 5 and numbers[12] >= 7 and numbers[16] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 6 and black >= 5 and numbers[13] >= 7 and numbers[17] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 7 and grey >= 5 and numbers[0] >= 7 and numbers[14] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 8 and red >= 5 and numbers[15] >= 7 and numbers[1] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 9 and black >= 5 and numbers[2] >= 7 and numbers[16] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 10 and grey >= 5 and numbers[3] >= 7 and numbers[17] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 11 and red >= 5 and numbers[4] >= 7 and cup >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 12 and black >= 5 and numbers[1] >= 7 and numbers[5] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 13 and grey >= 5 and numbers[2] >= 7 and numbers[6] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 14 and red >= 5 and numbers[3] >= 7 and numbers[7] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 15 and black >= 5 and numbers[4] >= 7 and numbers[8] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 16 and grey >= 5 and numbers[5] >= 7 and numbers[9] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 17 and red >= 5 and numbers[6] >= 7 and numbers[10] >= 7:
+                nomer += 1
+                table1 = Table(color='cup', number=ch, recom=str(nomer))
+                table1.save()
+              else:
+                table1 = Table(color='cup', number=ch, recom='-')
+                table1.save()
             else:
               table1 = Table(color='cup', number=ch, recom='-')
               table1.save()
@@ -357,9 +637,81 @@ def cronjob():
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
             if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
-              nomer += 1
-              table1 = Table(color='red', number=ch, recom=str(nomer))
-              table1.save()
+              if nomer == 0 and black >= 5 and numbers[7] >= 7 and cup >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 1 and grey >= 5 and numbers[8] >= 7 and numbers[12] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 2 and red >= 5 and numbers[9] >= 7 and numbers[13] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 3 and black >= 5 and numbers[14] >= 7 and numbers[10] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 4 and grey >= 5 and numbers[15] >= 7 and numbers[11] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 5 and red >= 5 and numbers[12] >= 7 and numbers[16] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 6 and black >= 5 and numbers[13] >= 7 and numbers[17] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 7 and grey >= 5 and numbers[0] >= 7 and numbers[14] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 8 and red >= 5 and numbers[15] >= 7 and numbers[1] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 9 and black >= 5 and numbers[2] >= 7 and numbers[16] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 10 and grey >= 5 and numbers[3] >= 7 and numbers[17] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 11 and red >= 5 and numbers[4] >= 7 and cup >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 12 and black >= 5 and numbers[1] >= 7 and numbers[5] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 13 and grey >= 5 and numbers[2] >= 7 and numbers[6] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 14 and red >= 5 and numbers[3] >= 7 and numbers[7] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 15 and black >= 5 and numbers[4] >= 7 and numbers[8] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 16 and grey >= 5 and numbers[5] >= 7 and numbers[9] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 17 and red >= 5 and numbers[6] >= 7 and numbers[10] >= 7:
+                nomer += 1
+                table1 = Table(color='red', number=ch, recom=str(nomer))
+                table1.save()
+              else:
+                table1 = Table(color='red', number=ch, recom='-')
+                table1.save()
             else:
               table1 = Table(color='red', number=ch, recom='-')
               table1.save()
@@ -419,9 +771,81 @@ def cronjob():
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
             if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
-              nomer += 1
-              table1 = Table(color='black', number=ch, recom=str(nomer))
-              table1.save()
+              if nomer == 0 and black >= 5 and numbers[7] >= 7 and cup >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 1 and grey >= 5 and numbers[8] >= 7 and numbers[12] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 2 and red >= 5 and numbers[9] >= 7 and numbers[13] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 3 and black >= 5 and numbers[14] >= 7 and numbers[10] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 4 and grey >= 5 and numbers[15] >= 7 and numbers[11] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 5 and red >= 5 and numbers[12] >= 7 and numbers[16] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 6 and black >= 5 and numbers[13] >= 7 and numbers[17] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 7 and grey >= 5 and numbers[0] >= 7 and numbers[14] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 8 and red >= 5 and numbers[15] >= 7 and numbers[1] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 9 and black >= 5 and numbers[2] >= 7 and numbers[16] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 10 and grey >= 5 and numbers[3] >= 7 and numbers[17] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 11 and red >= 5 and numbers[4] >= 7 and cup >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 12 and black >= 5 and numbers[1] >= 7 and numbers[5] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 13 and grey >= 5 and numbers[2] >= 7 and numbers[6] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 14 and red >= 5 and numbers[3] >= 7 and numbers[7] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 15 and black >= 5 and numbers[4] >= 7 and numbers[8] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 16 and grey >= 5 and numbers[5] >= 7 and numbers[9] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 17 and red >= 5 and numbers[6] >= 7 and numbers[10] >= 7:
+                nomer += 1
+                table1 = Table(color='black', number=ch, recom=str(nomer))
+                table1.save()
+              else:
+                table1 = Table(color='black', number=ch, recom='-')
+                table1.save()
             else:
               table1 = Table(color='black', number=ch, recom='-')
               table1.save()
@@ -481,9 +905,81 @@ def cronjob():
             table1.save()
           elif kkk == 1 and numbers_kolvo[nomer] != 0:
             if numbers[nomer] > 35 and kolvo // numbers_kolvo[nomer] >= 30:
-              nomer += 1
-              table1 = Table(color='grey', number=ch, recom=str(nomer))
-              table1.save()
+              if nomer == 0 and black >= 5 and numbers[7] >= 7 and cup >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 1 and grey >= 5 and numbers[8] >= 7 and numbers[12] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 2 and red >= 5 and numbers[9] >= 7 and numbers[13] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 3 and black >= 5 and numbers[14] >= 7 and numbers[10] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 4 and grey >= 5 and numbers[15] >= 7 and numbers[11] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 5 and red >= 5 and numbers[12] >= 7 and numbers[16] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 6 and black >= 5 and numbers[13] >= 7 and numbers[17] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 7 and grey >= 5 and numbers[0] >= 7 and numbers[14] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 8 and red >= 5 and numbers[15] >= 7 and numbers[1] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 9 and black >= 5 and numbers[2] >= 7 and numbers[16] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 10 and grey >= 5 and numbers[3] >= 7 and numbers[17] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 11 and red >= 5 and numbers[4] >= 7 and cup >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 12 and black >= 5 and numbers[1] >= 7 and numbers[5] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 13 and grey >= 5 and numbers[2] >= 7 and numbers[6] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 14 and red >= 5 and numbers[3] >= 7 and numbers[7] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 15 and black >= 5 and numbers[4] >= 7 and numbers[8] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 16 and grey >= 5 and numbers[5] >= 7 and numbers[9] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              elif nomer == 17 and red >= 5 and numbers[6] >= 7 and numbers[10] >= 7:
+                nomer += 1
+                table1 = Table(color='grey', number=ch, recom=str(nomer))
+                table1.save()
+              else:
+                table1 = Table(color='grey', number=ch, recom='-')
+                table1.save()
             else:
               table1 = Table(color='grey', number=ch, recom='-')
               table1.save()
