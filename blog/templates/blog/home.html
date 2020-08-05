@@ -1,7 +1,7 @@
   {% extends 'blog/base.html' %}
   {% load static %}
   {% block content %}
-<div class="container-fluid" style="margin-top: 2.5 vh">
+<div class="container-fluid" style="margin-top: 1.5vh">
   {% if postw.recom == 'red' %}
    <p style="font-size: 1.5em; font-family: font-family: 'Fjalla One', sans-serif;text-align: right;"> Рекомендуем ставить на:   <img src="{% static "blog/images/red.png" %}" class="image1"></p>
   {% elif postw.recom == 'black' %}
