@@ -11,7 +11,7 @@ def one_day_hence():
 
 
 class Table(models.Model):
-    success = models.CharField(max_length=100)
+    success = models.CharField(max_length=77)
     previous = models.CharField(max_length=7)
     number = models.CharField(max_length=2)
     date = models.DateTimeField(default=one_minute_hence)
