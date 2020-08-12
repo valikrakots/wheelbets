@@ -1,5 +1,5 @@
 
-from blog.models import Table2
+from blog.models import Table
 import time
 import requests
 from bs4 import BeautifulSoup
@@ -94,21 +94,21 @@ def cronjob():
           grey_kolvo += 1
           if ch == '2':
             bome[0] += 1
-            bome_promp[1] += 1
+            bome_prom[1] += 1
             promezh_kolvo[0] += 1
             promezh[0] = 0
             numbers[1] = 0
             numbers_kolvo[1] += 1
           elif ch == '8':
             bome[0] += 1
-            bome_promp[1] += 1
+            bome_prom[1] += 1
             promezh_kolvo[1] += 1
             promezh[1] = 0
             numbers[7] = 0
             numbers_kolvo[7] += 1
           elif ch == '5':
             bome[0] += 1
-            bome_promp[1] += 1
+            bome_prom[1] += 1
             promezh_kolvo[0] += 1
             promezh[0] = 0
             numbers[4] = 0
@@ -131,14 +131,14 @@ def cronjob():
             numbers_kolvo[2] += 1
           elif ch == '9':
             bome[0] += 1
-            bome_promp[1] += 1
+            bome_prom[1] += 1
             promezh_kolvo[1] += 1
             promezh[1] = 0
             numbers[8] = 0
             numbers_kolvo[8] += 1
           elif ch == '6':
             bome[0] += 1
-            bome_promp[1] += 1
+            bome_prom[1] += 1
             promezh_kolvo[0] += 1
             promezh[0] = 0
             numbers[5] = 0
@@ -154,21 +154,21 @@ def cronjob():
           black_kolvo += 1
           if ch == '1':
             bome[0] += 1
-            bome_promp[1] += 1
+            bome_prom[1] += 1
             promezh_kolvo[0] += 1
             promezh[0] = 0
             numbers[0] = 0
             numbers_kolvo[0] += 1
           elif ch == '4':
             bome[0] += 1
-            bome_promp[1] += 1
+            bome_prom[1] += 1
             promezh_kolvo[0] += 1
             promezh[0] = 0
             numbers[3] = 0
             numbers_kolvo[3] += 1
           elif ch == '7':
             bome[0] += 1
-            bome_promp[1] += 1
+            bome_prom[1] += 1
             promezh_kolvo[1] += 1
             promezh[1] = 0
             numbers[6] = 0
@@ -193,21 +193,21 @@ def cronjob():
           red_kolvo += 1
           if ch == '12':
             bome[1] += 1
-            bome_promp[0] += 1
+            bome_prom[0] += 1
             promezh_kolvo[1] += 1
             promezh[1] = 0
             numbers[11] = 0
             numbers_kolvo[11] += 1
           elif ch == '18':
             bome[1] += 1
-            bome_promp[0] += 1
+            bome_prom[0] += 1
             promezh_kolvo[2] += 1
             promezh[2] = 0
             numbers[17] = 0
             numbers_kolvo[17] += 1
           elif ch == '15':
             bome[1] += 1
-            bome_promp[0] += 1
+            bome_prom[0] += 1
             promezh_kolvo[2] += 1
             promezh[2] = 0
             numbers[14] = 0
@@ -223,21 +223,21 @@ def cronjob():
           black_kolvo += 1
           if ch == '10':
             bome[1] += 1
-            bome_promp[0] += 1
+            bome_prom[0] += 1
             promezh_kolvo[1] += 1
             promezh[1] = 0
             numbers[9] = 0
             numbers_kolvo[9] += 1
           elif ch == '13':
             bome[1] += 1
-            bome_promp[0] += 1
+            bome_prom[0] += 1
             promezh_kolvo[2] += 1
             promezh[2] = 0
             numbers[12] = 0
             numbers_kolvo[12] += 1
           elif ch == '16':
             bome[1] += 1
-            bome_promp[0] += 1
+            bome_prom[0] += 1
             promezh_kolvo[2] += 1
             promezh[2] = 0
             numbers[15] = 0
@@ -253,21 +253,21 @@ def cronjob():
           grey_kolvo += 1
           if ch == '11':
             bome[1] += 1
-            bome_promp[0] += 1
+            bome_prom[0] += 1
             promezh_kolvo[1] += 1
             promezh[1] = 0
             numbers[10] = 0
             numbers_kolvo[10] += 1
           elif ch == '14':
             bome[1] += 1
-            bome_promp[0] += 1
+            bome_prom[0] += 1
             promezh_kolvo[2] += 1
             promezh[2] = 0
             numbers[13] = 0
             numbers_kolvo[13] += 1
           elif ch == '17':
             bome[1] += 1
-            bome_promp[0] += 1
+            bome_prom[0] += 1
             promezh_kolvo[2] += 1
             promezh[2] = 0
             numbers[16] = 0
@@ -430,16 +430,16 @@ def cronjob():
         else:
           rec = "-"
         if da == 1:
-          table1 = Table2(number=ch, recom=rec,
-                          previous=last_rec, success='t')
+          table1 = Table(number=ch, recom=rec,
+                         previous=last_rec, success='t')
           table1.save()
         elif da == 2:
-          table1 = Table2(number=ch, recom=rec,
-                          previous=last_rec, success='f')
+          table1 = Table(number=ch, recom=rec,
+                         previous=last_rec, success='f')
           table1.save()
         else:
-          table1 = Table2(number=ch, recom=rec,
-                          previous=last_rec, success='n')
+          table1 = Table(number=ch, recom=rec,
+                         previous=last_rec, success='n')
           table1.save()
         last_rec = rec
       else:

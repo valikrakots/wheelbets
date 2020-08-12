@@ -10,7 +10,7 @@ def one_day_hence():
     return timezone.now() - timezone.timedelta(days=1)
 
 
-class Table2(models.Model):
+class Table(models.Model):
     previous = models.CharField(max_length=7)
     number = models.CharField(max_length=2)
     date = models.DateTimeField(default=one_minute_hence)
