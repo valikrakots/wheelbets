@@ -358,11 +358,11 @@ def cronjob():
         elif bome[1] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[1] >= 3:
           rec = "> 9.5"
         elif promezh[0] >= 6 and promezh_kolvo[0] / (kolvo - cup_kolvo) <= 0.26:
-          rec = "1-6"
+          rec = "1 - 6"
         elif promezh[1] >= 6 and promezh_kolvo[1] / (kolvo - cup_kolvo) <= 0.26:
-          rec = "7-12"
+          rec = "7 - 12"
         elif promezh[2] >= 6 and promezh_kolvo[2] / (kolvo - cup_kolvo) <= 0.26:
-          rec = "13-18"
+          rec = "13 - 18"
         elif red >= 7 and maxi - red_kolvo >= 5 and kolvo / red_kolvo >= 2.9:
           rec = "red"
         elif black >= 7 and maxi - black_kolvo >= 5 and kolvo / black_kolvo >= 2.9:
