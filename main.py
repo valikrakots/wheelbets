@@ -33,9 +33,9 @@ kolvo = 4
 h = 9
 d1 = datetime.datetime.now().date()
 promezh = [1] * 3
-promezh_kolvo = [1] * 3
+promezh_kolvo = [0] * 3
 bome = [1] * 2
-bome_prom = [1] * 2
+bome_prom = [0] * 2
 
 
 def cronjob():
