@@ -5,8 +5,8 @@ from django.utils import timezone
 
 def home(request):
     context = {
-        'posts': list(Table.objects.order_by('-date')),
-        'postw': Table.objects.all().last(),
+        'posts': list(Table2.objects.order_by('-date')),
+        'postw': Table2.objects.all().last(),
     }
     return render(request, 'blog/home.html', context)
 
