@@ -124,7 +124,7 @@ def cronjob():
           red_kolvo += 1
           if ch == '3':
             bome[0] += 1
-            bome_promp[1] += 1
+            bome_prom[1] += 1
             promezh_kolvo[0] += 1
             promezh[0] = 0
             numbers[2] = 0
