@@ -1,5 +1,5 @@
 
-from blog.models import Table
+from blog.models import Table2
 import time
 import requests
 from bs4 import BeautifulSoup
@@ -430,16 +430,16 @@ def cronjob():
         else:
           rec = "-"
         if da == 1:
-          table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='t')
+          table1 = Table2(number=ch, recom=rec,
+                          previous=last_rec, success='t')
           table1.save()
         elif da == 2:
-          table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='f')
+          table1 = Table2(number=ch, recom=rec,
+                          previous=last_rec, success='f')
           table1.save()
         else:
-          table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='n')
+          table1 = Table2(number=ch, recom=rec,
+                          previous=last_rec, success='n')
           table1.save()
         last_rec = rec
       else:

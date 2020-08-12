@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Table
+from .models import Table2
 from django.utils import timezone
 
 
