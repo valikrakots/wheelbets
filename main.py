@@ -353,9 +353,9 @@ def cronjob():
           da = 1
         elif rec == '-':
           da = 3
-        if bome[0] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[0] >= 3:
+        if bome[0] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[0] >= 5:
           rec = "< 9.5"
-        elif bome[1] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[1] >= 3:
+        elif bome[1] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[1] >= 5:
           rec = "> 9.5"
         elif promezh[0] >= 6 and promezh_kolvo[0] / (kolvo - cup_kolvo) <= 0.23:
           rec = "1-6"
