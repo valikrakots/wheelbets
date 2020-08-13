@@ -351,11 +351,13 @@ def cronjob():
           da = 1
         elif rec == '18' and ch == '18':
           da = 1
+        elif rec == 'cup' and ch == '0'
+          da = 1
         elif rec == '-':
           da = 3
-        if bome[0] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[0] >= 6:
+        if bome[0] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[0] >= 4:
           rec = "< 9.5"
-        elif bome[1] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[1] >= 6:
+        elif bome[1] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[1] >= 4:
           rec = "> 9.5"
         elif promezh[0] >= 6 and promezh_kolvo[0] / (kolvo - cup_kolvo) <= 0.23:
           rec = "1-6"
@@ -363,13 +365,13 @@ def cronjob():
           rec = "7-12"
         elif promezh[2] >= 6 and promezh_kolvo[2] / (kolvo - cup_kolvo) <= 0.23:
           rec = "13-18"
-        elif red >= 7 and maxi - red_kolvo >= 5 and kolvo / red_kolvo >= 2.9:
+        elif red >= 10 and maxi - red_kolvo >= 5 and red_kolvo / (kolvo - cup_kolvo) <= 0.27:
           rec = "red"
-        elif black >= 7 and maxi - black_kolvo >= 5 and kolvo / black_kolvo >= 2.9:
+        elif black >= 10 and maxi - black_kolvo >= 5 and black_kolvo / (kolvo - cup_kolvo) <= 0.27:
           rec = "black"
-        elif grey >= 7 and maxi - grey_kolvo >= 5 and kolvo / grey_kolvo >= 2.9:
+        elif grey >= 10 and maxi - grey_kolvo >= 5 and grey_kolvo / (kolvo - cup_kolvo) <= 0.27:
           rec = "grey"
-        elif cup > 87 and maxi - cup_kolvo >= 5 and kolvo / cup_kolvo >= 2.9:
+        elif cup > 87 and maxi - cup_kolvo >= 25 and cup_kolvo / kolvo <= 0.09:
           rec = "cup"
         elif kkk == 1:
           if numbers[nomer] > 35 and kolvo / numbers_kolvo[nomer] >= 23:
