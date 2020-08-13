@@ -47,7 +47,7 @@
   {% elif postw.recom == '18' %}
    <p style="font-size: 1.5em; font-family: font-family: 'Fjalla One', sans-serif;text-align: right;"> Рекомендуем ставить на:   <img src="{% static "blog/images/18.png"  %}" class="image1"></p>
   {% elif postw.recom != '-' %}
-   <p style="font-size: 1.5em; font-family: font-family: 'Fjalla One', sans-serif;text-align: right;"> Рекомендуем ставить на:   {{ posw.recom }}</p>
+   <p style="font-size: 1.5em; font-family: font-family: 'Fjalla One', sans-serif;text-align: right;"> Рекомендуем ставить на:   <span style="color: rgb(19,151,168)">{{ postw.recom }}</span></p>
   {% else %}
    <p style="font-size: 1.5em; font-family: font-family: 'Fjalla One', sans-serif;text-align: right;"> Рекомендуем ставить на: ---</p>
   {% endif %}
