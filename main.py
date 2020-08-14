@@ -351,7 +351,7 @@ def cronjob():
           da = 1
         elif rec == '18' and ch == '18':
           da = 1
-        elif rec == 'cup' and ch == '0'
+        elif rec == 'cup' and ch == '0':
           da = 1
         elif rec == '-':
           da = 3
