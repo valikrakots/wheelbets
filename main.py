@@ -17,24 +17,24 @@ def get_html(url, params=None):
   return r
 
 
-numbers = [1] * 18
-numbers_kolvo = [1] * 18
-red_kolvo = 1
-black_kolvo = 1
-grey_kolvo = 1
-cup_kolvo = 1
+numbers = [0] * 18
+numbers_kolvo = [0] * 18
+red_kolvo = 0
+black_kolvo = 0
+grey_kolvo = 0
+cup_kolvo = 0
 maxi = 0
 chislo = 0
 grey = 0
 red = 0
 black = 0
 cup = 0
-kolvo = 4
+kolvo = 0
 h = 9
 d1 = datetime.datetime.now().date()
-promezh = [1] * 3
+promezh = [0] * 3
 promezh_kolvo = [0] * 3
-bome = [1] * 2
+bome = [0] * 2
 bome_prom = [0] * 2
 
 
@@ -355,78 +355,78 @@ def cronjob():
           da = 1
         elif rec == '-':
           da = 3
-        if bome[0] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[0] >= 4:
+        if kolvo != 0 and bome[0] / (kolvo - cup_kolvo) <= 0.45 and bome_prom[0] >= 4:
           rec = "< 9.5"
-        elif bome[1] / (kolvo - cup_kolvo) <= 0.36 and bome_prom[1] >= 4:
+        elif kolvo != 0 and bome[1] / (kolvo - cup_kolvo) <= 0.45 and bome_prom[1] >= 4:
           rec = "> 9.5"
-        elif promezh[0] >= 6 and promezh_kolvo[0] / (kolvo - cup_kolvo) <= 0.23:
+        elif kolvo != 0 and promezh[0] >= 9 and promezh_kolvo[0] / (kolvo - cup_kolvo) <= 0.27:
           rec = "1-6"
-        elif promezh[1] >= 6 and promezh_kolvo[1] / (kolvo - cup_kolvo) <= 0.23:
+        elif kolvo != 0 and promezh[1] >= 9 and promezh_kolvo[1] / (kolvo - cup_kolvo) <= 0.27:
           rec = "7-12"
-        elif promezh[2] >= 6 and promezh_kolvo[2] / (kolvo - cup_kolvo) <= 0.23:
+        elif kolvo != 0 and promezh[2] >= 9 and promezh_kolvo[2] / (kolvo - cup_kolvo) <= 0.27:
           rec = "13-18"
-        elif red >= 10 and red_kolvo / maxi <= 0.87 and red_kolvo / (kolvo - cup_kolvo) <= 0.27:
+        elif kolvo != 0 and red >= 10 and red_kolvo / maxi <= 0.89 and red_kolvo / (kolvo - cup_kolvo) <= 0.27:
           rec = "red"
-        elif black >= 10 and black_kolvo / maxi <= 0.87 and black_kolvo / (kolvo - cup_kolvo) <= 0.27:
+        elif kolvo != 0 and black >= 10 and black_kolvo / maxi <= 0.89 and black_kolvo / (kolvo - cup_kolvo) <= 0.27:
           rec = "black"
-        elif grey >= 10 and grey_kolvo / maxi <= 0.87 and grey_kolvo / (kolvo - cup_kolvo) <= 0.27:
+        elif kolvo != 0 and grey >= 10 and grey_kolvo / maxi <= 0.89 and grey_kolvo / (kolvo - cup_kolvo) <= 0.27:
           rec = "grey"
-        elif cup > 87 and cup_kolvo / maxi <= 0.4 and cup_kolvo / kolvo <= 0.07:
+        elif kolvo != 0 and cup > 87 and cup_kolvo / maxi <= 0.4 and cup_kolvo / kolvo <= 0.05:
           rec = "cup"
         elif kkk == 1:
-          if numbers[nomer] > 35 and kolvo / numbers_kolvo[nomer] >= 23:
-            if nomer == 0 and black >= 3 and numbers[7] >= 7 and cup >= 7:
+          if kolvo != 0 and numbers[nomer] > 25 and numbers_kolvo[nomer] / kolvo <= 0.05:
+            if nomer == 0 and black >= 3 and numbers[7] >= 5 and cup >= 5:
               nomer += 1
               rec = "1"
-            elif nomer == 1 and grey >= 3 and numbers[8] >= 7 and numbers[12] >= 7:
+            elif nomer == 1 and grey >= 3 and numbers[8] >= 5 and numbers[12] >= 5:
               nomer += 1
               rec = "2"
-            elif nomer == 2 and red >= 3 and numbers[9] >= 7 and numbers[13] >= 7:
+            elif nomer == 2 and red >= 3 and numbers[9] >= 5 and numbers[13] >= 5:
               nomer += 1
               rec = "3"
-            elif nomer == 3 and black >= 3 and numbers[14] >= 7 and numbers[10] >= 7:
+            elif nomer == 3 and black >= 3 and numbers[14] >= 5 and numbers[10] >= 5:
               nomer += 1
               rec = "4"
-            elif nomer == 4 and grey >= 3 and numbers[15] >= 7 and numbers[11] >= 7:
+            elif nomer == 4 and grey >= 3 and numbers[15] >= 5 and numbers[11] >= 5:
               nomer += 1
               rec = "5"
-            elif nomer == 5 and red >= 3 and numbers[12] >= 7 and numbers[16] >= 7:
+            elif nomer == 5 and red >= 3 and numbers[12] >= 5 and numbers[16] >= 5:
               nomer += 1
               rec = "6"
-            elif nomer == 6 and black >= 3 and numbers[13] >= 7 and numbers[17] >= 7:
+            elif nomer == 6 and black >= 3 and numbers[13] >= 5 and numbers[17] >= 5:
               nomer += 1
               rec = "7"
-            elif nomer == 7 and grey >= 3 and numbers[0] >= 7 and numbers[14] >= 7:
+            elif nomer == 7 and grey >= 3 and numbers[0] >= 5 and numbers[14] >= 5:
               nomer += 1
               rec = "8"
-            elif nomer == 8 and red >= 3 and numbers[15] >= 7 and numbers[1] >= 7:
+            elif nomer == 8 and red >= 3 and numbers[15] >= 5 and numbers[1] >= 5:
               nomer += 1
               rec = "9"
-            elif nomer == 9 and black >= 3 and numbers[2] >= 7 and numbers[16] >= 7:
+            elif nomer == 9 and black >= 3 and numbers[2] >= 5 and numbers[16] >= 5:
               nomer += 1
               rec = "10"
-            elif nomer == 10 and grey >= 3 and numbers[3] >= 7 and numbers[17] >= 7:
+            elif nomer == 10 and grey >= 3 and numbers[3] >= 5 and numbers[17] >= 5:
               nomer += 1
               rec = "11"
-            elif nomer == 11 and red >= 3 and numbers[4] >= 7 and cup >= 7:
+            elif nomer == 11 and red >= 3 and numbers[4] >= 5 and cup >= 5:
               nomer += 1
               rec = "12"
-            elif nomer == 12 and black >= 3 and numbers[1] >= 7 and numbers[5] >= 7:
+            elif nomer == 12 and black >= 3 and numbers[1] >= 5 and numbers[5] >= 5:
               nomer += 1
               rec = "13"
-            elif nomer == 13 and grey >= 3 and numbers[2] >= 7 and numbers[6] >= 7:
+            elif nomer == 13 and grey >= 3 and numbers[2] >= 5 and numbers[6] >= 5:
               nomer += 1
               rec = "14"
-            elif nomer == 14 and red >= 3 and numbers[3] >= 7 and numbers[7] >= 7:
+            elif nomer == 14 and red >= 3 and numbers[3] >= 5 and numbers[7] >= 5:
               nomer += 1
               rec = "15"
-            elif nomer == 15 and black >= 3 and numbers[4] >= 7 and numbers[8] >= 7:
+            elif nomer == 15 and black >= 3 and numbers[4] >= 5 and numbers[8] >= 5:
               nomer += 1
               rec = "16"
-            elif nomer == 16 and grey >= 3 and numbers[5] >= 7 and numbers[9] >= 7:
+            elif nomer == 16 and grey >= 3 and numbers[5] >= 5 and numbers[9] >= 5:
               nomer += 1
               rec = "17"
-            elif nomer == 17 and red >= 3 and numbers[6] >= 7 and numbers[10] >= 7:
+            elif nomer == 17 and red >= 3 and numbers[6] >= 5 and numbers[10] >= 5:
               nomer += 1
               rec = "18"
             else:
