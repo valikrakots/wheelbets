@@ -68,7 +68,7 @@ def cronjob():
       bo = 2
       if d1 < d2:
         d1 = datetime.datetime.now().date()
-        table1 = Table(color='change', number='ch',
+        table1 = Table(number='ch',
                        recom='ch', success='e', previous='e')
         table1.save()
       html = get_html(URL)
