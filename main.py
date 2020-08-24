@@ -365,11 +365,11 @@ def cronjob():
           rec = "7-12"
         elif kolvo != 0 and promezh[2] >= 10 and promezh_kolvo[2] / (kolvo - cup_kolvo) <= 0.22:
           rec = "13-18"
-        elif kolvo != 0 and red >= 8 and red_kolvo / maxi <= 0.89 and red_kolvo / (kolvo - cup_kolvo) <= 0.22:
+        elif kolvo != 0 and red >= 10 and red_kolvo / maxi <= 0.89 and red_kolvo / (kolvo - cup_kolvo) <= 0.22:
           rec = "red"
-        elif kolvo != 0 and black >= 8 and black_kolvo / maxi <= 0.89 and black_kolvo / (kolvo - cup_kolvo) <= 0.22:
+        elif kolvo != 0 and black >= 10 and black_kolvo / maxi <= 0.89 and black_kolvo / (kolvo - cup_kolvo) <= 0.22:
           rec = "black"
-        elif kolvo != 0 and grey >= 8 and grey_kolvo / maxi <= 0.89 and grey_kolvo / (kolvo - cup_kolvo) <= 0.22:
+        elif kolvo != 0 and grey >= 10 and grey_kolvo / maxi <= 0.89 and grey_kolvo / (kolvo - cup_kolvo) <= 0.22:
           rec = "grey"
         elif kolvo != 0 and cup > 40 and cup_kolvo / kolvo <= 0.045 and numbers[11] >= 3 and numbers[0] >= 3 and numbers_kolvo[0] / kolvo < 0.5 and numbers_kolvo[11] / kolvo < 0.5:
           rec = "cup"
