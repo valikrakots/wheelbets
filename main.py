@@ -37,7 +37,7 @@ promezh_kolvo = [0] * 3
 bome = [0] * 2
 bome_prom = [0] * 2
 czetn = [0] * 2
-ctetn_prom = [0] * 2
+czetn_prom = [0] * 2
 
 
 def cronjob():
