@@ -80,7 +80,9 @@
     </thead>
     <tbody>
      {% for post in posts %}
-        {% if post.number == 'ch' %}
+        {% if post.number == 'w' %}
+          <tr><td colspan="4" style="text-align: center;">Перерыв</td></tr>
+        {% elif post.number == 'ch' %}
           <tr><td colspan="4" style="text-align: center;">{{post.change_date|date:"F j, Y"}}</td></tr>
         {% else %}
         <tr>
