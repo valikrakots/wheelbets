@@ -340,11 +340,11 @@ def cronjob():
             minimum = num
             nomer = 0
           else:
-            if num > minimum and num > 40:
+            if num > minimum:
               kkk = 1
               minimum = num
               nomer = sczetczik
-            elif num == minimum:
+            elif num == minimum and num > 40:
               kkk += 1
           sczetczik += 1
         da = 2
