@@ -323,7 +323,7 @@ def cronjob():
             kkk = 1
             minimum = num
             nomer = sczetczik
-          else:
+          elif pervyj != 0:
             if num > minimum:
               kkk = 1
               minimum = num
