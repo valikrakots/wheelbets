@@ -23,7 +23,6 @@ red_kolvo = 0
 black_kolvo = 0
 grey_kolvo = 0
 cup_kolvo = 0
-maxi = 0
 chislo = 0
 grey = 0
 red = 0
@@ -47,7 +46,6 @@ def cronjob():
   global black_kolvo
   global grey_kolvo
   global cup_kolvo
-  global maxi
   global chislo
   global grey
   global red
@@ -137,8 +135,6 @@ def cronjob():
             promezh[0] = 0
             numbers[4] = 0
             numbers_kolvo[4] += 1
-          if grey_kolvo > maxi:
-            maxi = grey_kolvo
         elif(htmlu[k + 150] == '"' and htmlu[k + 161] == 'r'):
           ch = htmlu[k + 149]
           grey += 1
@@ -173,8 +169,6 @@ def cronjob():
             promezh[0] = 0
             numbers[5] = 0
             numbers_kolvo[5] += 1
-          if red_kolvo > maxi:
-            maxi = red_kolvo
         elif(htmlu[k + 150] == '"' and htmlu[k + 161] == 'b'):
           ch = htmlu[k + 149]
           red += 1
@@ -209,8 +203,6 @@ def cronjob():
             promezh[1] = 0
             numbers[6] = 0
             numbers_kolvo[6] += 1
-          if black_kolvo > maxi:
-            maxi = black_kolvo
         elif(htmlu[k + 149] == '0'):
           ch = htmlu[k + 149]
           red += 1
@@ -218,8 +210,6 @@ def cronjob():
           black += 1
           cup_kolvo += 1
           cup = 0
-          if cup_kolvo > maxi:
-            maxi = cup_kolvo
         elif(htmlu[k + 162] == 'r'):
           ch = htmlu[k + 149] + htmlu[k + 150]
           red = 0
@@ -254,8 +244,6 @@ def cronjob():
             promezh[2] = 0
             numbers[14] = 0
             numbers_kolvo[14] += 1
-          if red_kolvo > maxi:
-            maxi = red_kolvo
         elif(htmlu[k + 162] == 'b'):
           ch = htmlu[k + 149] + htmlu[k + 150]
           black = 0
@@ -290,8 +278,6 @@ def cronjob():
             promezh[2] = 0
             numbers[15] = 0
             numbers_kolvo[15] += 1
-          if black_kolvo > maxi:
-            maxi = black_kolvo
         elif(htmlu[k + 162] == 'g'):
           ch = htmlu[k + 149] + htmlu[k + 150]
           grey = 0
@@ -326,8 +312,6 @@ def cronjob():
             promezh[2] = 0
             numbers[16] = 0
             numbers_kolvo[16] += 1
-          if grey_kolvo > maxi:
-            maxi = grey_kolvo
         minimum = 0
         pervyj = 0
         nomer = 0
@@ -338,7 +322,7 @@ def cronjob():
             pervyj = 1
             kkk = 1
             minimum = num
-            nomer = 0
+            nomer = sczetczik
           else:
             if num > minimum:
               kkk = 1
@@ -423,68 +407,68 @@ def cronjob():
           rec = "7-12"
         elif kolvo != cup_kolvo and promezh[2] >= 9 and promezh_kolvo[2] / (kolvo - cup_kolvo) <= 0.25:
           rec = "13-18"
-        elif kolvo != cup_kolvo and red >= 9 and red_kolvo / maxi <= 0.89 and red_kolvo / (kolvo - cup_kolvo) <= 0.25:
+        elif kolvo != cup_kolvo and red >= 9 and red_kolvo / (kolvo - cup_kolvo) <= 0.35:
           rec = "red"
-        elif kolvo != cup_kolvo and black >= 9 and black_kolvo / maxi <= 0.89 and black_kolvo / (kolvo - cup_kolvo) <= 0.25:
+        elif kolvo != cup_kolvo and black >= 9 and black_kolvo / (kolvo - cup_kolvo) <= 0.35:
           rec = "black"
-        elif kolvo != cup_kolvo and grey >= 9 and grey_kolvo / maxi <= 0.89 and grey_kolvo / (kolvo - cup_kolvo) <= 0.25:
+        elif kolvo != cup_kolvo and grey >= 9 and grey_kolvo / (kolvo - cup_kolvo) <= 0.35:
           rec = "grey"
-        elif kolvo != cup_kolvo and cup > 40 and cup_kolvo / kolvo <= 0.045 and numbers[11] >= 5 and numbers[0] >= 5 and numbers_kolvo[0] / kolvo < 0.05 and numbers_kolvo[11] / kolvo < 0.05:
+        elif kolvo != cup_kolvo and cup > 40 and cup_kolvo / kolvo <= 0.049 and numbers[11] >= 3 and numbers[0] >= 3 and numbers_kolvo[0] / kolvo < 0.05 and numbers_kolvo[11] / kolvo < 0.05:
           rec = "cup"
         elif kkk == 1:
-          if kolvo != cup_kolvo and numbers_kolvo[nomer] / (kolvo - cup_kolvo) <= 0.045:
-            if nomer == 0 and numbers[7] >= 5 and cup >= 5 and black_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[7] / kolvo < 0.05 and cup_kolvo / kolvo < 0.05:
+          if kolvo != cup_kolvo and numbers_kolvo[nomer] / kolvo <= 0.049:
+            if nomer == 0 and numbers[7] >= 3 and cup >= 3 and black_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[7] / kolvo < 0.05 and cup_kolvo / kolvo < 0.05:
               nomer += 1
               rec = "1"
-            elif nomer == 1 and numbers[8] >= 5 and numbers[12] >= 5 and grey_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[8] / kolvo < 0.05 and numbers_kolvo[12] / kolvo < 0.05:
+            elif nomer == 1 and numbers[8] >= 3 and numbers[12] >= 3 and grey_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[8] / kolvo < 0.05 and numbers_kolvo[12] / kolvo < 0.05:
               nomer += 1
               rec = "2"
-            elif nomer == 2 and numbers[9] >= 5 and numbers[13] >= 5 and red_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[9] / kolvo < 0.05 and numbers_kolvo[13] / kolvo < 0.05:
+            elif nomer == 2 and numbers[9] >= 3 and numbers[13] >= 3 and red_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[9] / kolvo < 0.05 and numbers_kolvo[13] / kolvo < 0.05:
               nomer += 1
               rec = "3"
-            elif nomer == 3 and numbers[14] >= 5 and numbers[10] >= 5 and black_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[10] / kolvo < 0.05 and numbers_kolvo[14] / kolvo < 0.05:
+            elif nomer == 3 and numbers[14] >= 3 and numbers[10] >= 3 and black_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[10] / kolvo < 0.05 and numbers_kolvo[14] / kolvo < 0.05:
               nomer += 1
               rec = "4"
-            elif nomer == 4 and numbers[15] >= 5 and numbers[11] >= 5 and grey_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[11] / kolvo < 0.05 and numbers_kolvo[15] / kolvo < 0.05:
+            elif nomer == 4 and numbers[15] >= 3 and numbers[11] >= 3 and grey_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[11] / kolvo < 0.05 and numbers_kolvo[15] / kolvo < 0.05:
               nomer += 1
               rec = "5"
-            elif nomer == 5 and numbers[12] >= 5 and numbers[16] >= 5 and red_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[12] / kolvo < 0.05 and numbers_kolvo[16] / kolvo < 0.05:
+            elif nomer == 5 and numbers[12] >= 3 and numbers[16] >= 3 and red_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[12] / kolvo < 0.05 and numbers_kolvo[16] / kolvo < 0.05:
               nomer += 1
               rec = "6"
-            elif nomer == 6 and numbers[13] >= 5 and numbers[17] >= 5 and black_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[13] / kolvo < 0.05 and numbers_kolvo[17] / kolvo < 0.05:
+            elif nomer == 6 and numbers[13] >= 3 and numbers[17] >= 3 and black_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[13] / kolvo < 0.05 and numbers_kolvo[17] / kolvo < 0.05:
               nomer += 1
               rec = "7"
-            elif nomer == 7 and numbers[0] >= 5 and numbers[14] >= 5 and grey_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[14] / kolvo < 0.05 and numbers_kolvo[0] / kolvo < 0.05:
+            elif nomer == 7 and numbers[0] >= 3 and numbers[14] >= 3 and grey_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[14] / kolvo < 0.05 and numbers_kolvo[0] / kolvo < 0.05:
               nomer += 1
               rec = "8"
-            elif nomer == 8 and numbers[15] >= 5 and numbers[1] >= 5 and red_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[15] / kolvo < 0.05 and numbers_kolvo[1] / kolvo < 0.05:
+            elif nomer == 8 and numbers[15] >= 3 and numbers[1] >= 3 and red_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[15] / kolvo < 0.05 and numbers_kolvo[1] / kolvo < 0.05:
               nomer += 1
               rec = "9"
-            elif nomer == 9 and numbers[2] >= 5 and numbers[16] >= 5 and black_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[16] / kolvo < 0.05 and numbers_kolvo[2] / kolvo < 0.05:
+            elif nomer == 9 and numbers[2] >= 3 and numbers[16] >= 3 and black_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[16] / kolvo < 0.05 and numbers_kolvo[2] / kolvo < 0.05:
               nomer += 1
               rec = "10"
-            elif nomer == 10 and numbers[3] >= 5 and numbers[17] >= 5 and grey_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[17] / kolvo < 0.05 and numbers_kolvo[3] / kolvo < 0.05:
+            elif nomer == 10 and numbers[3] >= 3 and numbers[17] >= 3 and grey_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[17] / kolvo < 0.05 and numbers_kolvo[3] / kolvo < 0.05:
               nomer += 1
               rec = "11"
-            elif nomer == 11 and numbers[4] >= 5 and cup >= 5 and red_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[4] / kolvo < 0.05 and cup_kolvo / kolvo < 0.05:
+            elif nomer == 11 and numbers[4] >= 3 and cup >= 3 and red_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[4] / kolvo < 0.05 and cup_kolvo / kolvo < 0.05:
               nomer += 1
               rec = "12"
-            elif nomer == 12 and numbers[1] >= 5 and numbers[5] >= 5 and black_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[5] / kolvo < 0.05 and numbers_kolvo[1] / kolvo < 0.05:
+            elif nomer == 12 and numbers[1] >= 3 and numbers[5] >= 3 and black_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[5] / kolvo < 0.05 and numbers_kolvo[1] / kolvo < 0.05:
               nomer += 1
               rec = "13"
-            elif nomer == 13 and numbers[2] >= 5 and numbers[6] >= 5 and grey_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[6] / kolvo < 0.05 and numbers_kolvo[2] / kolvo < 0.05:
+            elif nomer == 13 and numbers[2] >= 3 and numbers[6] >= 3 and grey_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[6] / kolvo < 0.05 and numbers_kolvo[2] / kolvo < 0.05:
               nomer += 1
               rec = "14"
-            elif nomer == 14 and numbers[3] >= 5 and numbers[7] >= 5 and red_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[7] / kolvo < 0.05 and numbers_kolvo[3] / kolvo < 0.05:
+            elif nomer == 14 and numbers[3] >= 3 and numbers[7] >= 3 and red_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[7] / kolvo < 0.05 and numbers_kolvo[3] / kolvo < 0.05:
               nomer += 1
               rec = "15"
-            elif nomer == 15 and numbers[4] >= 5 and numbers[8] >= 5 and black_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[8] / kolvo < 0.05 and numbers_kolvo[4] / kolvo < 0.05:
+            elif nomer == 15 and numbers[4] >= 3 and numbers[8] >= 3 and black_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[8] / kolvo < 0.05 and numbers_kolvo[4] / kolvo < 0.05:
               nomer += 1
               rec = "16"
-            elif nomer == 16 and numbers[5] >= 5 and numbers[9] >= 5 and grey_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[9] / kolvo < 0.05 and numbers_kolvo[5] / kolvo < 0.05:
+            elif nomer == 16 and numbers[5] >= 3 and numbers[9] >= 3 and grey_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[9] / kolvo < 0.05 and numbers_kolvo[5] / kolvo < 0.05:
               nomer += 1
               rec = "17"
-            elif nomer == 17 and numbers[6] >= 5 and numbers[10] >= 5 and red_kolvo / (kolvo - cup_kolvo) < 0.33 and numbers_kolvo[10] / kolvo < 0.05 and numbers_kolvo[6] / kolvo < 0.05:
+            elif nomer == 17 and numbers[6] >= 3 and numbers[10] >= 3 and red_kolvo / (kolvo - cup_kolvo) < 0.38 and numbers_kolvo[10] / kolvo < 0.05 and numbers_kolvo[6] / kolvo < 0.05:
               nomer += 1
               rec = "18"
             else:
