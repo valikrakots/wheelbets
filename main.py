@@ -49,11 +49,12 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 14 or d3.minute == 18) and d3.hour != 6:
+    if d3.minute == 24 or d3.minute == 22:
       driver = webdriver.Firefox()
       driver.get('https://air2.parimatch.com/ru/betgames/')
-      sleep(1)
+      sleep(10)
       driver.find_element_by_css_selector('div[data-qa="button-game-menu-7"]').click()
+      sllep(10)
       screenshot_img = driver.get_screenshot_as_png()
       screenshot = base64.encodestring(screenshot_img)
       image1 = stringToRGB(screenshot)
