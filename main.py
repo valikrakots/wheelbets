@@ -11,7 +11,7 @@ import os
 from selenium import webdriver
 from time import sleep
 from PIL import Image
-
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 
@@ -50,7 +50,7 @@ def cronjob():
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
     if d3.minute == 34 or d3.minute == 32:
-      driver = webdriver.Firefox()
+      browser = webdriver.Firefox(executable_path=GeckoDriverManager().install())
       driver.get('https://air2.parimatch.com/ru/betgames/')
       sleep(10)
       driver.find_element_by_css_selector('div[data-qa="button-game-menu-7"]').click()
