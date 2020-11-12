@@ -49,7 +49,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if d3.minute == 34 or d3.minute == 32:
+    if d3.minute == 54 or d3.minute == 52:
       browser = webdriver.Firefox(executable_path=GeckoDriverManager().install())
       driver.get('https://air2.parimatch.com/ru/betgames/')
       sleep(10)
