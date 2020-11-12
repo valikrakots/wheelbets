@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup
 import datetime
 import threading
 import face_recognition
-import dlib
 import numpy as np
 import os
 import glob
