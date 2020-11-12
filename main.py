@@ -54,7 +54,7 @@ def cronjob():
       driver.get('https://air2.parimatch.com/ru/betgames/')
       sleep(10)
       driver.find_element_by_css_selector('div[data-qa="button-game-menu-7"]').click()
-      sllep(10)
+      sleep(10)
       screenshot_img = driver.get_screenshot_as_png()
       screenshot = base64.encodestring(screenshot_img)
       image1 = stringToRGB(screenshot)
