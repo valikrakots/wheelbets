@@ -11,8 +11,7 @@ import os
 from selenium import webdriver
 from time import sleep
 from PIL import Image
-from webdriver_manager.firefox import GeckoDriverManager
-import geckodriver_autoinstaller
+
 
 
 
@@ -49,11 +48,13 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if d3.minute == 20 or d3.minute == 22:
-      try:
-        driver = webdriver.Firefox()
-      except Exception:
-        driver = webdriver.Firefox(GeckoDriverManager().install())
+    if d3.minute == 34 or d3.minute == 36:
+      chrome_options = webdriver.ChromeOptions()
+      chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+      chrome_options.add_argument("--headless")
+      chrome_options.add_argument("--disable-dev-shm-usage")
+      chrome_options.add_argument("--no-sandbox")
+      driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
       driver.get('https://air2.parimatch.com/ru/betgames/')
       sleep(10)
       driver.find_element_by_css_selector('div[data-qa="button-game-menu-7"]').click()
