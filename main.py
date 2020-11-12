@@ -49,7 +49,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if d3.minute == 46 or d3.minute == 48:
+    if d3.minute == 20 or d3.minute == 22:
       try:
         driver = webdriver.Firefox()
       except Exception:
