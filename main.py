@@ -74,7 +74,7 @@ def cronjob():
     if (d3.hour == 5 and d3.minute == 59) or d3.hour == 6:
       if bo == 2:
         table1 = Table(number='w',
-                       recom='w', success='w', previous='w')
+                       recom='w', success='w', previous='w', image = 'w')
         table1.save()
         bo = 3
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
@@ -82,7 +82,7 @@ def cronjob():
       if d1 < d2:
         d1 = datetime.datetime.now().date()
         table1 = Table(number='ch',
-                       recom='ch', success='e', previous='e')
+                       recom='ch', success='e', previous='e', image = 'e')
         table1.save()
       html = get_html(URL)
       if html.status_code == 200:
@@ -113,15 +113,15 @@ def cronjob():
           da = 2
         if da == 1:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='t')
+                         previous=last_rec, success='t', image = 'e')
           table1.save()
         elif da == 2:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='f')
+                         previous=last_rec, success='f', image = 'e')
           table1.save()
         else:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='n')
+                         previous=last_rec, success='n', image = 'e')
           table1.save()
         last_rec = rec
       else:
