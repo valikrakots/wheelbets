@@ -11,7 +11,7 @@ import os
 import glob
 from selenium import webdriver
 from time import sleep
-from pillow import Image
+from PILL import Image
 import cv2
 
 
