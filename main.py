@@ -50,8 +50,10 @@ def cronjob():
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
     if d3.minute == 46 or d3.minute == 48:
-      geckodriver_autoinstaller.install()
-      driver = webdriver.Firefox()
+      try:
+        driver = webdriver.Firefox()
+      except Exception:
+        driver = webdriver.Firefox(GeckoDriverManager().install())
       driver.get('https://air2.parimatch.com/ru/betgames/')
       sleep(10)
       driver.find_element_by_css_selector('div[data-qa="button-game-menu-7"]').click()
