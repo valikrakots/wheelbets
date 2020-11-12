@@ -1,4 +1,4 @@
-
+import cv2
 from blog.models import Table
 import time
 import requests
@@ -8,11 +8,10 @@ import threading
 import face_recognition
 import numpy as np
 import os
-import glob
 from selenium import webdriver
 from time import sleep
 from PIL import Image
-import cv2
+
 
 
 
