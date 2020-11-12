@@ -46,7 +46,7 @@ def cronjob():
   bo = 1
   last_rec = "-"
   da = 0
-  while(true):
+  while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
     if (d3.minute == 58 or d3.minute == 38) and d3.hour != 6:
