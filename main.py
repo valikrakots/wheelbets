@@ -48,7 +48,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if d3.minute == 34 or d3.minute == 36:
+    if (d3.minute == 52 or d3.minute == 54) and bo == 2:
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
       chrome_options.add_argument("--headless")
