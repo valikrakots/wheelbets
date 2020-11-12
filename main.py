@@ -1,6 +1,5 @@
 
 from blog.models import Table
-from blog.models import Images
 import time
 import requests
 from bs4 import BeautifulSoup
