@@ -15,5 +15,7 @@ class Table(models.Model):
     number = models.CharField(max_length=2)
     date = models.DateTimeField(default=one_minute_hence)
     change_date = models.DateTimeField(default=one_day_hence)
-    recom = models.CharField(max_length=10)
     success = models.CharField(max_length=7)
+    recom = models.CharField(max_length=7)
+    image = models.CharField(max_length=100000)
+
