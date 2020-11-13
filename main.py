@@ -25,9 +25,12 @@ def get_html(url, params=None):
   return r
 
 
-def stringToRGB(base64_string):
-    imgdata = base64.b64decode(str(base64_string))
-    image = Image.open(io.BytesIO(imgdata))
+def stringToRGB(msg):
+    msg = msg[msg.find(b"<plain_txt_msg:img>")+len(b"<plain_txt_msg:img>"):
+              msg.find(b"<!plain_txt_msg>")]
+    msg = base64.b64decode(msg)
+    buf = io.BytesIO(msg)
+    image = Image.open(buf)
     return cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
 
 
@@ -49,7 +52,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 48 or d3.minute == 50) and do == 2:
+    if (d3.minute == 16 or d3.minute == 18) and do == 2:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
