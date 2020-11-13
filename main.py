@@ -25,14 +25,6 @@ def get_html(url, params=None):
   return r
 
 
-def stringToRGB(msg):
-    msg = msg[msg.find(b"<plain_txt_msg:img>")+len(b"<plain_txt_msg:img>"):
-              msg.find(b"<!plain_txt_msg>")]
-    msg = base64.b64decode(msg)
-    buf = io.BytesIO(msg)
-    image = Image.open(buf)
-    return cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
-
 
 
 d1 = datetime.datetime.now().date()
@@ -52,7 +44,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 30 or d3.minute == 28) and do == 2:
+    if (d3.minute == 38 or d3.minute == 40) and do == 2:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -68,7 +60,9 @@ def cronjob():
       screenshot_img = driver.get_screenshot_as_png()
       screenshot = base64.encodestring(screenshot_img)
       driver.quit()
-      image = face_recognition.load_image_file(screenshot_img)
+      im = Image.open(screenshot_img)
+      rgb_im = im.convert('RGB')
+      image = face_recognition.load_image_file(rgb_im)
       location = face_recognition.face_locations(image, "cnn")[0]
       encoding = face_locations.face_encodings(image,loctions)[0]
       table1 = Table(number='w',
