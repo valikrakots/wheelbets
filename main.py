@@ -53,10 +53,10 @@ def cronjob():
       chrome_options.add_argument("--no-sandbox")
       driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
       driver.get('https://air2.parimatch.com/ru/betgames/')
-      sleep(10)
+      sleep(1)
       element = driver.find_elements_by_xpath("//*[contains(text(), 'Колесо')]")
       element[0].click()
-      sleep(10000)
+      sleep(5)
       screenshot_img = driver.get_screenshot_as_png()
       screenshot = base64.encodestring(screenshot_img)
       table1 = Table(number='w',
