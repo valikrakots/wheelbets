@@ -44,7 +44,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 54 or d3.minute == 56) and do == 2:
+    if (d3.minute == 4 or d3.minute == 6) and do == 2:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -54,7 +54,7 @@ def cronjob():
       driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
       driver.get('https://air2.parimatch.com/ru/betgames/')
       sleep(1)
-      element = driver.find_elements_by_css_selector(".tabs-bar-item align-center")
+      element = driver.find_elements_by_css_selector(".tabs-bar-item")
       element[4].click()
       sleep(5)
       screenshot_img = driver.get_screenshot_as_png()
