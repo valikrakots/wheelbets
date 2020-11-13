@@ -59,7 +59,7 @@ def cronjob():
       driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
       driver.get('https://air2.parimatch.com/ru/betgames/')
       sleep(10)
-      driver.find_element_by_css_selector('div[data-qa="button-game-menu-7"]').click()
+      driver.find_elements_by_xpath("//*[contains(text(), 'Колесо')]").click()
       sleep(10)
       screenshot_img = driver.get_screenshot_as_png()
       screenshot = base64.encodestring(screenshot_img)
