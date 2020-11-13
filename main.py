@@ -45,10 +45,12 @@ def cronjob():
   bo = 1
   last_rec = "-"
   da = 0
+  do = 1
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 8 or d3.minute == 10) and bo == 2:
+    if (d3.minute == 46 or d3.minute == 48) and do == 2:
+      do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
       chrome_options.add_argument("--headless")
@@ -91,6 +93,7 @@ def cronjob():
         table1.save()
       html = get_html(URL)
       if html.status_code == 200:
+        do = 2
         ch = ""
         htmlu = html.text
         k = htmlu.find('"game_id":"7"')
