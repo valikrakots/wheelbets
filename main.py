@@ -49,7 +49,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 12 or d3.minute == 14) and do == 2:
+    if (d3.minute == 18 or d3.minute == 20) and do == 2:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -60,7 +60,7 @@ def cronjob():
       driver.get('https://air2.parimatch.com/ru/betgames/')
       sleep(10)
       element = driver.find_elements_by_xpath("//*[contains(text(), 'Колесо')]")
-      element.click()
+      element[0].click()
       sleep(10)
       screenshot_img = driver.get_screenshot_as_png()
       screenshot = base64.encodestring(screenshot_img)
