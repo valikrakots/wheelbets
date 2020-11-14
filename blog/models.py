@@ -21,4 +21,5 @@ class Table(models.Model):
 
 class TableImage(models.Model):
     firsttime = models.DateTimeField(default=timezone.now())
+    recom = models.TextField(max_length=10000000000)
 

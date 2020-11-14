@@ -48,7 +48,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 24 or d3.minute == 26) and do == 2 and d3.second == 25:
+    if (d3.minute == 40 or d3.minute == 42) and do == 2 and d3.second == 20:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -64,6 +64,9 @@ def cronjob():
       element[0].click()
       sleep(5)
       screenshot_img = driver.get_screenshot_as_png()
+      encoded = base64.b64encode(screenshot_img)
+      table1 = TableImage(recom = encoded)
+      table1.save()
       im = Image.open(BytesIO(screenshot_img))
       im = im.convert('RGB')
       im.save('foo.jpg')
@@ -74,7 +77,7 @@ def cronjob():
       results = face_recognition.compare_faces(known_faces, encoding, 0.6)
       if True in results:
         current = known_names[results.index(True)]
-        table1 = TableImage(firsttime = times[current])
+        table1.firsttime = times[current])
         table1.save()
       else:
         known_faces.append(encoding)
