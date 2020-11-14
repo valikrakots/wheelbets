@@ -17,5 +17,9 @@ class Table(models.Model):
     change_date = models.DateTimeField(default=one_day_hence)
     success = models.CharField(max_length=7)
     recom = models.CharField(max_length=7)
-    images = models.TextField(max_length=100000000)
+
+
+class TableImage(models.Model):
+    photo = models.ImageField(upload_to='static/blog/images')
+    firsttime = models.DateTimeField(default=timezone.now())
 

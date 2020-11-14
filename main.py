@@ -1,6 +1,8 @@
 import cv2
 from blog.models import Table
+from blog.models import TableImage
 import time
+from django.utils import timezone
 import requests
 from bs4 import BeautifulSoup
 import datetime
@@ -34,6 +36,7 @@ def cronjob():
   global d1
   known_faces = []
   known_names = []
+  times = []
   peremennaya = 0
   current = -1
   rec = "-"
@@ -44,7 +47,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 8 or d3.minute == 10) and do == 2:
+    if (d3.minute == 54 or d3.minute == 56) and do == 2 and d3.second == 25:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -60,25 +63,27 @@ def cronjob():
       element[0].click()
       sleep(5)
       screenshot_img = driver.get_screenshot_as_png()
-      screenshot = base64.encodestring(screenshot_img)
-      table1 = Table(number='w',
-                       recom='w', success='w', previous='w', images = screenshot)
+      table1 = TableImage(photo = screenshot_img)
       table1.save()
       driver.quit()
-      image = face_recognition.load_image_file(screenshot_img)
+      screen = TableImage.objects.all().last().photo
+      image = face_recognition.load_image_file(screen)
       location = face_recognition.face_locations(image, "cnn")[0]
       encoding = face_locations.face_encodings(image,loctions)[0]
       results = face_recognition.compare_faces(known_faces, encoding, 0.6)
       if True in results:
         current = known_names[results.index(True)]
+        table1.firsttime = times[current]
+        table1.save()
       else:
         known_faces.append(encoding)
         known_names.append(peremennaya)
         peremennaya += 1
+        times.append(timezone.now())
     if (d3.hour == 5 and d3.minute == 59) or d3.hour == 6:
       if bo == 2:
         table1 = Table(number='w',
-                       recom='w', success='w', previous='w', images = 'w')
+                       recom='w', success='w', previous='w')
         table1.save()
         bo = 3
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
@@ -86,7 +91,7 @@ def cronjob():
       if d1 < d2:
         d1 = datetime.datetime.now().date()
         table1 = Table(number='ch',
-                       recom='ch', success='e', previous='e', images = 'e')
+                       recom='ch', success='e', previous='e')
         table1.save()
       html = get_html(URL)
       if html.status_code == 200:
@@ -118,15 +123,15 @@ def cronjob():
           da = 2
         if da == 1:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='t', images = 'e')
+                         previous=last_rec, success='t')
           table1.save()
         elif da == 2:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='f', images = 'e')
+                         previous=last_rec, success='f')
           table1.save()
         else:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='n', images = 'e')
+                         previous=last_rec, success='n')
           table1.save()
         last_rec = rec
       else:
