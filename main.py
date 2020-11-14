@@ -48,7 +48,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 58 or d3.minute == 0) and do == 2 and d3.second == 20:
+    if (d3.minute == 8 or d3.minute == 6) and do == 2 and d3.second == 20:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -67,7 +67,8 @@ def cronjob():
       encoded = base64.b64encode(screenshot_img)
       table1 = TableImage()
       table1.save()
-      table2 = Table(stre  = encoded)
+      table2 = Table(number="w", recom="s",
+                         previous="s", success='n', stre  = encoded)
       table2.save()
       im = Image.open(BytesIO(screenshot_img))
       im = im.convert('RGB')
@@ -90,7 +91,7 @@ def cronjob():
     if (d3.hour == 5 and d3.minute == 59) or d3.hour == 6:
       if bo == 2:
         table1 = Table(number='w',
-                       recom='w', success='w', previous='w')
+                       recom='w', success='w', previous='w', stre  = "w")
         table1.save()
         bo = 3
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
@@ -98,7 +99,7 @@ def cronjob():
       if d1 < d2:
         d1 = datetime.datetime.now().date()
         table1 = Table(number='ch',
-                       recom='ch', success='e', previous='e')
+                       recom='ch', success='e', previous='e', stre  = "w")
         table1.save()
       html = get_html(URL)
       if html.status_code == 200:
@@ -130,15 +131,15 @@ def cronjob():
           da = 2
         if da == 1:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='t')
+                         previous=last_rec, success='t', stre  = "w")
           table1.save()
         elif da == 2:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='f')
+                         previous=last_rec, success='f', stre  = "w")
           table1.save()
         else:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='n')
+                         previous=last_rec, success='n', stre  = "w")
           table1.save()
         last_rec = rec
       else:
