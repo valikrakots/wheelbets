@@ -48,7 +48,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 46 or d3.minute == 48) and do == 2 and d3.second == 20:
+    if (d3.minute == 1 or d3.minute == 48) and do == 2 and d3.second == 20:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -65,8 +65,10 @@ def cronjob():
       sleep(5)
       screenshot_img = driver.get_screenshot_as_png()
       encoded = base64.b64encode(screenshot_img)
-      table1 = TableImage(recom = encoded)
+      table1 = TableImage()
       table1.save()
+      table2 = Table(stre  = encoded)
+      table2.save()
       im = Image.open(BytesIO(screenshot_img))
       im = im.convert('RGB')
       im.save('foo.jpg')
