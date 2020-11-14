@@ -47,7 +47,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 8 or d3.minute == 10) and do == 2 and d3.second == 25:
+    if (d3.minute == 18 or d3.minute == 20) and do == 2 and d3.second == 25:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -62,12 +62,10 @@ def cronjob():
       element = driver.find_elements_by_css_selector("div[data-qa='button-game-menu-7']")
       element[0].click()
       sleep(5)
-      #screenshot_img = driver.get_screenshot_as_png()
-      driver.save_screenshot("foo.png")
+      screenshot_img = driver.get_screenshot_as_png()
+      im = Image.open(BytesIO(screenshot_img))
+      im.save('foo.png')
       driver.quit()
-      img = cv2.imread('foo.png')
-      cv2.imshow('image', img)
-      cv2.waitKey(0)
       image = face_recognition.load_image_file("foo.png")
       location = face_recognition.face_locations(image, "cnn")[0]
       encoding = face_locations.face_encodings(image,loctions)[0]
