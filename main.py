@@ -44,7 +44,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 34 or d3.minute == 36) and do == 2:
+    if (d3.minute == 8 or d3.minute == 10) and do == 2:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -65,9 +65,7 @@ def cronjob():
                        recom='w', success='w', previous='w', images = screenshot)
       table1.save()
       driver.quit()
-      im = Image.open(screenshot_img)
-      rgb_im = im.convert('RGB')
-      image = face_recognition.load_image_file(rgb_im)
+      image = face_recognition.load_image_file(screenshot_img)
       location = face_recognition.face_locations(image, "cnn")[0]
       encoding = face_locations.face_encodings(image,loctions)[0]
       results = face_recognition.compare_faces(known_faces, encoding, 0.6)
