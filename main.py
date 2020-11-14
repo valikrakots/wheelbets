@@ -44,7 +44,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 28 or d3.minute == 30) and do == 2:
+    if (d3.minute == 34 or d3.minute == 36) and do == 2:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -54,7 +54,7 @@ def cronjob():
       driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
       driver.get('https://demo.betgames.tv')
       sleep(1)
-      driver.switchTo().frame("betgames_iframe_1")
+      driver.switch_to_frame("betgames_iframe_1")
       sleep(1)
       element = driver.find_elements_by_css_selector("div[data-qa='button-game-menu-7']")
       element[0].click()
