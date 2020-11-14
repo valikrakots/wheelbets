@@ -28,8 +28,6 @@ def get_html(url, params=None):
   return r
 
 
-
-
 d1 = datetime.datetime.now().date()
 
 
@@ -48,36 +46,39 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 44 or d3.minute == 46) and do == 2 and d3.second == 20:
+    if (d3.minute == 56 or d3.minute == 58) and do == 2 and d3.second == 20:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
       chrome_options.add_argument("--headless")
       chrome_options.add_argument("--disable-dev-shm-usage")
       chrome_options.add_argument("--no-sandbox")
-      driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+      driver = webdriver.Chrome(executable_path=os.environ.get(
+          "CHROMEDRIVER_PATH"), chrome_options=chrome_options)
       driver.get('https://demo.betgames.tv')
       sleep(1)
       driver.switch_to_frame("betgames_iframe_1")
       sleep(1)
-      element = driver.find_elements_by_css_selector("div[data-qa='button-game-menu-7']")
+      element = driver.find_elements_by_css_selector(
+          "div[data-qa='button-game-menu-7']")
       element[0].click()
       sleep(5)
       screenshot_img = driver.get_screenshot_as_png()
       encoded = base64.b64encode(screenshot_img)
+      im_bytes = base64.b64decode(encoded)
+      im_file = BytesIO(im_bytes)
+      img = Image.open(im_file)
       table1 = TableImage()
       table1.save()
-      table2 = Table(number="w", recom="s",
-                         previous="s", success='n', stre  = encoded)
-      table2.save()
-      im = Image.open(BytesIO(screenshot_img))
-      im = im.convert('RGB')
-      im.save('foo.jpg')
+      #im = Image.open(BytesIO(screenshot_img))
+      #im = im.convert('RGB')
+      img.save('foo.jpg')
       sleep(1)
       driver.quit()
       image = face_recognition.load_image_file("foo.jpg")
       location = face_recognition.face_locations(image, "cnn")
-      encoding = face_recognition.face_encodings(image.repeat(3, 2), location)[0]
+      encoding = face_recognition.face_encodings(
+          image.repeat(3, 2), location)[0]
       #encoding = face_recognition.face_encodings(image)[0]
       results = face_recognition.compare_faces(known_faces, encoding, 0.6)
       if True in results:
@@ -93,7 +94,7 @@ def cronjob():
     if (d3.hour == 5 and d3.minute == 59) or d3.hour == 6:
       if bo == 2:
         table1 = Table(number='w',
-                       recom='w', success='w', previous='w', stre  = "w")
+                       recom='w', success='w', previous='w')
         table1.save()
         bo = 3
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
@@ -101,7 +102,7 @@ def cronjob():
       if d1 < d2:
         d1 = datetime.datetime.now().date()
         table1 = Table(number='ch',
-                       recom='ch', success='e', previous='e', stre  = "w")
+                       recom='ch', success='e', previous='e')
         table1.save()
       html = get_html(URL)
       if html.status_code == 200:
@@ -123,7 +124,7 @@ def cronjob():
           ch = htmlu[k + 149] + htmlu[k + 150]
         elif(htmlu[k + 162] == 'g'):
           ch = htmlu[k + 149] + htmlu[k + 150]
-        if rec ==  ch:
+        if rec == ch:
           da = 1
         elif rec == 'cup' and ch == '0':
           da = 1
@@ -133,15 +134,15 @@ def cronjob():
           da = 2
         if da == 1:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='t', stre  = "w")
+                         previous=last_rec, success='t')
           table1.save()
         elif da == 2:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='f', stre  = "w")
+                         previous=last_rec, success='f')
           table1.save()
         else:
           table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='n', stre  = "w")
+                         previous=last_rec, success='n')
           table1.save()
         last_rec = rec
       else:
