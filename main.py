@@ -15,6 +15,7 @@ from time import sleep
 from PIL import Image
 import base64
 import io
+from io import BytesIO
 
 
 URL = 'https://betgames9.betgames.tv/ext/game_results/get_results_info/testpartner/2019-04-03/0/1/'
@@ -47,7 +48,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 18 or d3.minute == 20) and do == 2 and d3.second == 25:
+    if (d3.minute == 28 or d3.minute == 30) and do == 2 and d3.second == 25:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
