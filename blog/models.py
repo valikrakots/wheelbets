@@ -20,6 +20,5 @@ class Table(models.Model):
 
 
 class TableImage(models.Model):
-    photo = models.ImageField(upload_to='static/blog/images')
     firsttime = models.DateTimeField(default=timezone.now())
 

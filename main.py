@@ -62,24 +62,23 @@ def cronjob():
       element = driver.find_elements_by_css_selector("div[data-qa='button-game-menu-7']")
       element[0].click()
       sleep(5)
-      screenshot_img = driver.get_screenshot_as_png()
-      table1 = TableImage(photo = screenshot_img)
-      table1.save()
+      #screenshot_img = driver.get_screenshot_as_png()
+      driver.save_screenshot(‘/static/blog/images/foo.png’)
       driver.quit()
-      screen = TableImage.objects.all().last().photo
-      image = face_recognition.load_image_file(screen)
+      image = face_recognition.load_image_file(‘/static/blog/images/foo.png’)
       location = face_recognition.face_locations(image, "cnn")[0]
       encoding = face_locations.face_encodings(image,loctions)[0]
       results = face_recognition.compare_faces(known_faces, encoding, 0.6)
       if True in results:
         current = known_names[results.index(True)]
-        table1.firsttime = times[current]
+        table1 = TableImage(firsttime = times[current])
         table1.save()
       else:
         known_faces.append(encoding)
         known_names.append(peremennaya)
         peremennaya += 1
         times.append(timezone.now())
+      os.remove(file) for file in os.listdir('/static/blog/images/') if file.endswith('.png')
     if (d3.hour == 5 and d3.minute == 59) or d3.hour == 6:
       if bo == 2:
         table1 = Table(number='w',
