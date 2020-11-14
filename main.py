@@ -44,7 +44,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 48 or d3.minute == 50) and do == 2:
+    if (d3.minute == 8 or d3.minute == 6) and do == 2:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -52,7 +52,7 @@ def cronjob():
       chrome_options.add_argument("--disable-dev-shm-usage")
       chrome_options.add_argument("--no-sandbox")
       driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-      driver.get('https://air2.parimatch.com/ru/betgames/')
+      driver.get('https://demo.betgames.tv')
       sleep(1)
       element = driver.find_elements_by_css_selector("div[data-qa='button-game-menu-7']")
       element[0].click()
