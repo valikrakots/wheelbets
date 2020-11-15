@@ -76,10 +76,10 @@ def cronjob():
   img = img.convert('RGB')
   left = 290
   top = 150
-  right = 400
+  right = 445
   bottom = 255
   img = img.crop((left, top, right, bottom))
-  newsize = (310, 300)
+  newsize = (350, 240)
   img = img.resize(newsize)
   img.save('foo.png')
   sleep(1)
@@ -104,7 +104,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 26 or d3.minute == 56 or d3.minute == 28 or d3.minute == 58 or d3.minute == 0 or d3.minute == 30) and do == 2 and d3.second == 20 and d3.hour != 6:
+    if (d3.minute == 26 or d3.minute == 56 or d3.minute == 28 or d3.minute == 58 or d3.minute == 0 or d3.minute == 30 or d3.minute == 2 or d3.minute == 32 or d3.minute == 4 or d3.minute == 34) and do == 2 and d3.second == 20 and d3.hour != 6:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -130,10 +130,10 @@ def cronjob():
       img = img.convert('RGB')
       left = 290
       top = 150
-      right = 400
+      right = 445
       bottom = 255
       img = img.crop((left, top, right, bottom))
-      newsize = (310, 300)
+      newsize = (350, 240)
       img = img.resize(newsize)
       img.save('foo.png')
       sleep(1)
