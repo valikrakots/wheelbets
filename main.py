@@ -148,7 +148,7 @@ def cronjob():
         if(current != known_names[results.index(True)]):
           current = known_names[results.index(True)]
           table1 = TableImage(firsttime=timezone.now(),
-                              time=timezone.now(), byl="no")
+                              time=timezone.now(), byl="yes")
           table1.firsttime = times[current]
           table1.byl = "yes"
           table1.save()
@@ -231,7 +231,7 @@ def cronjob():
         kolvo = 1
         i = 0
         print(current)
-        print(czislo)
+        print(chislo)
         if len(resultaty[current][chislo]) >= 10:
           while i < len(resultaty[current][chislo]):
             if(variable == resultaty[current][chislo][i]):
