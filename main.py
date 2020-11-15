@@ -43,7 +43,7 @@ def cronjob():
   bo = 1
   last_rec = "-"
   da = 0
-  do = 2
+  do = 1
   last_ch = '-1'
   d3 = datetime.datetime.now()
   while(d3.minute % 2 == 1):
