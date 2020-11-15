@@ -46,7 +46,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 18 or d3.minute == 16) and do == 2 and d3.second == 20:
+    if (d3.minute == 24 or d3.minute == 26) and do == 2 and d3.second == 20:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -76,7 +76,7 @@ def cronjob():
       top = 150
       right = 360
       bottom = 400
-      im1 = im.crop((left, top, right, bottom))
+      img = img.crop((left, top, right, bottom))
       img.save('foo.png')
       sleep(1)
       driver.quit()
