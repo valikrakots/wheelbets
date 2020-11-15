@@ -45,10 +45,8 @@ def cronjob():
   do = 2
   d3 = datetime.datetime.now()
   while(d3.minute % 2 == 1):
-    da = 0
     d3 = datetime.datetime.now()
-  while(d3.second < 25)
-    da = 0
+  while(d3.second < 25):
     d3 = datetime.datetime.now()
   chrome_options = webdriver.ChromeOptions()
   chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
