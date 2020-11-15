@@ -180,7 +180,7 @@ def cronjob():
       html = get_html(URL)
       if html.status_code == 200:
 
-        if (len(results) - 1) < current:
+        if (len(resultaty) - 1) < current:
           resi = []
           resultaty.append(resi)
           i = 0
@@ -241,6 +241,7 @@ def cronjob():
               kolvo = 1
               variable = resultaty[current][chislo][i]
             i += 1
+          print("Here")
           if(kolvo > maxi):
             maxi = kolvo
             max_chislo = variable
