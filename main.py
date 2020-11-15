@@ -76,10 +76,10 @@ def cronjob():
   img = img.convert('RGB')
   left = 290
   top = 150
-  right = 445
+  right = 425
   bottom = 255
   img = img.crop((left, top, right, bottom))
-  newsize = (350, 240)
+  newsize = (350, 270)
   img = img.resize(newsize)
   img.save('foo.png')
   sleep(1)
@@ -130,10 +130,10 @@ def cronjob():
       img = img.convert('RGB')
       left = 290
       top = 150
-      right = 445
+      right = 425
       bottom = 255
       img = img.crop((left, top, right, bottom))
-      newsize = (350, 240)
+      newsize = (350, 270)
       img = img.resize(newsize)
       img.save('foo.png')
       sleep(1)
