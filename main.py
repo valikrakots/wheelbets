@@ -43,6 +43,7 @@ def cronjob():
   last_rec = "-"
   da = 0
   do = 2
+  d3 = datetime.datetime.now()
   while(d3.minute % 2 == 1 and d3.second != 25):
     da = 0
   chrome_options = webdriver.ChromeOptions()
@@ -121,7 +122,8 @@ def cronjob():
       im_bytes = base64.b64decode(encoded)
       im_file = BytesIO(im_bytes)
       img = Image.open(im_file)
-      table1 = TableImage(firsttime=timezone.now(), time=timezone.now(), byl = "no")
+      table1 = TableImage(firsttime=timezone.now(),
+                          time=timezone.now(), byl="no")
       table1.save()
       #im = Image.open(BytesIO(screenshot_img))
       img = img.convert('RGB')
