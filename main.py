@@ -232,7 +232,7 @@ def cronjob():
         i = 0
         print(current)
         print(chislo)
-        print(len(resultaty[current][chislo]))
+        print(len((resultaty[current])[chislo]))
         if len(resultaty[current][chislo]) >= 10:
           while i < len(resultaty[current][chislo]):
             if(variable == resultaty[current][chislo][i]):
