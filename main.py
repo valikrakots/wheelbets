@@ -104,7 +104,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if d3.minute % 2 == 0 and do == 2 and d3.second == 20 and d3.hour != 6:
+    if (d3.minute == 26 or d3.minute == 56 or d3.minute == 28 or d3.minute == 58 or d3.minute == 0 or d3.minute == 30) and do == 2 and d3.second == 20 and d3.hour != 6:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -140,28 +140,31 @@ def cronjob():
       driver.quit()
       image = face_recognition.load_image_file('foo.png')
       encodings = face_recognition.face_encodings(image)
-      encoding = encodings[0]
+      if len(encodings) != 0:
+        encoding = encodings[0]
       # encoding = face_recognition.face_encodings(image)[0]
-      results = face_recognition.compare_faces(known_faces, encoding, 0.6)
-      if True in results:
-        print("Yes face")
-        if(current != known_names[results.index(True)]):
-          current = known_names[results.index(True)]
+        results = face_recognition.compare_faces(known_faces, encoding, 0.6)
+        if True in results:
+          print("Yes face")
+          if(current != known_names[results.index(True)]):
+            current = known_names[results.index(True)]
+            table1 = TableImage(firsttime=timezone.now(),
+                                time=timezone.now(), byl="yes")
+            table1.firsttime = times[current]
+            table1.byl = "yes"
+            table1.save()
+        else:
+          print("No face")
           table1 = TableImage(firsttime=timezone.now(),
-                              time=timezone.now(), byl="yes")
-          table1.firsttime = times[current]
-          table1.byl = "yes"
+                              time=timezone.now(), byl="no")
           table1.save()
+          known_faces.append(encoding)
+          known_names.append(peremennaya)
+          current = peremennaya
+          peremennaya += 1
+          times.append(timezone.now())
       else:
-        print("No face")
-        table1 = TableImage(firsttime=timezone.now(),
-                            time=timezone.now(), byl="no")
-        table1.save()
-        known_faces.append(encoding)
-        known_names.append(peremennaya)
-        current = peremennaya
-        peremennaya += 1
-        times.append(timezone.now())
+        print("No encodings")
       os.remove("foo.png")
     if (d3.hour == 5 and d3.minute == 59) or d3.hour == 6:
       if bo == 2:
