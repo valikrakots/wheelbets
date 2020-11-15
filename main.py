@@ -185,6 +185,7 @@ def cronjob():
           resultaty.append(resi)
           i = 0
           while i < 19:
+            resi = [-1]
             resultaty[current].append(resi)
             i += 1
 
