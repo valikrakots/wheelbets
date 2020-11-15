@@ -181,11 +181,11 @@ def cronjob():
       if html.status_code == 200:
 
         if (len(results) - 1) < current:
-          res = []
-          resultaty.append(res)
+          resi = []
+          resultaty.append(resi)
           i = 0
           while i < 19:
-            resultaty[current].append(res)
+            resultaty[current].append(resi)
             i += 1
 
         do = 2
