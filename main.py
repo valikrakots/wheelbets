@@ -176,6 +176,7 @@ def cronjob():
         table1 = Table(number='ch',
                        recom='ch', success='e', previous='e')
         table1.save()
+
       html = get_html(URL)
       if html.status_code == 200:
 
