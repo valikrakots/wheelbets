@@ -22,3 +22,4 @@ class Table(models.Model):
 class TableImage(models.Model):
     time = models.DateTimeField(default=timezone.now())
     firsttime = models.DateTimeField(default=timezone.now())
+    byl = models.CharField(max_length=3)

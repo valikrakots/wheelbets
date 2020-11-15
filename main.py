@@ -42,11 +42,64 @@ def cronjob():
   bo = 1
   last_rec = "-"
   da = 0
-  do = 1
+  do = 2
+  while(d3.minute % 2 == 1 and d3.second != 25):
+    da = 0
+  chrome_options = webdriver.ChromeOptions()
+  chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+  chrome_options.add_argument("--headless")
+  chrome_options.add_argument("--disable-dev-shm-usage")
+  chrome_options.add_argument("--no-sandbox")
+  driver = webdriver.Chrome(executable_path=os.environ.get(
+      "CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+  driver.get('https://demo.betgames.tv')
+  sleep(1)
+  driver.switch_to_frame("betgames_iframe_1")
+  sleep(1)
+  element = driver.find_elements_by_css_selector(
+      "div[data-qa='button-game-menu-7']")
+  element[0].click()
+  sleep(5)
+  screenshot_img = driver.get_screenshot_as_png()
+  encoded = base64.b64encode(screenshot_img)
+  im_bytes = base64.b64decode(encoded)
+  im_file = BytesIO(im_bytes)
+  img = Image.open(im_file)
+  table1 = TableImage(firsttime=timezone.now(), time=timezone.now(), byl="no")
+  table1.save()
+  #im = Image.open(BytesIO(screenshot_img))
+  img = img.convert('RGB')
+  left = 290
+  top = 150
+  right = 400
+  bottom = 255
+  img = img.crop((left, top, right, bottom))
+  newsize = (310, 300)
+  img = img.resize(newsize)
+  img.save('foo.png')
+  sleep(1)
+  driver.quit()
+  image = face_recognition.load_image_file('foo.png')
+  encodings = face_recognition.face_encodings(image)
+  encoding = encodings[0]
+  #encoding = face_recognition.face_encodings(image)[0]
+  results = face_recognition.compare_faces(known_faces, encoding, 0.6)
+  if True in results:
+    print("face found")
+    current = known_names[results.index(True)]
+    table1.firsttime = times[current]
+    table1.save()
+  else:
+    print("No face")
+    known_faces.append(encoding)
+    known_names.append(peremennaya)
+    peremennaya += 1
+    times.append(timezone.now())
+  os.remove("foo.png")
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 4 or d3.minute == 2) and do == 2 and d3.second == 20:
+    if (d3.minute == 28 or d3.minute == 58) and do == 2 and d3.second == 20 and d3.hour != 6:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -68,7 +121,7 @@ def cronjob():
       im_bytes = base64.b64decode(encoded)
       im_file = BytesIO(im_bytes)
       img = Image.open(im_file)
-      table1 = TableImage()
+      table1 = TableImage(firsttime=timezone.now(), time=timezone.now(), byl = "no")
       table1.save()
       #im = Image.open(BytesIO(screenshot_img))
       img = img.convert('RGB')
@@ -91,11 +144,13 @@ def cronjob():
         print("face found")
         current = known_names[results.index(True)]
         table1.firsttime = times[current]
+        table1.byl = "yes"
         table1.save()
       else:
         print("No face")
         known_faces.append(encoding)
         known_names.append(peremennaya)
+        current = peremennaya
         peremennaya += 1
         times.append(timezone.now())
       os.remove("foo.png")
