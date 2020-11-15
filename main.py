@@ -46,7 +46,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 48 or d3.minute == 50) and do == 2 and d3.second == 20:
+    if (d3.minute == 18 or d3.minute == 16) and do == 2 and d3.second == 20:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -72,10 +72,15 @@ def cronjob():
       table1.save()
       #im = Image.open(BytesIO(screenshot_img))
       img = img.convert('RGB')
-      img.save('foo.jpg')
+      left = 290
+      top = 150
+      right = 360
+      bottom = 400
+      im1 = im.crop((left, top, right, bottom))
+      img.save('foo.png')
       sleep(1)
       driver.quit()
-      image = face_recognition.load_image_file("foo.jpg")
+      image = face_recognition.load_image_file("foo.png")
       location = face_recognition.face_locations(image)
       encodings = face_recognition.face_encodings(
           image, location)
@@ -91,7 +96,7 @@ def cronjob():
         known_names.append(peremennaya)
         peremennaya += 1
         times.append(timezone.now())
-      os.remove("foo.jpg")
+      os.remove("foo.png")
     if (d3.hour == 5 and d3.minute == 59) or d3.hour == 6:
       if bo == 2:
         table1 = Table(number='w',
