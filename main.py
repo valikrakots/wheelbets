@@ -44,8 +44,12 @@ def cronjob():
   da = 0
   do = 2
   d3 = datetime.datetime.now()
-  while(d3.minute % 2 == 1 and d3.second != 25):
+  while(d3.minute % 2 == 1):
     da = 0
+    d3 = datetime.datetime.now()
+  while(d3.second < 25)
+    da = 0
+    d3 = datetime.datetime.now()
   chrome_options = webdriver.ChromeOptions()
   chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
   chrome_options.add_argument("--headless")
@@ -68,7 +72,7 @@ def cronjob():
   img = Image.open(im_file)
   table1 = TableImage(firsttime=timezone.now(), time=timezone.now(), byl="no")
   table1.save()
-  #im = Image.open(BytesIO(screenshot_img))
+  # im = Image.open(BytesIO(screenshot_img))
   img = img.convert('RGB')
   left = 290
   top = 150
@@ -83,7 +87,7 @@ def cronjob():
   image = face_recognition.load_image_file('foo.png')
   encodings = face_recognition.face_encodings(image)
   encoding = encodings[0]
-  #encoding = face_recognition.face_encodings(image)[0]
+  # encoding = face_recognition.face_encodings(image)[0]
   results = face_recognition.compare_faces(known_faces, encoding, 0.6)
   if True in results:
     print("face found")
@@ -100,7 +104,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 28 or d3.minute == 58) and do == 2 and d3.second == 20 and d3.hour != 6:
+    if d3.minute % 2 == 0 and do == 2 and d3.second == 20 and d3.hour != 6:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -122,10 +126,7 @@ def cronjob():
       im_bytes = base64.b64decode(encoded)
       im_file = BytesIO(im_bytes)
       img = Image.open(im_file)
-      table1 = TableImage(firsttime=timezone.now(),
-                          time=timezone.now(), byl="no")
-      table1.save()
-      #im = Image.open(BytesIO(screenshot_img))
+      # im = Image.open(BytesIO(screenshot_img))
       img = img.convert('RGB')
       left = 290
       top = 150
@@ -140,16 +141,22 @@ def cronjob():
       image = face_recognition.load_image_file('foo.png')
       encodings = face_recognition.face_encodings(image)
       encoding = encodings[0]
-      #encoding = face_recognition.face_encodings(image)[0]
+      # encoding = face_recognition.face_encodings(image)[0]
       results = face_recognition.compare_faces(known_faces, encoding, 0.6)
       if True in results:
         print("face found")
-        current = known_names[results.index(True)]
-        table1.firsttime = times[current]
-        table1.byl = "yes"
-        table1.save()
+        if(current != known_names[results.index(True)]):
+          current = known_names[results.index(True)]
+          table1 = TableImage(firsttime=timezone.now(),
+                              time=timezone.now(), byl="no")
+          table1.firsttime = times[current]
+          table1.byl = "yes"
+          table1.save()
       else:
         print("No face")
+        table1 = TableImage(firsttime=timezone.now(),
+                            time=timezone.now(), byl="no")
+        table1.save()
         known_faces.append(encoding)
         known_names.append(peremennaya)
         current = peremennaya
