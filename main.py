@@ -247,6 +247,9 @@ def cronjob():
           if(maxi / len(resultaty[current][chislo]) > 0.6):
             rec = str(max_chislo)
 
+        print(ch)
+        print(rec)
+        print(last_rec)
         if da == 1:
           table1 = Table(number=ch, recom=rec,
                          previous=last_rec, success='t')
