@@ -38,7 +38,7 @@ def cronjob():
   known_names = []
   times = []
   peremennaya = 0
-  current = -1
+  current = 0
   rec = "-"
   bo = 1
   last_rec = "-"
