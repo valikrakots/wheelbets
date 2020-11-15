@@ -33,6 +33,7 @@ d1 = datetime.datetime.now().date()
 
 def cronjob():
   global d1
+  resultaty = []
   known_faces = []
   known_names = []
   times = []
@@ -43,6 +44,7 @@ def cronjob():
   last_rec = "-"
   da = 0
   do = 2
+  last_ch = '-1'
   d3 = datetime.datetime.now()
   while(d3.minute % 2 == 1):
     d3 = datetime.datetime.now()
@@ -88,7 +90,7 @@ def cronjob():
   # encoding = face_recognition.face_encodings(image)[0]
   results = face_recognition.compare_faces(known_faces, encoding, 0.6)
   if True in results:
-    print("face found")
+    print("Yes face")
     current = known_names[results.index(True)]
     table1.firsttime = times[current]
     table1.save()
@@ -142,7 +144,7 @@ def cronjob():
       # encoding = face_recognition.face_encodings(image)[0]
       results = face_recognition.compare_faces(known_faces, encoding, 0.6)
       if True in results:
-        print("face found")
+        print("Yes face")
         if(current != known_names[results.index(True)]):
           current = known_names[results.index(True)]
           table1 = TableImage(firsttime=timezone.now(),
@@ -176,7 +178,17 @@ def cronjob():
         table1.save()
       html = get_html(URL)
       if html.status_code == 200:
+
+        if (len(results) - 1) < current:
+          res = []
+          resultaty.append(res)
+          i = 0
+          while i < 19:
+            resultaty[current].append(res)
+            i += 1
+
         do = 2
+
         ch = ""
         htmlu = html.text
         k = htmlu.find('"game_id":"7"')
@@ -194,6 +206,7 @@ def cronjob():
           ch = htmlu[k + 149] + htmlu[k + 150]
         elif(htmlu[k + 162] == 'g'):
           ch = htmlu[k + 149] + htmlu[k + 150]
+
         if rec == ch:
           da = 1
         elif rec == 'cup' and ch == '0':
@@ -202,6 +215,37 @@ def cronjob():
           da = 3
         else:
           da = 2
+
+        chislo = int(ch)
+        if last_ch != '-1':
+          last_chislo = int(last_ch)
+          resultaty[current][last_chislo].append(chislo)
+          resultaty[current][last_chislo].sort()
+
+        last_rec = rec
+        rec = '-'
+        maxi = 1
+        max_chislo = resultaty[current][chislo][0]
+        variable = resultaty[current][chislo][0]
+        kolvo = 1
+        i = 0
+        if len(resultaty[current][chislo]) >= 10:
+          while i < len(resultaty[current][chislo]):
+            if(variable == resultaty[current][chislo][i]):
+              kolvo += 1
+            else:
+              if(kolvo > maxi):
+                maxi = kolvo
+                max_chislo = variable
+              kolvo = 1
+              variable = resultaty[current][chislo][i]
+            i += 1
+          if(kolvo > maxi):
+            maxi = kolvo
+            max_chislo = variable
+          if(maxi / len(resultaty[current][chislo]) > 0.6):
+            rec = str(max_chislo)
+
         if da == 1:
           table1 = Table(number=ch, recom=rec,
                          previous=last_rec, success='t')
@@ -214,7 +258,9 @@ def cronjob():
           table1 = Table(number=ch, recom=rec,
                          previous=last_rec, success='n')
           table1.save()
-        last_rec = rec
+
+        last_ch = ch
+
       else:
         print('Error')
     elif d3.minute % 2 == 0 and bo != 1:
