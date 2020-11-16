@@ -144,7 +144,7 @@ def cronjob():
       if len(encodings) != 0:
         encoding = encodings[0]
       # encoding = face_recognition.face_encodings(image)[0]
-        results = face_recognition.compare_faces(known_faces, encoding, 0.6)
+        results = face_recognition.compare_faces(known_faces, encoding, 0.7)
         if True in results:
           print("Yes face")
           if(current != known_names[results.index(True)]):
