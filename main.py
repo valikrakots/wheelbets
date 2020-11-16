@@ -38,6 +38,7 @@ def cronjob():
   known_names = []
   times = []
   peremennaya = 0
+  first = False
   current = 0
   rec = "-"
   bo = 1
@@ -74,12 +75,12 @@ def cronjob():
   table1.save()
   # im = Image.open(BytesIO(screenshot_img))
   img = img.convert('RGB')
-  left = 290
-  top = 150
-  right = 425
+  left = 280
+  top = 145
+  right = 470
   bottom = 255
   img = img.crop((left, top, right, bottom))
-  newsize = (350, 270)
+  newsize = (570, 330)
   img = img.resize(newsize)
   img.save('foo.png')
   sleep(1)
@@ -104,7 +105,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 26 or d3.minute == 56 or d3.minute == 28 or d3.minute == 58 or d3.minute == 0 or d3.minute == 30 or d3.minute == 2 or d3.minute == 32 or d3.minute == 4 or d3.minute == 34) and do == 2 and d3.second == 20 and d3.hour != 6:
+    if (d3.minute == 26 or d3.minute == 56 or d3.minute == 28 or d3.minute == 58 or d3.minute == 0 or d3.minute == 30 or d3.minute == 2 or d3.minute == 32 or d3.minute == 4 or d3.minute == 34) and do == 2 and d3.second == 20:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -128,12 +129,12 @@ def cronjob():
       img = Image.open(im_file)
       # im = Image.open(BytesIO(screenshot_img))
       img = img.convert('RGB')
-      left = 290
-      top = 150
-      right = 425
+      left = 280
+      top = 145
+      right = 470
       bottom = 255
       img = img.crop((left, top, right, bottom))
-      newsize = (350, 270)
+      newsize = (570, 330)
       img = img.resize(newsize)
       img.save('foo.png')
       sleep(1)
@@ -147,6 +148,7 @@ def cronjob():
         if True in results:
           print("Yes face")
           if(current != known_names[results.index(True)]):
+            first = True
             current = known_names[results.index(True)]
             table1 = TableImage(firsttime=timezone.now(),
                                 time=timezone.now(), byl="yes")
@@ -158,6 +160,7 @@ def cronjob():
           table1 = TableImage(firsttime=timezone.now(),
                               time=timezone.now(), byl="no")
           table1.save()
+          first = True
           known_faces.append(encoding)
           known_names.append(peremennaya)
           current = peremennaya
@@ -165,13 +168,9 @@ def cronjob():
           times.append(timezone.now())
       else:
         print("No encodings")
+        if !first and (d3.minute == 34 or d3.minute == 4):
+          current = -1
       os.remove("foo.png")
-    if (d3.hour == 5 and d3.minute == 59) or d3.hour == 6:
-      if bo == 2:
-        table1 = Table(number='w',
-                       recom='w', success='w', previous='w')
-        table1.save()
-        bo = 3
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
       bo = 2
       if d1 < d2:
@@ -212,7 +211,7 @@ def cronjob():
         elif(htmlu[k + 162] == 'g'):
           ch = htmlu[k + 149] + htmlu[k + 150]
 
-        if(ch == ''):
+        if(ch != '0' or ch != '1' or ch != '2' or ch != '3' or ch != '4' or ch != '5' or ch != '6' or ch != '7' or ch != '8' or ch != '9' or ch != '10' or ch != '11' or ch != '12' or ch != '13' or ch != '14' or ch != '15' or ch != '16' or ch != '17' or ch != '18' or current == -1):
           goto(no_value)
 
         if rec == ch:
@@ -281,3 +280,5 @@ def cronjob():
         print('Error')
     elif d3.minute % 2 == 0 and bo != 1:
       bo = 1
+    if(d3.minute % 2 == 1):
+      first = False
