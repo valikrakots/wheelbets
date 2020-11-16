@@ -168,7 +168,7 @@ def cronjob():
           times.append(timezone.now())
       else:
         print("No encodings")
-        if !first and (d3.minute == 34 or d3.minute == 4):
+        if first == False and (d3.minute == 34 or d3.minute == 4):
           current = -1
       os.remove("foo.png")
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
