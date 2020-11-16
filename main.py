@@ -76,12 +76,12 @@ def cronjob():
   # im = Image.open(BytesIO(screenshot_img))
   img = img.convert('RGB')
   left = 280
-  top = 145
+  top = 135
   right = 470
-  bottom = 255
+  bottom = 265
   img = img.crop((left, top, right, bottom))
-  #newsize = (570, 330)
-  #img = img.resize(newsize)
+  newsize = (380, 260)
+  img = img.resize(newsize)
   img.save('foo.png')
   sleep(1)
   driver.quit()
@@ -130,12 +130,12 @@ def cronjob():
       # im = Image.open(BytesIO(screenshot_img))
       img = img.convert('RGB')
       left = 280
-      top = 145
+      top = 135
       right = 470
-      bottom = 255
+      bottom = 265
       img = img.crop((left, top, right, bottom))
-      #newsize = (570, 330)
-      #img = img.resize(newsize)
+      newsize = (380, 260)
+      img = img.resize(newsize)
       img.save('foo.png')
       sleep(1)
       driver.quit()
