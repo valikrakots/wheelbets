@@ -212,6 +212,9 @@ def cronjob():
         elif(htmlu[k + 162] == 'g'):
           ch = htmlu[k + 149] + htmlu[k + 150]
 
+        if(ch == ''):
+          goto(no_value)
+
         if rec == ch:
           da = 1
         elif rec == 'cup' and ch == '0':
@@ -271,6 +274,7 @@ def cronjob():
                          previous=last_rec, success='n')
           table1.save()
 
+        label: no_value
         last_ch = ch
 
       else:
