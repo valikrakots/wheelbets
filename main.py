@@ -211,74 +211,72 @@ def cronjob():
         elif(htmlu[k + 162] == 'g'):
           ch = htmlu[k + 149] + htmlu[k + 150]
 
-        if(ch != '0' or ch != '1' or ch != '2' or ch != '3' or ch != '4' or ch != '5' or ch != '6' or ch != '7' or ch != '8' or ch != '9' or ch != '10' or ch != '11' or ch != '12' or ch != '13' or ch != '14' or ch != '15' or ch != '16' or ch != '17' or ch != '18' or current == -1):
-          goto(no_value)
+        if((ch == '0' or ch == '1' or ch == '2' or ch == '3' or ch == '4' or ch == '5' or ch == '6' or ch == '7' or ch == '8' or ch == '9' or ch == '10' or ch == '11' or ch == '12' or ch == '13' or ch == '14' or ch == '15' or ch == '16' or ch == '17' or ch == '18') and current != -1):
 
-        if rec == ch:
-          da = 1
-        elif rec == 'cup' and ch == '0':
-          da = 1
-        elif rec == '-':
-          da = 3
-        else:
-          da = 2
+          if rec == ch:
+            da = 1
+          elif rec == 'cup' and ch == '0':
+            da = 1
+          elif rec == '-':
+            da = 3
+          else:
+            da = 2
 
-        chislo = int(ch)
-        if last_ch != '-1':
-          last_chislo = int(last_ch)
-          resultaty[current][last_chislo].append(chislo)
-          resultaty[current][last_chislo].sort()
+          chislo = int(ch)
+          if last_ch != '-1':
+            last_chislo = int(last_ch)
+            resultaty[current][last_chislo].append(chislo)
+            resultaty[current][last_chislo].sort()
 
-        last_rec = rec
-        rec = '-'
-        maxi = 1
-        max_chislo = resultaty[current][chislo][0]
-        variable = resultaty[current][chislo][0]
-        kolvo = 1
-        i = 0
-        print(current)
-        print(chislo)
-        print(len((resultaty[current])[chislo]))
-        if len(resultaty[current][chislo]) >= 10:
-          while i < len(resultaty[current][chislo]):
-            if(variable == resultaty[current][chislo][i]):
-              kolvo += 1
-            else:
-              if(kolvo > maxi):
-                maxi = kolvo
-                max_chislo = variable
-              kolvo = 1
-              variable = resultaty[current][chislo][i]
-            i += 1
-          print("Here")
-          if(kolvo > maxi):
-            maxi = kolvo
-            max_chislo = variable
-          if(maxi / len(resultaty[current][chislo]) > 0.6):
-            rec = str(max_chislo)
+          last_rec = rec
+          rec = '-'
+          maxi = 1
+          max_chislo = resultaty[current][chislo][0]
+          variable = resultaty[current][chislo][0]
+          kolvo = 1
+          i = 0
+          print(current)
+          print(chislo)
+          print(len((resultaty[current])[chislo]))
+          if len(resultaty[current][chislo]) >= 10:
+            while i < len(resultaty[current][chislo]):
+              if(variable == resultaty[current][chislo][i]):
+                kolvo += 1
+              else:
+                if(kolvo > maxi):
+                  maxi = kolvo
+                  max_chislo = variable
+                kolvo = 1
+                variable = resultaty[current][chislo][i]
+              i += 1
+            print("Here")
+            if(kolvo > maxi):
+              maxi = kolvo
+              max_chislo = variable
+            if(maxi / len(resultaty[current][chislo]) > 0.6):
+              rec = str(max_chislo)
 
-        print(ch)
-        print(rec)
-        print(last_rec)
-        if da == 1:
-          table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='t')
-          table1.save()
-        elif da == 2:
-          table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='f')
-          table1.save()
-        else:
-          table1 = Table(number=ch, recom=rec,
-                         previous=last_rec, success='n')
-          table1.save()
+          print(ch)
+          print(rec)
+          print(last_rec)
+          if da == 1:
+            table1 = Table(number=ch, recom=rec,
+                           previous=last_rec, success='t')
+            table1.save()
+          elif da == 2:
+            table1 = Table(number=ch, recom=rec,
+                           previous=last_rec, success='f')
+            table1.save()
+          else:
+            table1 = Table(number=ch, recom=rec,
+                           previous=last_rec, success='n')
+            table1.save()
 
-        label: no_value
-        last_ch = ch
+          last_ch = ch
 
       else:
         print('Error')
     elif d3.minute % 2 == 0 and bo != 1:
       bo = 1
-    if(d3.minute % 2 == 1):
+    if(d3.minute % 2 == 1 and first != False):
       first = False
