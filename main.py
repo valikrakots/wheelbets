@@ -80,7 +80,7 @@ def cronjob():
   right = 470
   bottom = 255
   img = img.crop((left, top, right, bottom))
-  newsize = (570, 330)
+  #newsize = (570, 330)
   img = img.resize(newsize)
   img.save('foo.png')
   sleep(1)
@@ -89,7 +89,7 @@ def cronjob():
   encodings = face_recognition.face_encodings(image)
   encoding = encodings[0]
   # encoding = face_recognition.face_encodings(image)[0]
-  results = face_recognition.compare_faces(known_faces, encoding, 0.6)
+  results = face_recognition.compare_faces(known_faces, encoding, 0.8)
   if True in results:
     print("Yes face")
     current = known_names[results.index(True)]
@@ -134,7 +134,7 @@ def cronjob():
       right = 470
       bottom = 255
       img = img.crop((left, top, right, bottom))
-      newsize = (570, 330)
+      #newsize = (570, 330)
       img = img.resize(newsize)
       img.save('foo.png')
       sleep(1)
@@ -144,7 +144,7 @@ def cronjob():
       if len(encodings) != 0:
         encoding = encodings[0]
       # encoding = face_recognition.face_encodings(image)[0]
-        results = face_recognition.compare_faces(known_faces, encoding, 0.7)
+        results = face_recognition.compare_faces(known_faces, encoding, 0.8)
         if True in results:
           print("Yes face")
           if(current != known_names[results.index(True)]):
