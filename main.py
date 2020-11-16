@@ -81,7 +81,7 @@ def cronjob():
   bottom = 255
   img = img.crop((left, top, right, bottom))
   #newsize = (570, 330)
-  img = img.resize(newsize)
+  #img = img.resize(newsize)
   img.save('foo.png')
   sleep(1)
   driver.quit()
@@ -135,7 +135,7 @@ def cronjob():
       bottom = 255
       img = img.crop((left, top, right, bottom))
       #newsize = (570, 330)
-      img = img.resize(newsize)
+      #img = img.resize(newsize)
       img.save('foo.png')
       sleep(1)
       driver.quit()
