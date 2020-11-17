@@ -1,4 +1,4 @@
-import cv2
+#import cv2
 from blog.models import Table
 from blog.models import TableImage
 import time
