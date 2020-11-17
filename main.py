@@ -75,7 +75,7 @@ def cronjob():
   img = Image.open(im_file)
   table1 = TableImage(firsttime=timezone.now(), time=timezone.now(), byl="no")
   table1.save()
-  # im = Image.open(BytesIO(screenshot_img))
+  # im = Image.open(BytesIO(screenshot_img))b
   img = img.convert('RGB')
   left = 280
   top = 135
