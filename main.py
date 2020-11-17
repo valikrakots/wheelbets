@@ -80,8 +80,9 @@ def cronjob():
   right = 470
   bottom = 265
   img = img.crop((left, top, right, bottom))
-  newsize = (380, 260)
-  img = img.resize(newsize)
+  newsize = (370, 260)
+  img = img.resize(newsize, , Image.ANTIALIAS)
+  img.convert("LA")
   img.save('foo.png')
   sleep(1)
   driver.quit()
@@ -134,8 +135,9 @@ def cronjob():
       right = 470
       bottom = 265
       img = img.crop((left, top, right, bottom))
-      newsize = (380, 260)
-      img = img.resize(newsize)
+      newsize = (370, 260)
+      img = img.resize(newsize, Image.ANTIALIAS)
+      img.convert("LA")
       img.save('foo.png')
       sleep(1)
       driver.quit()
