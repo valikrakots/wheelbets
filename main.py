@@ -81,7 +81,7 @@ def cronjob():
   bottom = 265
   img = img.crop((left, top, right, bottom))
   newsize = (370, 260)
-  img = img.resize(newsize, , Image.ANTIALIAS)
+  img = img.resize(newsize,  Image.ANTIALIAS)
   img.convert("LA")
   img.save('foo.png')
   sleep(1)
