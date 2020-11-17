@@ -15,7 +15,9 @@ from time import sleep
 from PIL import Image
 import base64
 import io
+from deepface import DeepFace
 from io import BytesIO
+import matplotlid.pyplot as plt
 
 
 URL = 'https://betgames9.betgames.tv/ext/game_results/get_results_info/testpartner/2019-04-03/0/1/'
@@ -82,7 +84,10 @@ def cronjob():
   img = img.crop((left, top, right, bottom))
   newsize = (370, 260)
   img = img.resize(newsize,  Image.ANTIALIAS)
-  img.convert("LA")
+  img.save('foo.png')
+  img = DeepFace.detectFace('foo.png')
+  plt.imshow(img)
+  os.remove("foo.png")
   img.save('foo.png')
   sleep(1)
   driver.quit()
@@ -137,7 +142,9 @@ def cronjob():
       img = img.crop((left, top, right, bottom))
       newsize = (370, 260)
       img = img.resize(newsize, Image.ANTIALIAS)
-      img.convert("LA")
+      img.save('foo.png')
+      img = DeepFace.detectFace('foo.png')
+      os.remove("foo.png")
       img.save('foo.png')
       sleep(1)
       driver.quit()
