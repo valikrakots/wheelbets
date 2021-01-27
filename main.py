@@ -36,7 +36,7 @@ def cronjob():
   current = 0
   peremennaya = 0
   face_cascade = cv2.CascadeClassifier(
-      './blog/static/blog/haarcascades/haarcascade_frontalface_default.xml')
+      'haarcascade_frontalface_default.xml')
   # face_count = 1
   resultaty = []
   known_faces = []
