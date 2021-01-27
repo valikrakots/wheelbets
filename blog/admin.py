@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Table
 from .models import TableImage
-from .models import Image
+from .models import Imager
 
 
 admin.site.register(Table)
