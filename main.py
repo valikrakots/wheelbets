@@ -1,4 +1,4 @@
-#import cv2
+# import cv2
 from blog.models import Table
 from blog.models import TableImage
 import time
@@ -36,7 +36,7 @@ def cronjob():
   peremennaya = 0
   face_cascade = cv2.CascadeClassifier(
       './static/blog/haarcascades/haarcascade_frontalface_default.xml')
-  #face_count = 1
+  # face_count = 1
   resultaty = []
   known_faces = []
   known_names = []
@@ -67,9 +67,10 @@ def cronjob():
   # element = driver.find_elements_by_css_selector(
   #    "div[data-qa='button-game-menu-7']")
   # element[0].click()
-  element = driver.find_elements_by_css_selector(
-      "div[class*=tabs-bar-item]")
-  element[6].click()
+  # element = driver.find_elements_by_css_selector(
+  #    "div.tabs-bar-item align-center > button[type=button")
+  element = driver.find_elements_by_class_name('tabs-bar-item align-center')
+  element[5].click()
   sleep(5)
   screenshot_img = driver.get_screenshot_as_png()
   encoded = base64.b64encode(screenshot_img)
@@ -119,18 +120,21 @@ def cronjob():
       sleep(1)
       # element = driver.find_elements_by_css_selector(
       #    "div[data-qa='button-game-menu-7']")
-      element = driver.find_elements_by_css_selector(
-          "div[class*=tabs-bar-item]")
-      element[6].click()
+      # element = driver.find_elements_by_css_selector(
+      #    "div[class*=tabs-bar-item]")
+      # element[6].click()
+      element = driver.find_elements_by_class_name(
+          'tabs-bar-item align-center')
+      element[5].click()
       sleep(5)
       screenshot_img = driver.get_screenshot_as_png()
       encoded = base64.b64encode(screenshot_img)
       im_bytes = base64.b64decode(encoded)
       im_file = BytesIO(im_bytes)
       img = Image.open(im_file)
-      #face_count += 1
-      #face_filename = '%s%d.png' % ('foo', face_count)
-      #img.save('%s%d.png', '')
+      # face_count += 1
+      # face_filename = '%s%d.png' % ('foo', face_count)
+      # img.save('%s%d.png', '')
       sleep(1)
       driver.quit()
       img1 = cv2.read(img)
