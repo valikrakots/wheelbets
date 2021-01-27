@@ -70,7 +70,8 @@ def cronjob():
   # element = driver.find_elements_by_css_selector(
   #    "div.tabs-bar-item align-center > button[type=button")
   element = driver.find_elements_by_css_selector('.tabs-bar-item.align-center')
-  element[0].click()
+  driver.execute_script("arguments[0].click();", element[1])
+  # element[0].click()
   sleep(5)
   screenshot_img = driver.get_screenshot_as_png()
   encoded = base64.b64encode(screenshot_img)
