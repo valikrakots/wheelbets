@@ -14,6 +14,7 @@ from time import sleep
 from PIL import Image
 import base64
 import io
+import cv2
 
 
 URL = 'https://betgames9.betgames.tv/ext/game_results/get_results_info/testpartner/2019-04-03/0/1/'
