@@ -83,7 +83,7 @@ def cronjob():
   table1.save()
   img.save('foo.png')
   img = Image.open('foo.png')
-  rgb_img = im.convert('RGB')
+  rgb_img = img.convert('RGB')
   rgb_img.save('poo.jpg')
   sleep(1)
   driver.quit()
