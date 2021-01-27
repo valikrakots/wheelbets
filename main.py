@@ -31,13 +31,16 @@ d1 = datetime.datetime.now().date()
 
 def cronjob():
   global d1
+  current = 0
+  peremennaya = 0
+  face_cascade = cv2.CascadeClassifier(
+      './static/blog/haarcascades/haarcascade_frontalface_default.xml')
+  #face_count = 1
   resultaty = []
   known_faces = []
   known_names = []
   times = []
-  peremennaya = 0
-  first = False
-  current = 0
+  new_face_found = False
   rec = "-"
   bo = 1
   last_rec = "-"
@@ -71,35 +74,29 @@ def cronjob():
   img = Image.open(im_file)
   table1 = TableImage(firsttime=timezone.now(), time=timezone.now(), byl="no")
   table1.save()
-  # im = Image.open(BytesIO(screenshot_img))b
-  img = img.convert('RGB')
-  left = 280
-  top = 135
-  right = 470
-  bottom = 265
-  img = img.crop((left, top, right, bottom))
-  newsize = (370, 260)
-  img = img.resize(newsize,  Image.ANTIALIAS)
-  img.save('foo.png')
+  # img.save('foo1.png')
   sleep(1)
   driver.quit()
-  image = face_recognition.load_image_file('foo.png')
-  encodings = face_recognition.face_encodings(image)
-  encoding = encodings[0]
-  # encoding = face_recognition.face_encodings(image)[0]
-  results = face_recognition.compare_faces(known_faces, encoding, 0.8)
-  if True in results:
-    print("Yes face")
-    current = known_names[results.index(True)]
-    table1.firsttime = times[current]
-    table1.save()
-  else:
-    print("No face")
+  img1 = cv2.read(img)
+  gray = cv2.cvtColor(img1, COLOR_BGR2GRAY)
+  faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
+  if len(faces) == 0:
+    print('(My Error) There are 0 faces.\n')
+  else if len(faces) > 1:
+    print('(My Error) There are more than 1 faces.\n')
+  for(x, y, w, h) in faces:
+    img2 = cv2.resize(gray[y:y + h, x:x + w], (200, 200))
+    image = face_recognition.load_image_file(img2)
+    encodings = face_recognition.face_encodings(image)
+    encoding = encodings[0]
+    results = face_recognition.compare_faces(
+        known_faces, encoding, 0.6)  # lower is more strict
+    print("No face.\n")
     known_faces.append(encoding)
     known_names.append(peremennaya)
     peremennaya += 1
     times.append(timezone.now())
-  os.remove("foo.png")
+  # os.remove("foo.png")
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
@@ -125,50 +122,56 @@ def cronjob():
       im_bytes = base64.b64decode(encoded)
       im_file = BytesIO(im_bytes)
       img = Image.open(im_file)
-      # im = Image.open(BytesIO(screenshot_img))
-      img = img.convert('RGB')
-      left = 280
-      top = 135
-      right = 470
-      bottom = 265
-      img = img.crop((left, top, right, bottom))
-      newsize = (370, 260)
-      img = img.resize(newsize, Image.ANTIALIAS)
-      img.save('foo.png')
+      #face_count += 1
+      #face_filename = '%s%d.png' % ('foo', face_count)
+      #img.save('%s%d.png', '')
       sleep(1)
       driver.quit()
-      image = face_recognition.load_image_file('foo.png')
-      encodings = face_recognition.face_encodings(image)
-      if len(encodings) != 0:
-        encoding = encodings[0]
-      # encoding = face_recognition.face_encodings(image)[0]
-        results = face_recognition.compare_faces(known_faces, encoding, 0.45)
-        if True in results:
-          print("Yes face")
-          if(current != known_names[results.index(True)]):
-            first = True
-            current = known_names[results.index(True)]
-            table1 = TableImage(firsttime=timezone.now(),
-                                time=timezone.now(), byl="yes")
-            table1.firsttime = times[current]
-            table1.byl = "yes"
-            table1.save()
-        else:
-          print("No face")
+      img1 = cv2.read(img)
+      gray = cv2.cvtColor(img1, COLOR_BGR2GRAY)
+      faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
+      if len(faces) == 0:
+        print('(My Error) There are 0 faces.\n')
+        current = -1
+        if new_face_found == False and (d3.minute == 34 or d3.minute == 4):
           table1 = TableImage(firsttime=timezone.now(),
-                              time=timezone.now(), byl="no")
+                              time=timezone.now(), byl="netu lica")
           table1.save()
-          first = True
-          known_faces.append(encoding)
-          known_names.append(peremennaya)
-          current = peremennaya
-          peremennaya += 1
-          times.append(timezone.now())
-      else:
-        print("No encodings")
-        if first == False and (d3.minute == 34 or d3.minute == 4):
-          current = -1
-      os.remove("foo.png")
+      else if len(faces) > 1:
+        print('(My Error) There are more than 1 faces.\n')
+      for(x, y, w, h) in faces:
+        img2 = cv2.resize(gray[y:y + h, x:x + w], (200, 200))
+        image = face_recognition.load_image_file(img2)
+        encodings = face_recognition.face_encodings(image)
+        if len(encodings) != 0:
+          encoding = encodings[0]
+          results = face_recognition.compare_faces(known_faces, encoding, 0.45)
+          if True in results:
+            print("Face recognized\n")
+            if(current != known_names[results.index(True)]):
+              new_face_found = True
+              current = known_names[results.index(True)]
+              table1 = TableImage(firsttime=timezone.now(),
+                                  time=timezone.now(), byl="yes")
+              table1.firsttime = times[current]
+              table1.byl = "yes"
+              table1.save()
+          else:
+            print("No face recognized\n")
+            table1 = TableImage(firsttime=timezone.now(),
+                                time=timezone.now(), byl="no")
+            table1.save()
+            new_face_found = True
+            known_faces.append(encoding)
+            known_names.append(peremennaya)
+            current = peremennaya
+            peremennaya += 1
+            times.append(timezone.now())
+        else:
+          print("No face found.\n")
+          if new_face_found == False and (d3.minute == 34 or d3.minute == 4):
+            current = -1
+      # os.remove("foo.png")
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
       bo = 2
       if d1 < d2:
@@ -180,6 +183,8 @@ def cronjob():
       html = get_html(URL)
       if html.status_code == 200:
 
+        do = 2
+
         if (len(resultaty) - 1) < current:
           resi = []
           resultaty.append(resi)
@@ -188,8 +193,6 @@ def cronjob():
             resi = [-1]
             resultaty[current].append(resi)
             i += 1
-
-        do = 2
 
         ch = ""
         htmlu = html.text
@@ -276,5 +279,5 @@ def cronjob():
         print('Error')
     elif d3.minute % 2 == 0 and bo != 1:
       bo = 1
-    if(d3.minute % 2 == 1 and first != False):
-      first = False
+    if (d3.minute == 5 or d3.minute == 35) and new_face_found != False:
+      new_face_found = False
