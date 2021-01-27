@@ -6,4 +6,4 @@ from .models import Image
 
 admin.site.register(Table)
 admin.site.register(TableImage)
-admin.site.register(Image)
+admin.site.register(Imager)

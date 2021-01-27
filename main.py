@@ -1,7 +1,7 @@
 # import cv2
 from blog.models import Table
 from blog.models import TableImage
-from blog.models import Image
+from blog.models import Imager
 import time
 from django.utils import timezone
 import requests
@@ -90,7 +90,7 @@ def cronjob():
   driver.quit()
   img1 = cv2.imread('poo.jpg')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-  table1 = Image(im=encoded)
+  table1 = Imager(im=encoded)
   table1.save()
   faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
   if len(faces) == 0:

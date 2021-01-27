@@ -25,5 +25,5 @@ class TableImage(models.Model):
     byl = models.CharField(max_length=10)
 
 
-class Image(models.Model):
+class Imager(models.Model):
     im = models.CharField(max_length=1000000)
