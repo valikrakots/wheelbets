@@ -76,7 +76,6 @@ def cronjob():
   sleep(5)
   screenshot_img = driver.get_screenshot_as_png()
   encoded = base64.b64encode(screenshot_img)
-  print(encoded)
   im_bytes = base64.b64decode(encoded)
   im_file = BytesIO(im_bytes)
   img = Image.open(im_file)
@@ -90,6 +89,7 @@ def cronjob():
   driver.quit()
   img1 = cv2.imread('poo.jpg')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+  cv2.imshow(gray)
   faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
