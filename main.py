@@ -86,7 +86,7 @@ def cronjob():
   driver.quit()
   img1 = cv2.imread('foo.png')
   os.remove("foo.png")
-  gray = cv2.cvtColor(img1, COLOR_BGR2GRAY)
+  gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
@@ -143,7 +143,7 @@ def cronjob():
       driver.quit()
       img1 = cv2.imread('foo.png')
       os.remove("foo.png")
-      gray = cv2.cvtColor(img1, COLOR_BGR2GRAY)
+      gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
       faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
       if len(faces) == 0:
         print('(My Error) There are 0 faces.\n')
