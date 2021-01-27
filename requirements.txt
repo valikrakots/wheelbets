@@ -44,6 +44,7 @@ six==1.15.0
 soupsieve==2.0.1
 sqlparse==0.3.1
 stua==0.2
+timg==1.1.5
 tzlocal==2.1
 urllib3==1.25.9
 virtualenv==20.0.21
