@@ -15,6 +15,7 @@ from PIL import Image
 import base64
 import io
 import cv2
+from io import BytesIO
 
 
 URL = 'https://betgames9.betgames.tv/ext/game_results/get_results_info/testpartner/2019-04-03/0/1/'
@@ -70,7 +71,7 @@ def cronjob():
   # element = driver.find_elements_by_css_selector(
   #    "div.tabs-bar-item align-center > button[type=button")
   element = driver.find_elements_by_css_selector('.tabs-bar-item.align-center')
-  driver.execute_script("arguments[0].click();", element[1])
+  driver.execute_script("arguments[0].click();", element[5])
   # element[0].click()
   sleep(5)
   screenshot_img = driver.get_screenshot_as_png()
@@ -126,7 +127,7 @@ def cronjob():
       # element[6].click()
       element = driver.find_elements_by_css_selector(
           '.tabs-bar-item.align-center')
-      element[5].click()
+      driver.execute_script("arguments[0].click();", element[5])
       sleep(5)
       screenshot_img = driver.get_screenshot_as_png()
       encoded = base64.b64encode(screenshot_img)
