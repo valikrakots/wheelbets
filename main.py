@@ -82,7 +82,7 @@ def cronjob():
   faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
-  else if len(faces) > 1:
+  elif len(faces) > 1:
     print('(My Error) There are more than 1 faces.\n')
   for(x, y, w, h) in faces:
     img2 = cv2.resize(gray[y:y + h, x:x + w], (200, 200))
@@ -137,7 +137,7 @@ def cronjob():
           table1 = TableImage(firsttime=timezone.now(),
                               time=timezone.now(), byl="netu lica")
           table1.save()
-      else if len(faces) > 1:
+      elif len(faces) > 1:
         print('(My Error) There are more than 1 faces.\n')
       for(x, y, w, h) in faces:
         img2 = cv2.resize(gray[y:y + h, x:x + w], (200, 200))
