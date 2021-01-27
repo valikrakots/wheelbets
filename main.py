@@ -89,7 +89,7 @@ def cronjob():
   driver.quit()
   img1 = cv2.imread('poo.jpg')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-  cv2.imshow(gray)
+  cv2.imshow('gg',gray)
   faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
