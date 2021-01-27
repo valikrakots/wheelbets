@@ -69,7 +69,7 @@ def cronjob():
   # element[0].click()
   # element = driver.find_elements_by_css_selector(
   #    "div.tabs-bar-item align-center > button[type=button")
-  element = driver.find_elements_by_class_name('tabs-bar-item.align-center')
+  element = driver.find_elements_by_css_selector('.tabs-bar-item.align-center')
   element[0].click()
   sleep(5)
   screenshot_img = driver.get_screenshot_as_png()
@@ -123,8 +123,8 @@ def cronjob():
       # element = driver.find_elements_by_css_selector(
       #    "div[class*=tabs-bar-item]")
       # element[6].click()
-      element = driver.find_elements_by_class_name(
-          'tabs-bar-item.align-center')
+      element = driver.find_elements_by_css_selector(
+          '.tabs-bar-item.align-center')
       element[5].click()
       sleep(5)
       screenshot_img = driver.get_screenshot_as_png()
