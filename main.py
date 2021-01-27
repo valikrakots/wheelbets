@@ -63,7 +63,7 @@ def cronjob():
   driver.get('https://demo.betgames.tv')
   sleep(1)
   driver.switch_to_frame("betgames_iframe_1")
-  sleep(1)
+  sleep(6)
   # element = driver.find_elements_by_css_selector(
   #    "div[data-qa='button-game-menu-7']")
   # element[0].click()
@@ -117,7 +117,7 @@ def cronjob():
       driver.get('https://demo.betgames.tv')
       sleep(1)
       driver.switch_to_frame("betgames_iframe_1")
-      sleep(1)
+      sleep(6)
       # element = driver.find_elements_by_css_selector(
       #    "div[data-qa='button-game-menu-7']")
       # element = driver.find_elements_by_css_selector(
