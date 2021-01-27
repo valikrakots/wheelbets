@@ -81,10 +81,10 @@ def cronjob():
   img = Image.open(im_file)
   table1 = TableImage(firsttime=timezone.now(), time=timezone.now(), byl="no")
   table1.save()
-  img.save('foo.png')
+  img.save('foo.jpg')
   sleep(1)
   driver.quit()
-  img1 = cv2.imread('foo.png')
+  img1 = cv2.imread('foo.jpg')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
   if len(faces) == 0:
