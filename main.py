@@ -91,7 +91,7 @@ def cronjob():
   img1 = cv2.imread('poo.jpg')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   obj = timg.Renderer()  # here
-  obj.load_image_from_file("test.png")
+  obj.load_image_from_file("foo.png")
   obj.resize(100, 40)
   obj.render(timg.ASCIIMethod)
   faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
