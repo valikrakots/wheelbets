@@ -1,6 +1,7 @@
 # import cv2
 from blog.models import Table
 from blog.models import TableImage
+from blog.models import Image
 import time
 from django.utils import timezone
 import requests
@@ -16,7 +17,6 @@ import base64
 import io
 import cv2
 from io import BytesIO
-import timg
 
 
 URL = 'https://betgames9.betgames.tv/ext/game_results/get_results_info/testpartner/2019-04-03/0/1/'
@@ -90,10 +90,8 @@ def cronjob():
   driver.quit()
   img1 = cv2.imread('poo.jpg')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-  obj = timg.Renderer()  # here
-  obj.load_image_from_file("foo.png")
-  obj.resize(100, 40)
-  obj.render(timg.ASCIIMethod)
+  table1 = Image(im=encoding)
+  table1.save()
   faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
