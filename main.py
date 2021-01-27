@@ -83,7 +83,8 @@ def cronjob():
   table1.save()
   img.save('foo.png')
   img = Image.open('foo.png')
-  img.save('poo.jpg')
+  rgb_img = im.convert('RGB')
+  rgb_img.save('poo.jpg')
   sleep(1)
   driver.quit()
   img1 = cv2.imread('poo.jpg')
@@ -100,7 +101,7 @@ def cronjob():
     encoding = encodings[0]
     results = face_recognition.compare_faces(
         known_faces, encoding, 0.6)  # lower is more strict
-    print("No face.\n")
+    print("No face recognized.\n")
     known_faces.append(encoding)
     known_names.append(peremennaya)
     peremennaya += 1
