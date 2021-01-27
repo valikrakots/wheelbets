@@ -84,7 +84,7 @@ def cronjob():
   # img.save('foo1.png')
   sleep(1)
   driver.quit()
-  img1 = cv2.read(img)
+  img1 = cv2.imread(img)
   gray = cv2.cvtColor(img1, COLOR_BGR2GRAY)
   faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
   if len(faces) == 0:
@@ -139,7 +139,7 @@ def cronjob():
       # img.save('%s%d.png', '')
       sleep(1)
       driver.quit()
-      img1 = cv2.read(img)
+      img1 = cv2.imread(img)
       gray = cv2.cvtColor(img1, COLOR_BGR2GRAY)
       faces = face_cascade.detectMultiScale(gray, 1.08, 5, minSize=(120, 120))
       if len(faces) == 0:
