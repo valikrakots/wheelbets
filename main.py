@@ -76,6 +76,7 @@ def cronjob():
   sleep(5)
   screenshot_img = driver.get_screenshot_as_png()
   encoded = base64.b64encode(screenshot_img)
+  print(encoded)
   im_bytes = base64.b64decode(encoded)
   im_file = BytesIO(im_bytes)
   img = Image.open(im_file)
