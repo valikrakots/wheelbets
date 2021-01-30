@@ -104,7 +104,9 @@ def cronjob():
     print(len(faces))
     print('\n')
   for(x, y, w, h) in faces:
-    img2 = imgjpg[y:y + h, x:x + w]
+    area = (x, y, x + w, y + h)
+    img2 = imgjpg.crop(area)
+    #img2 = imgjpg[y:y + h, x:x + w]
     image = face_recognition.load_image_file(img2)
     encodings = face_recognition.face_encodings(image)
     if len(encoding) == 0:
@@ -175,7 +177,9 @@ def cronjob():
       elif len(faces) > 1:
         print('(My Error) There are more than 1 faces.\n')
       for(x, y, w, h) in faces:
-        img2 = imgjpg[y:y + h, x:x + w]
+        #img2 = imgjpg[y:y + h, x:x + w]
+        area = (x, y, x + w, y + h)
+        img2 = imgjpg.crop(area)
         image = face_recognition.load_image_file(img2)
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
@@ -206,8 +210,8 @@ def cronjob():
           print("No face found.\n")
           if new_face_found == False and (d3.minute == 34 or d3.minute == 4):
             current = -1
-        os.remove("foo.png")
-        os.remove("poo.jpg")
+      os.remove("foo.png")
+      os.remove("poo.jpg")
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
       bo = 2
       if d1 < d2:
