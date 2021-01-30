@@ -107,7 +107,8 @@ def cronjob():
     area = (x, y, x + w, y + h)
     img2 = imgjpg.crop(area)
     img2.save("poo2.jpg")
-    encoded = base64.b64encode(img2)
+    with open("poo2.jpg", "rb") as img_file:
+      encoded = base64.b64encode(img_file.read())
     table1 = Imager(im=encoded)
     table1.save()
     #img2 = imgjpg[y:y + h, x:x + w]
@@ -186,7 +187,8 @@ def cronjob():
         area = (x, y, x + w, y + h)
         img2 = imgjpg.crop(area)
         img2.save("poo2.jpg")
-        encoded = base64.b64encode(img2)
+        with open("poo2.jpg", "rb") as img_file:
+          encoded = base64.b64encode(img_file.read())
         table1 = Imager(im=encoded)
         table1.save()
         image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
