@@ -110,7 +110,7 @@ def cronjob():
     #img2 = imgjpg[y:y + h, x:x + w]
     image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
     encodings = face_recognition.face_encodings(image)
-    if len(encoding) == 0:
+    if len(encodings) == 0:
       print("No face found.")
       continue
     encoding = encodings[0]
