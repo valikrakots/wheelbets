@@ -106,8 +106,9 @@ def cronjob():
   for(x, y, w, h) in faces:
     area = (x, y, x + w, y + h)
     img2 = imgjpg.crop(area)
+    img2.save("poo2.jpg")
     #img2 = imgjpg[y:y + h, x:x + w]
-    image = face_recognition.load_image_file(img2, mode='RGB')
+    image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
     encodings = face_recognition.face_encodings(image)
     if len(encoding) == 0:
       print("No face found.")
@@ -123,6 +124,7 @@ def cronjob():
   # os.remove("foo.png")
   os.remove("foo.png")
   os.remove("poo.jpg")
+  os.remove("poo2.jpg")
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
@@ -180,7 +182,8 @@ def cronjob():
         #img2 = imgjpg[y:y + h, x:x + w]
         area = (x, y, x + w, y + h)
         img2 = imgjpg.crop(area)
-        image = face_recognition.load_image_file(img2, mode='RGB')
+        img2.save("poo2.jpg")
+        image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
           encoding = encodings[0]
@@ -212,6 +215,7 @@ def cronjob():
             current = -1
       os.remove("foo.png")
       os.remove("poo.jpg")
+      os.remove("poo2.jpg")
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
       bo = 2
       if d1 < d2:
