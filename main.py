@@ -163,6 +163,7 @@ def cronjob():
       img1 = cv2.imread('poo.jpg')
       gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
       faces = face_cascade.detectMultiScale(gray, 1.1, 9)
+      imgjpg = Image.open('poo.jpg')
       if len(faces) == 0:
         print('(My Error) There are 0 faces.\n')
         current = -1
@@ -173,7 +174,7 @@ def cronjob():
       elif len(faces) > 1:
         print('(My Error) There are more than 1 faces.\n')
       for(x, y, w, h) in faces:
-        img2 = cv2.resize(img1[y:y + h, x:x + w])
+        img2 = imgjpg[y:y + h, x:x + w]
         image = face_recognition.load_image_file(img2)
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
