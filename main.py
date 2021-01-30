@@ -86,15 +86,15 @@ def cronjob():
   table1.save()
   img.save('foo.png')
   img = Image.open('foo.png')
-  rgb_img = img.convert('RGB')
-  rgb_img.save('poo.jpg')
+  #rgb_img = img.convert('RGB')
+  # rgb_img.save('poo.jpg')
   sleep(1)
   driver.quit()
-  img1 = cv2.imread('poo.jpg')
+  img1 = cv2.imread('foo.png')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   #table1 = Imager(im=encoded)
   # table1.save()
-  faces = face_cascade.detectMultiScale(gray, 1.1, 7)
+  faces = face_cascade.detectMultiScale(gray, 1.1, 9)
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
   elif len(faces) > 1:
@@ -147,16 +147,16 @@ def cronjob():
       img = Image.open(BytesIO(screenshot_img))
       img.save('foo.png')
       img = Image.open('foo.png')
-      rgb_img = img.convert('RGB')
-      rgb_img.save('poo.jpg')
+      #rgb_img = img.convert('RGB')
+      # rgb_img.save('poo.jpg')
       # face_count += 1
       # face_filename = '%s%d.png' % ('foo', face_count)
       # img.save('%s%d.png', '')
       sleep(1)
       driver.quit()
-      img1 = cv2.imread('poo.jpg')
+      img1 = cv2.imread('foo.png')
       gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-      faces = face_cascade.detectMultiScale(gray, 1.1, 7)
+      faces = face_cascade.detectMultiScale(gray, 1.1, 9)
       if len(faces) == 0:
         print('(My Error) There are 0 faces.\n')
         current = -1
@@ -199,7 +199,7 @@ def cronjob():
           if new_face_found == False and (d3.minute == 34 or d3.minute == 4):
             current = -1
         os.remove("foo.png")
-        os.remove("poo.jpg")
+        # os.remove("poo.jpg")
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
       bo = 2
       if d1 < d2:
