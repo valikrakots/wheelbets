@@ -79,6 +79,7 @@ def cronjob():
   encoded = base64.b64encode(screenshot_img)
   im_bytes = base64.b64decode(encoded)
   im_file = BytesIO(im_bytes)
+  im_file.seek(0)
   img = Image.open(im_file)
   table1 = TableImage(firsttime=timezone.now(), time=timezone.now(), byl="no")
   table1.save()
