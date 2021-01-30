@@ -84,13 +84,13 @@ def cronjob():
   img = Image.open(BytesIO(screenshot_img))
   table1 = TableImage(firsttime=timezone.now(), time=timezone.now(), byl="no")
   table1.save()
-  img.save('foo.png')
-  img = Image.open('foo.png')
+  img.save('foo.jpg')
+  img = Image.open('foo.jpg')
   #rgb_img = img.convert('RGB')
   # rgb_img.save('poo.jpg')
   sleep(1)
   driver.quit()
-  img1 = cv2.imread('foo.png')
+  img1 = cv2.imread('foo.jpg')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   #table1 = Imager(im=encoded)
   # table1.save()
@@ -112,8 +112,8 @@ def cronjob():
     peremennaya += 1
     times.append(timezone.now())
   # os.remove("foo.png")
-  os.remove("foo.png")
-  os.remove("poo.jpg")
+  os.remove("foo.jpg")
+  #os.remove("poo.jpg")
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
@@ -145,8 +145,8 @@ def cronjob():
       #im_file = BytesIO(im_bytes)
       #img = Image.open(im_file)
       img = Image.open(BytesIO(screenshot_img))
-      img.save('foo.png')
-      img = Image.open('foo.png')
+      img.save('foo.jpg')
+      img = Image.open('foo.jpg')
       #rgb_img = img.convert('RGB')
       # rgb_img.save('poo.jpg')
       # face_count += 1
@@ -154,7 +154,7 @@ def cronjob():
       # img.save('%s%d.png', '')
       sleep(1)
       driver.quit()
-      img1 = cv2.imread('foo.png')
+      img1 = cv2.imread('foo.jpg')
       gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
       faces = face_cascade.detectMultiScale(gray, 1.1, 9)
       if len(faces) == 0:
@@ -198,7 +198,7 @@ def cronjob():
           print("No face found.\n")
           if new_face_found == False and (d3.minute == 34 or d3.minute == 4):
             current = -1
-        os.remove("foo.png")
+        os.remove("foo.jpg")
         # os.remove("poo.jpg")
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
       bo = 2
