@@ -92,6 +92,7 @@ def cronjob():
   driver.quit()
   img1 = cv2.imread('poo.jpg')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+  imgjpg = Image.open("poo.jpg")
   # table1 = Imager(im=encoded)
   # table1.save()
   faces = face_cascade.detectMultiScale(gray, 1.1, 9)
@@ -103,7 +104,7 @@ def cronjob():
     print(len(faces))
     print('\n')
   for(x, y, w, h) in faces:
-    img2 = cv2.resize(img1[y:y + h, x:x + w])
+    img2 = imgjpg[y:y + h, x:x + w]
     image = face_recognition.load_image_file(img2)
     encodings = face_recognition.face_encodings(image)
     if len(encoding) == 0:
