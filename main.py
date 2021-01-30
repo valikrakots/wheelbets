@@ -107,7 +107,7 @@ def cronjob():
     area = (x, y, x + w, y + h)
     img2 = imgjpg.crop(area)
     #img2 = imgjpg[y:y + h, x:x + w]
-    image = face_recognition.load_image_file(img2)
+    image = face_recognition.load_image_file(img2, mode='RGB')
     encodings = face_recognition.face_encodings(image)
     if len(encoding) == 0:
       print("No face found.")
@@ -180,7 +180,7 @@ def cronjob():
         #img2 = imgjpg[y:y + h, x:x + w]
         area = (x, y, x + w, y + h)
         img2 = imgjpg.crop(area)
-        image = face_recognition.load_image_file(img2)
+        image = face_recognition.load_image_file(img2, mode='RGB')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
           encoding = encodings[0]
