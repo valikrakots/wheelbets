@@ -103,7 +103,7 @@ def cronjob():
     print(len(faces))
     print('\n')
   for(x, y, w, h) in faces:
-    img2 = cv2.resize(img1[y:y + h, x:x + w], (200, 200))
+    img2 = cv2.resize(img1[y:y + h, x:x + w])
     image = face_recognition.load_image_file(img2)
     encodings = face_recognition.face_encodings(image)
     if len(encoding) == 0:
@@ -173,7 +173,7 @@ def cronjob():
       elif len(faces) > 1:
         print('(My Error) There are more than 1 faces.\n')
       for(x, y, w, h) in faces:
-        img2 = cv2.resize(img1[y:y + h, x:x + w], (200, 200))
+        img2 = cv2.resize(img1[y:y + h, x:x + w])
         image = face_recognition.load_image_file(img2)
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
