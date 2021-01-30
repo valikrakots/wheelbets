@@ -92,7 +92,7 @@ def cronjob():
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   table1 = Imager(im=encoded)
   table1.save()
-  faces = face_cascade.detectMultiScale(gray, 1.08, 5)
+  faces = face_cascade.detectMultiScale(gray, 1.1, 7)
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
   elif len(faces) > 1:
