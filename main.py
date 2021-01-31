@@ -95,7 +95,7 @@ def cronjob():
   imgjpg = Image.open("poo.jpg")
   # table1 = Imager(im=encoded)
   # table1.save()
-  faces = face_cascade.detectMultiScale(gray, 1.05, 18)
+  faces = face_cascade.detectMultiScale(gray, 1.02, 20)
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
     table1 = MyErrors(time=timezone.now(), ime="none")
@@ -183,7 +183,7 @@ def cronjob():
       driver.quit()
       img1 = cv2.imread('poo.jpg')
       gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-      faces = face_cascade.detectMultiScale(gray, 1.05, 18)
+      faces = face_cascade.detectMultiScale(gray, 1.02, 20)
       imgjpg = Image.open('poo.jpg')
       if len(faces) == 0:
         print('(My Error) There are 0 faces.\n')
@@ -243,13 +243,19 @@ def cronjob():
             times.append(timezone.now())
         else:
           print("No face found.\n")
-          if new_face_found == False and (d3.minute == 34 or d3.minute == 4):
-            current = -1
+          current = -1
+          if (d3.minute == 34 or d3.minute == 4):
+            table1 = TableImage(firsttime=timezone.now(),
+                                time=timezone.now(), byl="nothing", im=encoded)
+            table1.save()
       os.remove("foo.png")
       os.remove("poo.jpg")
       os.remove("poo2.jpg")
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
+
       bo = 2
+      do = 2
+
       if d1 < d2:
         d1 = datetime.datetime.now().date()
         table1 = Table(number='ch',
@@ -257,17 +263,18 @@ def cronjob():
         table1.save()
 
       html = get_html(URL)
-      if html.status_code == 200:
-
-        do = 2
+      if html.status_code == 200 and current != -1:
 
         if (len(resultaty) - 1) < current:
           resi = []
           resultaty.append(resi)
           i = 0
           while i < 19:
-            resi = [-1]
+            resi = []
             resultaty[current].append(resi)
+            i2 = 0
+            for i2 in range(19):
+              resultaty[current][i].append(0)
             i += 1
 
         ch = ""
@@ -288,7 +295,7 @@ def cronjob():
         elif(htmlu[k + 162] == 'g'):
           ch = htmlu[k + 149] + htmlu[k + 150]
 
-        if((ch == '0' or ch == '1' or ch == '2' or ch == '3' or ch == '4' or ch == '5' or ch == '6' or ch == '7' or ch == '8' or ch == '9' or ch == '10' or ch == '11' or ch == '12' or ch == '13' or ch == '14' or ch == '15' or ch == '16' or ch == '17' or ch == '18') and current != -1):
+        if(ch == '0' or ch == '1' or ch == '2' or ch == '3' or ch == '4' or ch == '5' or ch == '6' or ch == '7' or ch == '8' or ch == '9' or ch == '10' or ch == '11' or ch == '12' or ch == '13' or ch == '14' or ch == '15' or ch == '16' or ch == '17' or ch == '18'):
 
           if rec == ch:
             da = 1
@@ -302,40 +309,39 @@ def cronjob():
           chislo = int(ch)
           if last_ch != '-1':
             last_chislo = int(last_ch)
-            resultaty[current][last_chislo].append(chislo)
-            resultaty[current][last_chislo].sort()
+            resultaty[current][last_chislo - 1][czislo - 1] += 1
 
           last_rec = rec
           rec = '-'
-          maxi = 1
-          max_chislo = resultaty[current][chislo][0]
-          variable = resultaty[current][chislo][0]
-          kolvo = 1
-          i = 0
-          print(current)
-          print(chislo)
-          print(len((resultaty[current])[chislo]))
-          if len(resultaty[current][chislo]) >= 10:
-            while i < len(resultaty[current][chislo]):
-              if(variable == resultaty[current][chislo][i]):
-                kolvo += 1
-              else:
-                if(kolvo > maxi):
-                  maxi = kolvo
-                  max_chislo = variable
-                kolvo = 1
-                variable = resultaty[current][chislo][i]
-              i += 1
-            print("Here")
-            if(kolvo > maxi):
-              maxi = kolvo
-              max_chislo = variable
-            if(maxi / len(resultaty[current][chislo]) > 0.6):
-              rec = str(max_chislo)
 
-          print(ch)
+          i = 0
+          print("Current leader: ")
+          print(current)
+          print('\n')
+          print("Last number: ")
+          print(chislo)
+          print('\n')
+
+          maxi = 0
+          last_maxi = 0
+          maxi_czislo = -1
+
+          while i < len(resultaty[current][chislo]):
+            if(resultaty[current][chislo][i] > maxi):
+              last_maxi = maxi
+              maxi = resultaty[current][chislo][i]
+              maxi_czislo = i
+
+          if(maxi_czislo != -1 and last_maxi != 0 and maxi / last_maxi >= 1.4):
+            rec = str(maxi_czislo)
+
+          print("The recomended one: ")
           print(rec)
-          print(last_rec)
+          print("\n")
+          print("Sootnoszenie:")
+          print(maxi / last_maxi)
+          print('\n')
+
           if da == 1:
             table1 = Table(number=ch, recom=rec,
                            previous=last_rec, success='t')
@@ -353,7 +359,9 @@ def cronjob():
 
       else:
         print('Error')
+
     elif d3.minute % 2 == 0 and bo != 1:
       bo = 1
+
     if (d3.minute == 5 or d3.minute == 35) and new_face_found != False:
       new_face_found = False
