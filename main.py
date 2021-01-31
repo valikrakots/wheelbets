@@ -124,9 +124,8 @@ def cronjob():
       os.remove("poo2.jpg")
 
   for(x, y, w, h) in faces:
-    area = (x - 10, y - 10, x + w + 10, y + h + 10)
+    area = (x - 15, y - 15, x + w + 15, y + h + 15)
     img2 = imgjpg.crop(area)
-    img2.resize((70, 70), Image.ANTIALIAS)
     img2.save("poo2.jpg")
     with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
@@ -234,9 +233,8 @@ def cronjob():
 
       for(x, y, w, h) in faces:
         #img2 = imgjpg[y:y + h, x:x + w]
-        area = (x - 10, y - 10, x + w + 10, y + h + 10)
+        area = (x - 15, y - 15, x + w + 15, y + h + 15)
         img2 = imgjpg.crop(area)
-        img2.resize((70, 70), Image.ANTIALIAS)
         img2.save("poo2.jpg")
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
