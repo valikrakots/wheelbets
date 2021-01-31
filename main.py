@@ -103,8 +103,6 @@ def cronjob():
   # im_file.seek(0)
   # img = Image.open(im_file)
   img = Image.open(BytesIO(screenshot_img))
-  table1 = TableImage(firsttime=timezone.now(), time=timezone.now(), byl="no")
-  table1.save()
   img.save('foo.png')
   img = Image.open('foo.png')
   rgb_img = img.convert('RGB')
