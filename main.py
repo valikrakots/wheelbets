@@ -94,7 +94,7 @@ def cronjob():
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   cv2.imwrite('poo3.jpg', gray)
 
-  imgjpg = Image.open("poo3.jpg")
+  imgjpg = Image.open("poo.jpg")
 
   # imgjpg = Image.open("poo.jpg")    recently
   # table1 = Imager(im=encoded)
@@ -130,7 +130,7 @@ def cronjob():
     with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
     #img2 = imgjpg[y:y + h, x:x + w]
-    image = face_recognition.load_image_file("poo2.jpg", mode='L')
+    image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
     encodings = face_recognition.face_encodings(image)
     if len(encodings) == 0:
       print("No face found.")
@@ -202,7 +202,7 @@ def cronjob():
       faces = face_cascade.detectMultiScale(gray, 1.01, 5, minSize=(21, 21))
 
       cv2.imwrite('poo3.jpg', gray)
-      imgjpg = Image.open("poo3.jpg")
+      imgjpg = Image.open("poo.jpg")
 
       if len(faces) == 0:
         print('(My Error) There are 0 faces.\n')
@@ -238,7 +238,7 @@ def cronjob():
         img2.save("poo2.jpg")
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
-        image = face_recognition.load_image_file("poo2.jpg", mode='L')
+        image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
           encoding = encodings[0]
