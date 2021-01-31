@@ -17,6 +17,7 @@ import base64
 import io
 import cv2
 from io import BytesIO
+import numpy as np
 
 
 URL = 'https://betgames9.betgames.tv/ext/game_results/get_results_info/testpartner/2019-04-03/0/1/'
