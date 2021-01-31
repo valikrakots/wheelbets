@@ -12,12 +12,11 @@ import face_recognition
 import os
 from selenium import webdriver
 from time import sleep
-from PIL import Image
+from PIL import Image, ImageEnhance
 import base64
 import io
 import cv2
 from io import BytesIO
-import numpy as np
 
 
 URL = 'https://betgames9.betgames.tv/ext/game_results/get_results_info/testpartner/2019-04-03/0/1/'
@@ -127,15 +126,15 @@ def cronjob():
   for(x, y, w, h) in faces:
     area = (x - 15, y - 15, x + w + 15, y + h + 15)
     img2 = imgjpg.crop(area)
-    img2.save("poo2.jpg")
-    img3 = cv2.imread('poo2.jpg')
-    kernel = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
-    img3 = cv2.filter2D(img3, -1, kernel)
-    cv2.imwrite('poo4.jpg', img3)
-    with open("poo4.jpg", "rb") as img_file:
+    img2.save("poo4.jpg")
+    img3 = Image.open("poo4.jpg")
+    enhancer = ImageEnhance.Sharpness(img3)
+    enhanced_im = enhancer.enhance(10.0)
+    enhanced_im.save("poo2.jpg")
+    with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
     #img2 = imgjpg[y:y + h, x:x + w]
-    image = face_recognition.load_image_file("poo4.jpg", mode='RGB')
+    image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
     encodings = face_recognition.face_encodings(image)
     if len(encodings) == 0:
       print("No face found.")
@@ -143,7 +142,6 @@ def cronjob():
                           time=timezone.now(), byl="no face", im=encoded)
       table1.save()
       os.remove("poo2.jpg")
-      os.remove("poo4.jpg")
       continue
     table1 = TableImage(firsttime=timezone.now(),
                         time=timezone.now(), byl="no", im=encoded)
@@ -157,7 +155,6 @@ def cronjob():
     peremennaya += 1
     times.append(timezone.now())
     os.remove("poo2.jpg")
-    os.remove("poo4.jpg")
   # os.remove("foo.png")
   os.remove("foo.png")
   os.remove("poo.jpg")
