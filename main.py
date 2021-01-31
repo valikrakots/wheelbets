@@ -37,7 +37,7 @@ def photo_func():
   white = (255, 255, 255)
   threshold = (160, 160, 160)
 
-  img = Image.open("poo3.jpg").convert("LA")
+  img = Image.open("poo2.jpg").convert("LA")
   pixels = img.getdata()
 
   newPixels = []
@@ -123,7 +123,9 @@ def cronjob():
   faces = face_cascade.detectMultiScale(gray, 1.02, 20)
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
-    table1 = MyErrors(time=timezone.now(), ime="none")
+    with open("poo3.jpg", "rb") as img_file:
+      encoded = base64.b64encode(img_file.read())
+    table1 = MyErrors(time=timezone.now(), ime=encoded)
     table1.save()
   elif len(faces) > 1:
     print('(My Error) There are more than 1 faces.\n')
