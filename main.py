@@ -95,7 +95,7 @@ def cronjob():
   imgjpg = Image.open("poo.jpg")
   # table1 = Imager(im=encoded)
   # table1.save()
-  faces = face_cascade.detectMultiScale(gray, 1.08, 15)
+  faces = face_cascade.detectMultiScale(gray, 1.05, 18)
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
     table1 = MyErrors(time=timezone.now(), ime="none")
@@ -183,7 +183,7 @@ def cronjob():
       driver.quit()
       img1 = cv2.imread('poo.jpg')
       gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-      faces = face_cascade.detectMultiScale(gray, 1.08, 15)
+      faces = face_cascade.detectMultiScale(gray, 1.05, 18)
       imgjpg = Image.open('poo.jpg')
       if len(faces) == 0:
         print('(My Error) There are 0 faces.\n')
