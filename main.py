@@ -32,6 +32,27 @@ def get_html(url, params=None):
 d1 = datetime.datetime.now().date()
 
 
+def photo_func():
+  black = (0, 0, 0)
+  white = (255, 255, 255)
+  threshold = (160, 160, 160)
+
+  img = Image.open("poo3.jpg").convert("LA")
+  pixels = img.getdata()
+
+  newPixels = []
+
+  for pixel in pixels:
+    if pixel < threshold:
+      newPixels.append(black)
+    else:
+      newPixels.append(white)
+
+  newImg = Image.new("RGB", img.size)
+  newImg.putdata(newPixels)
+  newImg.save("poo4.jpg")
+
+
 def cronjob():
   global d1
   current = 0
@@ -92,7 +113,11 @@ def cronjob():
   driver.quit()
   img1 = cv2.imread('poo.jpg')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-  imgjpg = Image.open("poo.jpg")
+
+  cv2.imwrite('poo3.jpg', gray)
+  imgjpg = Image.open("poo3.jpg")
+
+  # imgjpg = Image.open("poo.jpg")    recently
   # table1 = Imager(im=encoded)
   # table1.save()
   faces = face_cascade.detectMultiScale(gray, 1.02, 20)
@@ -108,23 +133,29 @@ def cronjob():
     for(x, y, w, h) in faces:
       area = (x, y, x + w, y + h)
       img2 = imgjpg.crop(area)
-      img2.save("poo3.jpg")
-      with open("poo3.jpg", "rb") as img_file:
+      img2.save("poo2.jpg")
+      photo_func()
+      with open("poo4.jpg", "rb") as img_file:
         encoded = base64.b64encode(img_file.read())
       table1 = MyErrors(time=timezone.now(), ime=encoded)
       table1.save()
-      os.remove("poo3.jpg")
+      os.remove("poo2.jpg")
+      os.remove("poo4.jpg")
+
   for(x, y, w, h) in faces:
     area = (x, y, x + w, y + h)
     img2 = imgjpg.crop(area)
     img2.save("poo2.jpg")
-    with open("poo2.jpg", "rb") as img_file:
+    photo_func()
+    with open("poo4.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
     #img2 = imgjpg[y:y + h, x:x + w]
-    image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
+    image = face_recognition.load_image_file("poo4.jpg", mode='RGB')
     encodings = face_recognition.face_encodings(image)
     if len(encodings) == 0:
       print("No face found.")
+      os.remove("poo2.jpg")
+      os.remove("poo4.jpg")
       continue
     table1 = TableImage(firsttime=timezone.now(),
                         time=timezone.now(), byl="no", im=encoded)
@@ -137,10 +168,12 @@ def cronjob():
     known_names.append(peremennaya)
     peremennaya += 1
     times.append(timezone.now())
+    os.remove("poo2.jpg")
+    os.remove("poo4.jpg")
   # os.remove("foo.png")
   os.remove("foo.png")
   os.remove("poo.jpg")
-  os.remove("poo2.jpg")
+  os.remove("poo3.jpg")
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
@@ -184,16 +217,22 @@ def cronjob():
       img1 = cv2.imread('poo.jpg')
       gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
       faces = face_cascade.detectMultiScale(gray, 1.02, 20)
-      imgjpg = Image.open('poo.jpg')
+
+      cv2.imwrite('poo3.jpg', gray)
+      imgjpg = Image.open("poo3.jpg")
+
       if len(faces) == 0:
         print('(My Error) There are 0 faces.\n')
+        with open("poo3.jpg", "rb") as img_file:
+          encoded = base64.b64encode(img_file.read())
         current = -1
         if (d3.minute == 34 or d3.minute == 4):
           table1 = TableImage(firsttime=timezone.now(),
-                              time=timezone.now(), byl="netu lica", im="nie naszlo lic")
+                              time=timezone.now(), byl="netu lica", im=encoded)
           table1.save()
-        table1 = MyErrors(time=timezone.now(), ime="none")
+        table1 = MyErrors(time=timezone.now(), ime=encoded)
         table1.save()
+
       elif len(faces) > 1:
         print('(My Error) There are more than 1 faces.\n')
         print("The number of faces is: ")
@@ -202,20 +241,24 @@ def cronjob():
         for(x, y, w, h) in faces:
           area = (x, y, x + w, y + h)
           img2 = imgjpg.crop(area)
-          img2.save("poo3.jpg")
-          with open("poo3.jpg", "rb") as img_file:
+          img2.save("poo2.jpg")
+          photo_func()
+          with open("poo4.jpg", "rb") as img_file:
             encoded = base64.b64encode(img_file.read())
           table1 = MyErrors(time=timezone.now(), ime=encoded)
           table1.save()
-          os.remove("poo3.jpg")
+          os.remove("poo4.jpg")
+          os.remove("poo2.jpg")
+
       for(x, y, w, h) in faces:
         #img2 = imgjpg[y:y + h, x:x + w]
         area = (x, y, x + w, y + h)
         img2 = imgjpg.crop(area)
         img2.save("poo2.jpg")
-        with open("poo2.jpg", "rb") as img_file:
+        photo_func()
+        with open("poo4.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
-        image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
+        image = face_recognition.load_image_file("poo4.jpg", mode='RGB')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
           encoding = encodings[0]
@@ -248,9 +291,11 @@ def cronjob():
             table1 = TableImage(firsttime=timezone.now(),
                                 time=timezone.now(), byl="nothing", im=encoded)
             table1.save()
+        os.remove("poo2.jpg")
+        os.remove("poo4.jpg")
       os.remove("foo.png")
       os.remove("poo.jpg")
-      os.remove("poo2.jpg")
+      os.remove("poo3.jpg")
     elif(d3.minute % 2 == 1 and d3.second == 25 and bo == 1):
 
       bo = 2
