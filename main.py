@@ -127,18 +127,22 @@ def cronjob():
     area = (x - 15, y - 15, x + w + 15, y + h + 15)
     img2 = imgjpg.crop(area)
     img2.save("poo2.jpg")
-    with open("poo2.jpg", "rb") as img_file:
+    img3 = cv2.imread('poo2.jpg')
+    kernel = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
+    img3 = cv2.filter2D(img3, -1, kernel)
+    cv2.imwrite('poo4.jpg', img3)
+    with open("poo4.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
     #img2 = imgjpg[y:y + h, x:x + w]
-    image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
-    boxes = face_recognition.face_locations(image, model="cnn")
-    encodings = face_recognition.face_encodings(image, boxes)
+    image = face_recognition.load_image_file("poo4.jpg", mode='RGB')
+    encodings = face_recognition.face_encodings(image)
     if len(encodings) == 0:
       print("No face found.")
       table1 = TableImage(firsttime=timezone.now(),
                           time=timezone.now(), byl="no face", im=encoded)
       table1.save()
       os.remove("poo2.jpg")
+      os.remove("poo4.jpg")
       continue
     table1 = TableImage(firsttime=timezone.now(),
                         time=timezone.now(), byl="no", im=encoded)
@@ -152,6 +156,7 @@ def cronjob():
     peremennaya += 1
     times.append(timezone.now())
     os.remove("poo2.jpg")
+    os.remove("poo4.jpg")
   # os.remove("foo.png")
   os.remove("foo.png")
   os.remove("poo.jpg")
@@ -240,8 +245,7 @@ def cronjob():
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
         image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
-        boxes = face_recognition.face_locations(image, model="cnn")
-        encodings = face_recognition.face_encodings(image, boxes)
+        encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
           encoding = encodings[0]
           results = face_recognition.compare_faces(known_faces, encoding, 0.45)
