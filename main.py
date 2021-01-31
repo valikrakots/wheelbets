@@ -126,7 +126,7 @@ def cronjob():
   for(x, y, w, h) in faces:
     area = (x - 15, y - 15, x + w + 15, y + h + 15)
     img2 = imgjpg.crop(area)
-    img 2 = img2.resize((125, 125))
+    img2 = img2.resize((125, 125))
     img2.save("poo4.jpg")
     img3 = Image.open("poo4.jpg")
     enhancer = ImageEnhance.Sharpness(img3)
