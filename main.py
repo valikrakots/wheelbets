@@ -156,6 +156,9 @@ def cronjob():
       print("No face found.")
       os.remove("poo2.jpg")
       os.remove("poo4.jpg")
+      table1 = TableImage(firsttime=timezone.now(),
+                time=timezone.now(), byl="no face", im=encoded)
+      table1.save()
       continue
     table1 = TableImage(firsttime=timezone.now(),
                         time=timezone.now(), byl="no", im=encoded)
