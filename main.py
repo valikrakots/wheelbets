@@ -90,7 +90,7 @@ def cronjob():
   driver.quit()
   img1 = cv2.imread('poo.jpg')
   gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-  cv2.imshow('poo3.jpg', gray)
+  cv2.imwrite('poo3.jpg', gray)
 
   imgjpg = Image.open("poo3.jpg")
 
