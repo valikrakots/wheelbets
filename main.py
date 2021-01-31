@@ -129,7 +129,7 @@ def cronjob():
     img2.save("poo4.jpg")
     img3 = Image.open("poo4.jpg")
     enhancer = ImageEnhance.Sharpness(img3)
-    enhanced_im = enhancer.enhance(10.0)
+    enhanced_im = enhancer.enhance(3.0)
     enhanced_im.save("poo2.jpg")
     with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
