@@ -95,7 +95,7 @@ def cronjob():
   imgjpg = Image.open("poo.jpg")
   # table1 = Imager(im=encoded)
   # table1.save()
-  faces = face_cascade.detectMultiScale(gray, 1.1, 11)
+  faces = face_cascade.detectMultiScale(gray, 1.1, 12)
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
     table1 = MyErrors(time=timezone.now(), ime="none")
@@ -120,15 +120,15 @@ def cronjob():
     img2.save("poo2.jpg")
     with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
-    table1 = TableImage(firsttime=timezone.now(),
-                        time=timezone.now(), byl="no", im=encoded)
-    table1.save()
     #img2 = imgjpg[y:y + h, x:x + w]
     image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
     encodings = face_recognition.face_encodings(image)
     if len(encodings) == 0:
       print("No face found.")
       continue
+    table1 = TableImage(firsttime=timezone.now(),
+                        time=timezone.now(), byl="no", im=encoded)
+    table1.save()
     encoding = encodings[0]
     results = face_recognition.compare_faces(
         known_faces, encoding, 0.6)  # lower is more strict
@@ -183,7 +183,7 @@ def cronjob():
       driver.quit()
       img1 = cv2.imread('poo.jpg')
       gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-      faces = face_cascade.detectMultiScale(gray, 1.1, 11)
+      faces = face_cascade.detectMultiScale(gray, 1.1, 12)
       imgjpg = Image.open('poo.jpg')
       if len(faces) == 0:
         print('(My Error) There are 0 faces.\n')
