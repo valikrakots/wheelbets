@@ -33,7 +33,7 @@ d1 = datetime.datetime.now().date()
 
 
 def photo_func():
-  black = (0, 0, 0)
+  black = (88, 88, 88)
   white = (255, 255, 255)
   threshold = (160, 160, 160)
 
@@ -118,7 +118,7 @@ def cronjob():
   # imgjpg = Image.open("poo.jpg")    recently
   # table1 = Imager(im=encoded)
   # table1.save()
-  faces = face_cascade.detectMultiScale(gray, 1.02, 20)
+  faces = face_cascade.detectMultiScale(gray, 1.02, 30)
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
     with open("poo3.jpg", "rb") as img_file:
@@ -216,7 +216,7 @@ def cronjob():
       driver.quit()
       img1 = cv2.imread('poo.jpg')
       gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-      faces = face_cascade.detectMultiScale(gray, 1.02, 20)
+      faces = face_cascade.detectMultiScale(gray, 1.02, 30)
 
       cv2.imwrite('poo3.jpg', gray)
       imgjpg = Image.open("poo3.jpg")
