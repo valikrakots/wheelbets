@@ -23,7 +23,9 @@ class TableImage(models.Model):
     time = models.DateTimeField(default=timezone.now())
     firsttime = models.DateTimeField(default=timezone.now())
     byl = models.CharField(max_length=10)
-
-
-class Imager(models.Model):
     im = models.CharField(max_length=1000000)
+
+
+class MyErrors(models.Model):
+    time = models.DateTimeField(default=timezone.now())
+    ime = models.CharField(max_length=1000000)

@@ -1,7 +1,7 @@
 # import cv2
 from blog.models import Table
 from blog.models import TableImage
-from blog.models import Imager
+from blog.models import MyErrors
 import time
 from django.utils import timezone
 import requests
@@ -98,18 +98,30 @@ def cronjob():
   faces = face_cascade.detectMultiScale(gray, 1.1, 9)
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
+    table1 = MyErrors(time=timezone.now(), ime="none")
+    table1.save()
   elif len(faces) > 1:
     print('(My Error) There are more than 1 faces.\n')
     print("The number of faces is: ")
     print(len(faces))
     print('\n')
+    for(x, y, w, h) in faces:
+      area = (x, y, x + w, y + h)
+      img2 = imgjpg.crop(area)
+      img2.save("poo3.jpg")
+      with open("poo3.jpg", "rb") as img_file:
+        encoded = base64.b64encode(img_file.read())
+      table1 = MyErrors(time=timezone.now(), ime=encoded)
+      table1.save()
+      os.remove("poo3.jpg")
   for(x, y, w, h) in faces:
     area = (x, y, x + w, y + h)
     img2 = imgjpg.crop(area)
     img2.save("poo2.jpg")
     with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
-    table1 = Imager(im=encoded)
+    table1 = TableImage(firsttime=timezone.now(),
+                        time=timezone.now(), byl="no", im=encoded)
     table1.save()
     #img2 = imgjpg[y:y + h, x:x + w]
     image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
@@ -132,7 +144,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 26 or d3.minute == 56 or d3.minute == 28 or d3.minute == 58 or d3.minute == 0 or d3.minute == 30 or d3.minute == 2 or d3.minute == 32 or d3.minute == 4 or d3.minute == 34) and do == 2 and d3.second == 20:
+    if (d3.minute == 26 or d3.minute == 56 or d3.minute == 28 or d3.minute == 58 or d3.minute == 0 or d3.minute == 30 or d3.minute == 2 or d3.minute == 32 or d3.minute == 4 or d3.minute == 34) and do == 2 and d3.second == 20 and new_face_found == False:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -176,12 +188,26 @@ def cronjob():
       if len(faces) == 0:
         print('(My Error) There are 0 faces.\n')
         current = -1
-        if new_face_found == False and (d3.minute == 34 or d3.minute == 4):
+        if (d3.minute == 34 or d3.minute == 4):
           table1 = TableImage(firsttime=timezone.now(),
-                              time=timezone.now(), byl="netu lica")
+                              time=timezone.now(), byl="netu lica", im="nie naszlo lic")
           table1.save()
+        table1 = MyErrors(time=timezone.now(), ime="none")
+        table1.save()
       elif len(faces) > 1:
         print('(My Error) There are more than 1 faces.\n')
+        print("The number of faces is: ")
+        print(len(faces))
+        print('\n')
+        for(x, y, w, h) in faces:
+          area = (x, y, x + w, y + h)
+          img2 = imgjpg.crop(area)
+          img2.save("poo3.jpg")
+          with open("poo3.jpg", "rb") as img_file:
+            encoded = base64.b64encode(img_file.read())
+          table1 = MyErrors(time=timezone.now(), ime=encoded)
+          table1.save()
+          os.remove("poo3.jpg")
       for(x, y, w, h) in faces:
         #img2 = imgjpg[y:y + h, x:x + w]
         area = (x, y, x + w, y + h)
@@ -189,8 +215,6 @@ def cronjob():
         img2.save("poo2.jpg")
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
-        table1 = Imager(im=encoded)
-        table1.save()
         image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
@@ -202,14 +226,14 @@ def cronjob():
               new_face_found = True
               current = known_names[results.index(True)]
               table1 = TableImage(firsttime=timezone.now(),
-                                  time=timezone.now(), byl="yes")
+                                  time=timezone.now(), byl="yes", im=encoded)
               table1.firsttime = times[current]
               table1.byl = "yes"
               table1.save()
           else:
             print("No face recognized\n")
             table1 = TableImage(firsttime=timezone.now(),
-                                time=timezone.now(), byl="no")
+                                time=timezone.now(), byl="no", im=encoded)
             table1.save()
             new_face_found = True
             known_faces.append(encoding)
