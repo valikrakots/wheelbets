@@ -130,7 +130,7 @@ def cronjob():
     with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
     #img2 = imgjpg[y:y + h, x:x + w]
-    image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
+    image = face_recognition.load_image_file("poo2.jpg", mode='L')
     encodings = face_recognition.face_encodings(image)
     if len(encodings) == 0:
       print("No face found.")
@@ -238,7 +238,7 @@ def cronjob():
         img2.save("poo2.jpg")
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
-        image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
+        image = face_recognition.load_image_file("poo2.jpg", mode='L')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
           encoding = encodings[0]
