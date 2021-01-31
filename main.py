@@ -124,7 +124,7 @@ def cronjob():
       os.remove("poo2.jpg")
 
   for(x, y, w, h) in faces:
-    area = (x, y, x + w, y + h)
+    area = (x - 10, y - 10, x + w + 10, y + h + 10)
     img2 = imgjpg.crop(area)
     img2.save("poo2.jpg")
     with open("poo2.jpg", "rb") as img_file:
@@ -233,7 +233,7 @@ def cronjob():
 
       for(x, y, w, h) in faces:
         #img2 = imgjpg[y:y + h, x:x + w]
-        area = (x, y, x + w, y + h)
+        area = (x - 10, y - 10, x + w + 10, y + h + 10)
         img2 = imgjpg.crop(area)
         img2.save("poo2.jpg")
         with open("poo2.jpg", "rb") as img_file:
