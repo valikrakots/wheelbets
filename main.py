@@ -131,7 +131,8 @@ def cronjob():
       encoded = base64.b64encode(img_file.read())
     #img2 = imgjpg[y:y + h, x:x + w]
     image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
-    encodings = face_recognition.face_encodings(image)
+    boxes = face_recognition.face_locations(image, model="cnn")
+    encodings = face_recognition.face_encodings(image, boxes)
     if len(encodings) == 0:
       print("No face found.")
       table1 = TableImage(firsttime=timezone.now(),
@@ -239,7 +240,8 @@ def cronjob():
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
         image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
-        encodings = face_recognition.face_encodings(image)
+        boxes = face_recognition.face_locations(image, model="cnn")
+        encodings = face_recognition.face_encodings(image, boxes)
         if len(encodings) != 0:
           encoding = encodings[0]
           results = face_recognition.compare_faces(known_faces, encoding, 0.45)
