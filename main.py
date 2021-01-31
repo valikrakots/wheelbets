@@ -126,11 +126,11 @@ def cronjob():
   for(x, y, w, h) in faces:
     area = (x - 15, y - 15, x + w + 15, y + h + 15)
     img2 = imgjpg.crop(area)
-    img2.resize((120, 120))
+    img 2 = img2.resize((125, 125))
     img2.save("poo4.jpg")
     img3 = Image.open("poo4.jpg")
     enhancer = ImageEnhance.Sharpness(img3)
-    enhanced_im = enhancer.enhance(4.0)
+    enhanced_im = enhancer.enhance(2.5)
     enhanced_im.save("poo2.jpg")
     with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
@@ -242,11 +242,11 @@ def cronjob():
         #img2 = imgjpg[y:y + h, x:x + w]
         area = (x - 15, y - 15, x + w + 15, y + h + 15)
         img2 = imgjpg.crop(area)
-        img2.resize((120, 120))
+        img2 = img2.resize((125, 125))
         img2.save("poo4.jpg")
         img3 = Image.open("poo4.jpg")
         enhancer = ImageEnhance.Sharpness(img3)
-        enhanced_im = enhancer.enhance(4.0)
+        enhanced_im = enhancer.enhance(2.5)
         enhanced_im.save("poo2.jpg")
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
