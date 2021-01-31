@@ -142,6 +142,7 @@ def cronjob():
                           time=timezone.now(), byl="no face", im=encoded)
       table1.save()
       os.remove("poo2.jpg")
+      os.remove("poo4.jpg")
       continue
     table1 = TableImage(firsttime=timezone.now(),
                         time=timezone.now(), byl="no", im=encoded)
@@ -155,6 +156,7 @@ def cronjob():
     peremennaya += 1
     times.append(timezone.now())
     os.remove("poo2.jpg")
+    os.remove("poo4.jpg")
   # os.remove("foo.png")
   os.remove("foo.png")
   os.remove("poo.jpg")
@@ -239,7 +241,11 @@ def cronjob():
         #img2 = imgjpg[y:y + h, x:x + w]
         area = (x - 15, y - 15, x + w + 15, y + h + 15)
         img2 = imgjpg.crop(area)
-        img2.save("poo2.jpg")
+        img2.save("poo4.jpg")
+        img3 = Image.open("poo4.jpg")
+        enhancer = ImageEnhance.Sharpness(img3)
+        enhanced_im = enhancer.enhance(3.0)
+        enhanced_im.save("poo2.jpg")
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
         image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
@@ -276,6 +282,7 @@ def cronjob():
                                 time=timezone.now(), byl="nothing", im=encoded)
             table1.save()
         os.remove("poo2.jpg")
+        os.remove("poo4.jpg")
       os.remove("foo.png")
       os.remove("poo.jpg")
       os.remove("poo3.jpg")
