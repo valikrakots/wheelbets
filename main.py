@@ -363,11 +363,14 @@ def cronjob():
           last_maxi = 0
           maxi_czislo = -1
 
-          while i < len(resultaty[current][chislo]):
+          while i < 19:
+            print(resultaty[current][chislo][i])
+            print("\n")
             if(resultaty[current][chislo][i] > maxi):
               last_maxi = maxi
               maxi = resultaty[current][chislo][i]
               maxi_czislo = i
+              i += 1
 
           if(maxi_czislo != -1 and last_maxi != 0 and maxi / last_maxi >= 1.4):
             rec = str(maxi_czislo)
