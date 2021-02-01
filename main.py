@@ -254,7 +254,7 @@ def cronjob():
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
           encoding = encodings[0]
-          results = face_recognition.compare_faces(known_faces, encoding, 0.45)
+          results = face_recognition.compare_faces(known_faces, encoding, 0.6)
           if True in results:
             print("Face recognized\n")
             if(current != known_names[results.index(True)]):
@@ -346,7 +346,7 @@ def cronjob():
           chislo = int(ch)
           if last_ch != '-1':
             last_chislo = int(last_ch)
-            resultaty[current][last_chislo][czislo] += 1
+            resultaty[current][last_chislo][chislo] += 1
 
           last_rec = rec
           rec = '-'
@@ -364,8 +364,6 @@ def cronjob():
           i = 0
 
           while i < 19:
-            print(resultaty[current][chislo][i])
-            print("\n")
             if(resultaty[current][chislo][i] > maxi):
               last_maxi = maxi
               maxi = resultaty[current][chislo][i]
