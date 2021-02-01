@@ -311,7 +311,7 @@ def cronjob():
             resultaty[current].append(resi)
             i2 = 0
             for i2 in range(19):
-              resultaty[current][i].append(0)
+              resultaty[current][i2].append(0)
             i += 1
 
         ch = ""
@@ -346,7 +346,7 @@ def cronjob():
           chislo = int(ch)
           if last_ch != '-1':
             last_chislo = int(last_ch)
-            resultaty[current][last_chislo - 1][czislo - 1] += 1
+            resultaty[current][last_chislo][czislo] += 1
 
           last_rec = rec
           rec = '-'
@@ -371,13 +371,13 @@ def cronjob():
 
           if(maxi_czislo != -1 and last_maxi != 0 and maxi / last_maxi >= 1.4):
             rec = str(maxi_czislo)
+            print("Sootnoszenie:")
+            print(maxi / last_maxi)
+            print('\n')
 
           print("The recomended one: ")
           print(rec)
           print("\n")
-          print("Sootnoszenie:")
-          print(maxi / last_maxi)
-          print('\n')
 
           if da == 1:
             table1 = Table(number=ch, recom=rec,
