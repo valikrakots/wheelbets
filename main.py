@@ -297,7 +297,7 @@ def cronjob():
           current = peremennaya - 1
           encoding = encodings[0]
           results = face_recognition.compare_faces(
-              known_faces, encoding, 0.52)   # lower is more strict
+              known_faces, encoding, 0.55)   # lower is more strict
           if True in results:
             print("Face recognized\n")
             if(current != known_names[results.index(True)]):
