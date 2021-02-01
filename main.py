@@ -149,8 +149,6 @@ def cronjob():
                         time=timezone.now(), byl="no", im=encoded)
     table1.save()
     encoding = encodings[0]
-    results = face_recognition.compare_faces(
-        known_faces, encoding, 0.6)  # lower is more strict
     print("No face recognized.\n")
     known_faces.append(encoding)
     known_names.append(peremennaya)
@@ -254,7 +252,8 @@ def cronjob():
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
           encoding = encodings[0]
-          results = face_recognition.compare_faces(known_faces, encoding, 0.6)
+          results = face_recognition.compare_faces(
+              known_faces, encoding, 0.5)   # lower is more strict
           if True in results:
             print("Face recognized\n")
             if(current != known_names[results.index(True)]):
@@ -378,6 +377,10 @@ def cronjob():
 
           print("The recomended one: ")
           print(rec)
+          print("\n")
+
+          print("Peremennaya: ")
+          print(peremennaya)
           print("\n")
 
           if da == 1:
