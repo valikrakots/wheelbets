@@ -204,7 +204,7 @@ def cronjob():
       driver.quit()
       img1 = cv2.imread('poo.jpg')
       gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-      faces = face_cascade.detectMultiScale(gray, 1.05, 10, minSize=(21, 21))
+      faces = face_cascade.detectMultiScale(gray, 1.05, 9, minSize=(21, 21))
 
       cv2.imwrite('poo3.jpg', gray)
       imgjpg = Image.open("poo.jpg")
@@ -220,6 +220,47 @@ def cronjob():
           table1.save()
         table1 = MyErrors(time=timezone.now(), ime=encoded)
         table1.save()
+        enhancer = ImageEnhance.Sharpness(imgjpg)
+        enhanced_im = enhancer.enhance(2.8)
+        enhanced_im.save("poo2.jpg")
+        with open("poo2.jpg", "rb") as img_file:
+          encoded = base64.b64encode(img_file.read())
+        image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
+        encodings = face_recognition.face_encodings(image)
+        if len(encodings) != 0:
+          current = peremennaya - 1
+          encoding = encodings[0]
+          results = face_recognition.compare_faces(
+              known_faces, encoding, 0.52)   # lower is more strict
+          if True in results:
+            print("But facerecognizer found. Face recognized\n")
+            if(current != known_names[results.index(True)]):
+              new_face_found = True
+              current = known_names[results.index(True)]
+              table1 = TableImage(firsttime=timezone.now(),
+                                  time=timezone.now(), byl="yes", im=encoded)
+              table1.firsttime = times[current]
+              table1.byl = "yes"
+              table1.save()
+          else:
+            print("But facerecognizer found. No face recognized\n")
+            table1 = TableImage(firsttime=timezone.now(),
+                                time=timezone.now(), byl="no", im=encoded)
+            table1.save()
+            new_face_found = True
+            known_faces.append(encoding)
+            known_names.append(peremennaya)
+            current = peremennaya
+            peremennaya += 1
+            times.append(timezone.now())
+        else:
+          print("But facerecognizer found: No face found.\n")
+          current = -1
+          if (d3.minute == 34 or d3.minute == 4):
+            table1 = TableImage(firsttime=timezone.now(),
+                                time=timezone.now(), byl="nothing", im=encoded)
+            table1.save()
+        os.remove("poo2.jpg")
 
       elif len(faces) > 1:
         print('(My Error) There are more than 1 faces.\n')
