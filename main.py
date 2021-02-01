@@ -204,7 +204,7 @@ def cronjob():
       driver.quit()
       img1 = cv2.imread('poo.jpg')
       gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-      faces = face_cascade.detectMultiScale(gray, 1.05, 10, minSize=(21, 21))
+      faces = face_cascade.detectMultiScale(gray, 1.05, 15, minSize=(21, 21))
 
       cv2.imwrite('poo3.jpg', gray)
       imgjpg = Image.open("poo.jpg")
@@ -237,6 +237,8 @@ def cronjob():
           os.remove("poo2.jpg")
 
       for(x, y, w, h) in faces:
+        if new_face_found == True:
+          continue
         # img2 = imgjpg[y:y + h, x:x + w]
         area = (x - 15, y - 15, x + w + 15, y + h + 15)
         img2 = imgjpg.crop(area)
@@ -251,6 +253,7 @@ def cronjob():
         image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
+          current = peremennaya
           encoding = encodings[0]
           results = face_recognition.compare_faces(
               known_faces, encoding, 0.52)   # lower is more strict
@@ -397,6 +400,9 @@ def cronjob():
             table1.save()
 
           last_ch = ch
+
+      elif current == -1:
+        print("Current = -1\n")
 
       else:
         print('Error')
