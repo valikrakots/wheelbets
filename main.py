@@ -311,7 +311,7 @@ def cronjob():
             resultaty[current].append(resi)
             i2 = 0
             for i2 in range(19):
-              resultaty[current][i2].append(0)
+              resultaty[current][i].append(0)
             i += 1
 
         ch = ""
