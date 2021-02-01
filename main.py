@@ -130,7 +130,7 @@ def cronjob():
     img2.save("poo4.jpg")
     img3 = Image.open("poo4.jpg")
     enhancer = ImageEnhance.Sharpness(img3)
-    enhanced_im = enhancer.enhance(2.5)
+    enhanced_im = enhancer.enhance(2.8)
     enhanced_im.save("poo2.jpg")
     with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
@@ -244,7 +244,7 @@ def cronjob():
         img2.save("poo4.jpg")
         img3 = Image.open("poo4.jpg")
         enhancer = ImageEnhance.Sharpness(img3)
-        enhanced_im = enhancer.enhance(2.5)
+        enhanced_im = enhancer.enhance(2.8)
         enhanced_im.save("poo2.jpg")
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
@@ -253,7 +253,7 @@ def cronjob():
         if len(encodings) != 0:
           encoding = encodings[0]
           results = face_recognition.compare_faces(
-              known_faces, encoding, 0.5)   # lower is more strict
+              known_faces, encoding, 0.52)   # lower is more strict
           if True in results:
             print("Face recognized\n")
             if(current != known_names[results.index(True)]):
