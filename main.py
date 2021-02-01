@@ -134,7 +134,7 @@ def cronjob():
     enhanced_im.save("poo2.jpg")
     with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
-    #img2 = imgjpg[y:y + h, x:x + w]
+    # img2 = imgjpg[y:y + h, x:x + w]
     image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
     encodings = face_recognition.face_encodings(image)
     if len(encodings) == 0:
@@ -239,7 +239,7 @@ def cronjob():
           os.remove("poo2.jpg")
 
       for(x, y, w, h) in faces:
-        #img2 = imgjpg[y:y + h, x:x + w]
+        # img2 = imgjpg[y:y + h, x:x + w]
         area = (x - 15, y - 15, x + w + 15, y + h + 15)
         img2 = imgjpg.crop(area)
         img2 = img2.resize((125, 125))
@@ -351,7 +351,6 @@ def cronjob():
           last_rec = rec
           rec = '-'
 
-          i = 0
           print("Current leader: ")
           print(current)
           print('\n')
@@ -362,6 +361,7 @@ def cronjob():
           maxi = 0
           last_maxi = 0
           maxi_czislo = -1
+          i = 0
 
           while i < 19:
             print(resultaty[current][chislo][i])
@@ -370,7 +370,7 @@ def cronjob():
               last_maxi = maxi
               maxi = resultaty[current][chislo][i]
               maxi_czislo = i
-              i += 1
+             i += 1
 
           if(maxi_czislo != -1 and last_maxi != 0 and maxi / last_maxi >= 1.4):
             rec = str(maxi_czislo)
