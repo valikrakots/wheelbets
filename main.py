@@ -253,7 +253,7 @@ def cronjob():
         image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
-          current = peremennaya
+          current = peremennaya - 1
           encoding = encodings[0]
           results = face_recognition.compare_faces(
               known_faces, encoding, 0.52)   # lower is more strict
