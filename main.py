@@ -191,12 +191,12 @@ def cronjob():
       # im_file = BytesIO(im_bytes)
       # img = Image.open(im_file)
       img = Image.open(BytesIO(screenshot_img))
-      img.save('foo.png', quality=95)
+      img.save('foo.png', quality=100)
       img = Image.open('foo.png')
       rgb_img = img.convert('RGB')
       area = (255, 135, 450, 300)
       rgb_img2 = rgb_img.crop(area)
-      rgb_img2.save('poo.jpg', quality=95)
+      rgb_img2.save('poo.jpg', quality=100)
       # face_count += 1
       # face_filename = '%s%d.png' % ('foo', face_count)
       # img.save('%s%d.png', '')
@@ -283,8 +283,8 @@ def cronjob():
         # img2 = imgjpg[y:y + h, x:x + w]
         area = (x - 15, y - 15, x + w + 15, y + h + 15)
         img2 = imgjpg.crop(area)
-        img2 = img2.resize((125, 125))
-        img2.save("poo4.jpg", quality=95)
+        img2 = img2.resize((250, 250))
+        img2.save("poo4.jpg", quality=100)
         img3 = Image.open("poo4.jpg")
         enhancer = ImageEnhance.Sharpness(img3)
         enhanced_im = enhancer.enhance(2.8)
@@ -297,7 +297,7 @@ def cronjob():
           current = peremennaya - 1
           encoding = encodings[0]
           results = face_recognition.compare_faces(
-              known_faces, encoding, 0.55)   # lower is more strict
+              known_faces, encoding, 0.57)   # lower is more strict
           if True in results:
             print("Face recognized\n")
             if(current != known_names[results.index(True)]):
