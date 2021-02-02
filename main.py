@@ -126,17 +126,16 @@ def cronjob():
   for(x, y, w, h) in faces:
     area = (x - 15, y - 15, x + w + 15, y + h + 15)
     img2 = imgjpg.crop(area)
-    img2 = img2.resize((125, 125))
+    img2 = img2.resize((140, 140))
     img2.save("poo4.jpg", quality=100)
     img3 = Image.open("poo4.jpg")
     enhancer = ImageEnhance.Sharpness(img3)
-    enhanced_im = enhancer.enhance(2.8)
-    enhanced_im = enhanced_im.convert('L')
+    enhanced_im = enhancer.enhance(3.4)
     enhanced_im.save("poo2.jpg")
     with open("poo2.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
     # img2 = imgjpg[y:y + h, x:x + w]
-    image = face_recognition.load_image_file("poo2.jpg", mode='L')
+    image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
     encodings = face_recognition.face_encodings(image)
     if len(encodings) == 0:
       print("No face found.")
@@ -222,12 +221,11 @@ def cronjob():
         table1 = MyErrors(time=timezone.now(), ime=encoded)
         table1.save()
         enhancer = ImageEnhance.Sharpness(imgjpg)
-        enhanced_im = enhancer.enhance(2.8)
-        enhanced_im = enhanced_im.convert('L')
+        enhanced_im = enhancer.enhance(3.4)
         enhanced_im.save("poo2.jpg")
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
-        image = face_recognition.load_image_file("poo2.jpg", mode='L')
+        image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
           current = peremennaya - 1
@@ -285,16 +283,15 @@ def cronjob():
         # img2 = imgjpg[y:y + h, x:x + w]
         area = (x - 15, y - 15, x + w + 15, y + h + 15)
         img2 = imgjpg.crop(area)
-        img2 = img2.resize((250, 250))
+        img2 = img2.resize((140, 140))
         img2.save("poo4.jpg", quality=100)
         img3 = Image.open("poo4.jpg")
         enhancer = ImageEnhance.Sharpness(img3)
-        enhanced_im = enhancer.enhance(2.8)
-        enhanced_im = enhanced_im.convert('L')
+        enhanced_im = enhancer.enhance(3.4)
         enhanced_im.save("poo2.jpg")
         with open("poo2.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
-        image = face_recognition.load_image_file("poo2.jpg", mode='L')
+        image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
           current = peremennaya - 1
