@@ -103,7 +103,7 @@ def cronjob():
 
   if len(faces) == 0:
     print('(My Error) There are 0 faces.\n')
-    with open("poo3.jpg", "rb") as img_file:
+    with open("poo.jpg", "rb") as img_file:
       encoded = base64.b64encode(img_file.read())
     table1 = MyErrors(time=timezone.now(), ime=encoded)
     table1.save()
@@ -126,7 +126,7 @@ def cronjob():
   for(x, y, w, h) in faces:
     area = (x - 15, y - 15, x + w + 15, y + h + 15)
     img2 = imgjpg.crop(area)
-    img2 = img2.resize((140, 140))
+    img2 = img2.resize((130, 130))
     img2.save("poo4.jpg", quality=100)
     img3 = Image.open("poo4.jpg")
     enhancer = ImageEnhance.Sharpness(img3)
@@ -163,7 +163,7 @@ def cronjob():
   while(True):
     d2 = datetime.datetime.now().date()
     d3 = datetime.datetime.now()
-    if (d3.minute == 26 or d3.minute == 56 or d3.minute == 28 or d3.minute == 58 or d3.minute == 0 or d3.minute == 30 or d3.minute == 2 or d3.minute == 32 or d3.minute == 4 or d3.minute == 34) and do == 2 and d3.second == 20 and new_face_found == False:
+    if (d3.minute == 28 or d3.minute == 58 or d3.minute == 0 or d3.minute == 30 or d3.minute == 2 or d3.minute == 32 or d3.minute == 4 or d3.minute == 34) and do == 2 and d3.second == 20 and new_face_found == False:
       do = 1
       chrome_options = webdriver.ChromeOptions()
       chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -211,7 +211,7 @@ def cronjob():
 
       if len(faces) == 0:
         print('(My Error) There are 0 faces.\n')
-        with open("poo3.jpg", "rb") as img_file:
+        with open("poo.jpg", "rb") as img_file:
           encoded = base64.b64encode(img_file.read())
         current = -1
         if (d3.minute == 34 or d3.minute == 4):
@@ -256,10 +256,6 @@ def cronjob():
         else:
           print("But facerecognizer found: No face found.\n")
           current = -1
-          if (d3.minute == 34 or d3.minute == 4):
-            table1 = TableImage(firsttime=timezone.now(),
-                                time=timezone.now(), byl="nothing", im=encoded)
-            table1.save()
         os.remove("poo2.jpg")
 
       elif len(faces) > 1:
@@ -283,7 +279,7 @@ def cronjob():
         # img2 = imgjpg[y:y + h, x:x + w]
         area = (x - 15, y - 15, x + w + 15, y + h + 15)
         img2 = imgjpg.crop(area)
-        img2 = img2.resize((140, 140))
+        img2 = img2.resize((130, 130))
         img2.save("poo4.jpg", quality=100)
         img3 = Image.open("poo4.jpg")
         enhancer = ImageEnhance.Sharpness(img3)
