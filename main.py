@@ -42,6 +42,7 @@ def cronjob():
   resultaty = []
   known_faces = []
   known_names = []
+  heights = []
   times = []
   new_face_found = False
   rec = "-"
@@ -82,12 +83,12 @@ def cronjob():
   # im_file.seek(0)
   # img = Image.open(im_file)
   img = Image.open(BytesIO(screenshot_img))
-  img.save('foo.png', quality=100)
+  img.save('foo.png', quality=95)
   img = Image.open('foo.png')
   rgb_img = img.convert('RGB')
   area = (255, 135, 450, 300)
   rgb_img2 = rgb_img.crop(area)
-  rgb_img2.save('poo.jpg', quality=100)
+  rgb_img2.save('poo.jpg', quality=95)
   sleep(1)
   driver.quit()
   img1 = cv2.imread('poo.jpg')
@@ -126,8 +127,8 @@ def cronjob():
   for(x, y, w, h) in faces:
     area = (x - 15, y - 15, x + w + 15, y + h + 15)
     img2 = imgjpg.crop(area)
-    img2 = img2.resize((130, 130))
-    img2.save("poo4.jpg", quality=100)
+    img2 = img2.resize((85, 85))
+    img2.save("poo4.jpg", quality=95)
     img3 = Image.open("poo4.jpg")
     enhancer = ImageEnhance.Sharpness(img3)
     enhanced_im = enhancer.enhance(3.4)
@@ -152,6 +153,7 @@ def cronjob():
     print("No face recognized.\n")
     known_faces.append(encoding)
     known_names.append(peremennaya)
+    heights.append(y)
     peremennaya += 1
     times.append(timezone.now())
     os.remove("poo2.jpg")
@@ -191,12 +193,12 @@ def cronjob():
       # im_file = BytesIO(im_bytes)
       # img = Image.open(im_file)
       img = Image.open(BytesIO(screenshot_img))
-      img.save('foo.png', quality=100)
+      img.save('foo.png', quality=95)
       img = Image.open('foo.png')
       rgb_img = img.convert('RGB')
       area = (255, 135, 450, 300)
       rgb_img2 = rgb_img.crop(area)
-      rgb_img2.save('poo.jpg', quality=100)
+      rgb_img2.save('poo.jpg', quality=95)
       # face_count += 1
       # face_filename = '%s%d.png' % ('foo', face_count)
       # img.save('%s%d.png', '')
@@ -279,8 +281,8 @@ def cronjob():
         # img2 = imgjpg[y:y + h, x:x + w]
         area = (x - 15, y - 15, x + w + 15, y + h + 15)
         img2 = imgjpg.crop(area)
-        img2 = img2.resize((130, 130))
-        img2.save("poo4.jpg", quality=100)
+        img2 = img2.resize((85, 85))
+        img2.save("poo4.jpg", quality=95)
         img3 = Image.open("poo4.jpg")
         enhancer = ImageEnhance.Sharpness(img3)
         enhanced_im = enhancer.enhance(3.4)
@@ -296,7 +298,7 @@ def cronjob():
               known_faces, encoding, 0.57)   # lower is more strict
           if True in results:
             print("Face recognized\n")
-            if(current != known_names[results.index(True)]):
+            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5:
               new_face_found = True
               current = known_names[results.index(True)]
               table1 = TableImage(firsttime=timezone.now(),
@@ -312,6 +314,7 @@ def cronjob():
             new_face_found = True
             known_faces.append(encoding)
             known_names.append(peremennaya)
+            heights.append(y)
             current = peremennaya
             peremennaya += 1
             times.append(timezone.now())
