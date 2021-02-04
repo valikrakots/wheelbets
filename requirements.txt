@@ -36,7 +36,7 @@ Pillow==8.0.1
 psycopg2==2.8.5
 pybase64==1.0.2
 python-dateutil==2.8.1
-python-time==0.1.2
+python-time==0.3.0
 pytz==2020.1
 requests==2.23.0
 scripts==2.0
