@@ -17,6 +17,7 @@ import base64
 import io
 import cv2
 from io import BytesIO
+from colorthief import ColorThief
 
 
 URL = 'https://betgames9.betgames.tv/ext/game_results/get_results_info/testpartner/2019-04-03/0/1/'
@@ -27,6 +28,34 @@ HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gec
 def get_html(url, params=None):
   r = requests.get(url, headers=HEADERS, params=params)
   return r
+
+
+def get_skin_color():
+  img = Image.open("poo4.jpg")
+  area = (30, 30, 55, 55)
+  img = img.crop(area)
+  img.save("poo7.jpg", quality=95)
+  color_thief = ColorThief("poo7.jpg")
+  dominant_color = color_thief.get_color(quality=1)
+  os.remove("poo7.jpg")
+  return dominant_color
+
+
+def get_dress_color(x, y, w, h):
+  img = Image.open("poo.jpg")
+  pix = img.load()
+  a = x + (w // 2)
+  b = y + h + 2 * h
+  return pix[a, b]
+
+
+def compare_skins(a, b):
+  i = 0
+  while i < 3:
+    if abs(a[i] - b[i]) > 3:
+      return False
+    i += 1
+  return True
 
 
 d1 = datetime.datetime.now().date()
@@ -41,7 +70,10 @@ def cronjob():
   # face_count = 1
   resultaty = []
   known_faces = []
+  dress_colors = []
   known_names = []
+  known_dresses = []
+  known_skin_colors = []
   heights = []
   times = []
   new_face_found = False
@@ -153,6 +185,8 @@ def cronjob():
     print("No face recognized.\n")
     known_faces.append(encoding)
     known_names.append(peremennaya)
+    known_dresses.append(get_dress_color(x, y, w, h))
+    known_skin_colors.append(get_skin_color())
     heights.append(y)
     peremennaya += 1
     times.append(timezone.now())
@@ -245,16 +279,7 @@ def cronjob():
               table1.byl = "yes"
               table1.save()
           else:
-            print("But facerecognizer found. No face recognized\n")
-            table1 = TableImage(firsttime=timezone.now(),
-                                time=timezone.now(), byl="no", im=encoded)
-            table1.save()
-            new_face_found = True
-            known_faces.append(encoding)
-            known_names.append(peremennaya)
-            current = peremennaya
-            peremennaya += 1
-            times.append(timezone.now())
+            current = -1
         else:
           print("But facerecognizer found: No face found.\n")
           current = -1
@@ -294,11 +319,13 @@ def cronjob():
         if len(encodings) != 0:
           current = peremennaya - 1
           encoding = encodings[0]
+          dress = get_dress_color(x, y, w, h)
+          skin = get_skin_color()
           results = face_recognition.compare_faces(
               known_faces, encoding, 0.57)   # lower is more strict
           if True in results:
             print("Face recognized\n")
-            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5:
+            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5 and dress == known_dresses[results.index(True)] and compare_skins(skin, known_skin_colors[results.index(True)]) == True:
               new_face_found = True
               current = known_names[results.index(True)]
               table1 = TableImage(firsttime=timezone.now(),
@@ -314,6 +341,8 @@ def cronjob():
             new_face_found = True
             known_faces.append(encoding)
             known_names.append(peremennaya)
+            known_dresses.append(dress)
+            known_skin_colors.append(skin)
             heights.append(y)
             current = peremennaya
             peremennaya += 1
