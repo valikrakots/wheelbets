@@ -46,7 +46,9 @@ def get_dress_color(x, y, w, h):
   pix = img.load()
   a = x + (w // 2)
   b = y + h + 2 * h
-  return pix[a, b]
+  a1 = round(a)
+  b1 = round(b)
+  return pix[a1, b1]
 
 
 def compare_skins(a, b):
