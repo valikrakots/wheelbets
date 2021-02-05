@@ -54,7 +54,7 @@ def get_dress_color(x, y, w, h):
 def compare_skins(a, b):
   i = 0
   while i < 3:
-    if abs(a[i] - b[i]) > 3:
+    if abs(a[i] - b[i]) > 5:
       return False
     i += 1
   return True
