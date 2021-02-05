@@ -221,7 +221,11 @@ def cronjob():
       # element[6].click()
       element = driver.find_elements_by_css_selector(
           '.tabs-bar-item.align-center')
-      driver.execute_script("arguments[0].click();", element[6])
+      try:
+        driver.execute_script("arguments[0].click();", element[6])
+      except:
+        print("unable to click button.\n")
+        continue
       sleep(10)
       screenshot_img = driver.get_screenshot_as_png()
       # encoded = base64.b64encode(screenshot_img)
