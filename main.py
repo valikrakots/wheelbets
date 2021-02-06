@@ -63,7 +63,8 @@ def compare_skins(a, b):
     i += 1
   return True
 
-  def compare_dresses(a, b):
+
+def compare_dresses(a, b):
   if abs(a[0] - b[0]) > 10:
     return False
   return True
