@@ -48,7 +48,11 @@ def get_dress_color(x, y, w, h):
   b = y + h + 2 * h
   a1 = round(a)
   b1 = round(b)
-  return pix[a1, b1]
+  try:
+    pixe = pix[a1, b1]
+    return pixe
+  except:
+    return None
 
 
 def compare_skins(a, b):
@@ -324,11 +328,12 @@ def cronjob():
           current = peremennaya - 1
           encoding = encodings[0]
           dress = get_dress_color(x, y, w, h)
+          print(dress)
           results = face_recognition.compare_faces(
               known_faces, encoding, 0.55)   # lower is more strict
           if True in results:
             print("Face recognized\n")
-            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5 and dress == known_dresses[results.index(True)]:
+            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5 and dress != None and dress == known_dresses[results.index(True)]:
               new_face_found = True
               current = known_names[results.index(True)]
               table1 = TableImage(firsttime=timezone.now(),
