@@ -335,10 +335,10 @@ def cronjob():
           encoding = encodings[0]
           dress = get_dress_color(x, y, w, h)
           results = face_recognition.compare_faces(
-              known_faces, encoding, 0.55)   # lower is more strict
+              known_faces, encoding, 0.56)   # lower is more strict
           if True in results:
             print("Face recognized\n")
-            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5 and compare_dresses(dress, known_dresses[results.index(True)] == True):
+            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5 and abs(dress[0] - known_dresses[results.index(True)][0]) > 11:
               new_face_found = True
               current = known_names[results.index(True)]
               table1 = TableImage(firsttime=timezone.now(),
