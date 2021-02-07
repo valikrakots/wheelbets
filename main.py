@@ -338,7 +338,13 @@ def cronjob():
               known_faces, encoding, 0.56)   # lower is more strict
           if True in results:
             print("Face recognized\n")
-            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5 and abs(dress[0] - known_dresses[results.index(True)][0]) > 11:
+            dress_result = False
+            try:
+              if abs(dress[0] - known_dresses[results.index(True)][0]) < 11:
+                dress_result = True
+            except:
+              dress_result = False
+            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5 and dress_result:
               new_face_found = True
               current = known_names[results.index(True)]
               table1 = TableImage(firsttime=timezone.now(),
