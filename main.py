@@ -314,6 +314,8 @@ def cronjob():
           table1.save()
           os.remove("poo2.jpg")
 
+      current_copy = current
+
       for(x, y, w, h) in faces:
         if new_face_found == True:
           continue
@@ -331,7 +333,7 @@ def cronjob():
         image = face_recognition.load_image_file("poo2.jpg", mode='RGB')
         encodings = face_recognition.face_encodings(image)
         if len(encodings) != 0:
-          current = peremennaya - 1
+          current = current_copy
           encoding = encodings[0]
           dress = get_dress_color(x, y, w, h)
           results = face_recognition.compare_faces(
