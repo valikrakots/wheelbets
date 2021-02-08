@@ -45,7 +45,7 @@ def get_dress_color(x, y, w, h):
   img = Image.open("poo.jpg")
   pix = img.load()
   a = x + (w // 2)
-  b = y + h + 2 * h
+  b = y + h + 3 * h
   a1 = round(a)
   b1 = round(b)
   try:
@@ -281,7 +281,7 @@ def cronjob():
           current = peremennaya - 1
           encoding = encodings[0]
           results = face_recognition.compare_faces(
-              known_faces, encoding, 0.49)   # lower is more strict
+              known_faces, encoding, 0.55)   # lower is more strict
           if True in results:
             print("But facerecognizer found. Face recognized\n")
             if(current != known_names[results.index(True)]):
@@ -346,7 +346,7 @@ def cronjob():
                 dress_result = True
             except:
               dress_result = False
-            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5 and dress_result:
+            if current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5 and dress_result == True:
               new_face_found = True
               current = known_names[results.index(True)]
               table1 = TableImage(firsttime=timezone.now(),
@@ -354,6 +354,19 @@ def cronjob():
               table1.firsttime = times[current]
               table1.byl = "yes"
               table1.save()
+            elif current != known_names[results.index(True)] and abs(y - heights[results.index(True)]) < 5 and dress_result == False:
+              if (d3.minute == 34 or d3.minute == 4):
+                table1 = TableImage(firsttime=timezone.now(),
+                                    time=timezone.now(), byl="no", im=encoded)
+                table1.save()
+                new_face_found = True
+                known_faces.append(encoding)
+                known_names.append(peremennaya)
+                known_dresses.append(dress)
+                heights.append(y)
+                current = peremennaya
+                peremennaya += 1
+                times.append(timezone.now())
           else:
             print("No face recognized\n")
             table1 = TableImage(firsttime=timezone.now(),
