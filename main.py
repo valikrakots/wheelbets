@@ -31,14 +31,17 @@ def get_html(url, params=None):
 
 
 def get_skin_color():
-  img = Image.open("poo4.jpg")
-  area = (30, 30, 55, 55)
-  img = img.crop(area)
-  img.save("poo7.jpg", quality=95)
-  color_thief = ColorThief("poo7.jpg")
-  dominant_color = color_thief.get_color(quality=1)
-  os.remove("poo7.jpg")
-  return dominant_color
+  try:
+    img = Image.open("poo4.jpg")
+    area = (30, 30, 55, 55)
+    img = img.crop(area)
+    img.save("poo7.jpg", quality=95)
+    color_thief = ColorThief("poo7.jpg")
+    dominant_color = color_thief.get_color(quality=1)
+    os.remove("poo7.jpg")
+    return dominant_color
+  except:
+    return None
 
 
 def get_dress_color(x, y, w, h):
@@ -56,18 +59,23 @@ def get_dress_color(x, y, w, h):
 
 
 def compare_skins(a, b):
-  i = 0
-  while i < 3:
-    if abs(a[i] - b[i]) > 5:
+  try:
+    if abs(a[0] - b[0]) < 7:
+      return True
+    else:
       return False
-    i += 1
-  return True
+  except:
+    return False
 
 
 def compare_dresses(a, b):
-  if abs(a[0] - b[0]) > 10:
+  try:
+    if abs(a[0] - b[0]) < 10:
+      return True
+    else:
+      return False
+  except:
     return False
-  return True
 
 
 d1 = datetime.datetime.now().date()
